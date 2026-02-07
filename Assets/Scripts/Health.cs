@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class Health : MonoBehaviour, IHealth, IReadableValue
+public class Health : MonoBehaviour, IHealth
 {
     // Здовоье может быть только у:
     // Игрока
@@ -36,12 +36,13 @@ public class Health : MonoBehaviour, IHealth, IReadableValue
 
     public GameObject Instance => this.gameObject;
 
-    public float Armor
+    public float CurrentArmor
     {
         get => Mathf.Clamp(currentArmor, 0f, maximumArmor);
         set
         {
             currentArmor = Math.Max(value, 0f);
+            OnArmorChanged?.Invoke();
         }
     }
 
@@ -54,70 +55,55 @@ public class Health : MonoBehaviour, IHealth, IReadableValue
         set
         {
             currentHealth = Math.Max(value, 0f);
-            OnValueChanged?.Invoke(Value);
+            OnHealthChanged?.Invoke();
         }
     }
 
     public bool IsDied => CurrentHealth == 0f;
     public float CurrentHealthInPercentage => CurrentHealth / MaximumHealth;
-    public float CurrentArmorInPercentage => Armor / MaximumArmor;
+    public float CurrentArmorInPercentage => CurrentArmor / MaximumArmor;
 
-    public Action OnDamaged { get; set; } // TODO: Action<float> OnDamaged для анимации текста урона
-    public Action OnArmoryDestoyed { get; set; }
+    public Action<float> OnDamaged { get; set; }
+    public Action OnArmorDestoyed { get; set; }
     public Action OnDeath { get; set;  }
     public Action OnHealthChanged { get; set; }
     public Action OnArmorChanged { get; set; }
-
-    // IReadableValue
-    public float Value => CurrentHealthInPercentage;
-    public event Action<float> OnValueChanged;
 
     public void Awake()
     {
         currentHealth = MaximumHealth;
         currentArmor = MaximumArmor;
-        Debug.Log($"Helath inited! hp{currentHealth} arm{currentArmor}");
     }
 
     public void ResetHealth()
     {
         CurrentHealth = MaximumHealth;
-        currentArmor = MaximumArmor;
+        CurrentArmor = MaximumArmor;
     }
 
     public void TakeDamage(Damage damage)
     {
-        // Что-бы не регистрировать урон когда игра уже закончилась
-        //if (GlobalFlags.GetFlag(Flags.GameOver)) return;
-
-        Debug.Log($"Registering hit armordaamge {damage.damageArmor} healthdamage {damage.damageHealth} currentArmor {currentArmor} current health {currentHealth} is armored {isArmored}");
+        float currentDamage = isArmored ? damage.MultipliedArmorDamage : damage.MultipliedHealthDamage;
+        
         if (isArmored)
         {
-            Debug.Log($"Armor just hit {damage.damageArmor}");
             // Дополнительный урок
-            float excessDamage = damage.damageMultiplier * damage.damageArmor - currentArmor;
-            currentArmor -= damage.damageMultiplier * damage.damageArmor;
-            OnArmorChanged?.Invoke();
+            currentArmor -= currentDamage;
 
             if (currentArmor <= 0f)
             {
-                OnArmoryDestoyed?.Invoke();
+                OnArmorDestoyed?.Invoke();
                 isArmored = false;
 
-                if (excessDamage > 0f)
-                {
-                    CurrentHealth -= damage.damageMultiplier * excessDamage;
-                    OnHealthChanged?.Invoke();
-                }
+                TakeDamage(damage);
             }
         }
         else
         {
-            CurrentHealth -= damage.damageMultiplier * damage.damageHealth;
-            OnHealthChanged?.Invoke();
+            CurrentHealth -= currentDamage;
         }
-        Debug.Log($"Damage dealed hpd {damage.damageHealth} armd {damage.damageArmor} dmp {damage.damageMultiplier}. I`m hp = {currentHealth} & arm = {currentArmor}");
-        OnDamaged?.Invoke();
+
+        OnDamaged?.Invoke(currentDamage);
 
         if (IsDied) OnDeath?.Invoke();
     }

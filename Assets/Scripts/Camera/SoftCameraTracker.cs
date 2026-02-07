@@ -27,6 +27,6 @@ public class SoftCameraTracker : MonoBehaviour, ICameraTracker
 
     public virtual Vector3 GetCurrentPosition(Vector3 targetPosition)
     {
-        return Vector3.Lerp(targetPosition, TargetPosition, blendFactor);
+        return Vector3.Lerp(transform.position, targetPosition, blendFactor);
     }
 }

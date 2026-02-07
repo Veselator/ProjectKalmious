@@ -9,7 +9,7 @@ public interface IHealth
 
     // Если есть броня, то урон сниженый
     float MaximumArmor { get; set; } // Сколько максимум может быть брони
-    float Armor { get; set; } // Какой текущий показатель брони
+    float CurrentArmor { get; set; } // Какой текущий показатель брони
     // Параметр урона по броне перенесён в struct Damage для большей гибкости
     //float ArmorFactor { get; set; } // Какой процент от изначального урона пройдёт по броне
 
@@ -17,9 +17,9 @@ public interface IHealth
     bool IsDied { get; }
     float CurrentHealthInPercentage { get; }
     float CurrentArmorInPercentage { get; }
-    Action OnDamaged { get; set; }
+    Action<float> OnDamaged { get; set; }
     Action OnHealthChanged { get; set; }
-    Action OnArmoryDestoyed { get; set; }
+    Action OnArmorDestoyed { get; set; }
     Action OnArmorChanged { get; set; }
     Action OnDeath { get; set;  }
     abstract void ResetHealth();

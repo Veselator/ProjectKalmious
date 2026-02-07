@@ -39,10 +39,8 @@ public class CameraController : MonoBehaviour
     {
         if (!IsAbleToUpdate) return;
 
-        if (_target != null)
-            transform.position = _tracker.GetCurrentPosition(_target.position) + _offset;
-        else
-            transform.position = _tracker.GetCurrentPosition(_defaultTrackingPosition) + _offset;
+        Vector3 newVector = _target != null ? _tracker.GetCurrentPosition(_target.position) + _offset : _tracker.GetCurrentPosition(_defaultTrackingPosition) + _offset;
+        transform.position = new Vector3(newVector.x, newVector.y, _offset.z);
 
         if (_cameraShake != null)
         {
