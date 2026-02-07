@@ -1,0 +1,124 @@
+using UnityEngine;
+using System;
+
+public class Health : MonoBehaviour, IHealth, IReadableValue
+{
+    // Здовоье может быть только у:
+    // Игрока
+    // Объекта врагов
+
+    // Реализация для ShootemUp
+    // Которая подойдёт и для платформера
+    // Да и в обще отличная реализация
+    // Здоровья всем родным программиста, который это написал
+    // И в обще он крутой
+
+    [SerializeField] private float maxHealth;
+    public float MaximumHealth
+    {
+        get => maxHealth;
+        set
+        {
+            maxHealth = value;
+        }
+    }
+
+    [SerializeField] private float maximumArmor;
+    public float MaximumArmor
+    {
+        get => maximumArmor;
+        set
+        {
+            maximumArmor = value;
+        }
+    }
+    private float currentArmor;
+
+    public GameObject Instance => this.gameObject;
+
+    public float Armor
+    {
+        get => Mathf.Clamp(currentArmor, 0f, maximumArmor);
+        set
+        {
+            currentArmor = Math.Max(value, 0f);
+        }
+    }
+
+    [SerializeField] private bool isArmored;
+    public bool DoesHaveArmor => isArmored;
+    private float currentHealth;
+    public float CurrentHealth
+    {
+        get => Mathf.Clamp(currentHealth, 0f, maxHealth);
+        set
+        {
+            currentHealth = Math.Max(value, 0f);
+            OnValueChanged?.Invoke(Value);
+        }
+    }
+
+    public bool IsDied => CurrentHealth == 0f;
+    public float CurrentHealthInPercentage => CurrentHealth / MaximumHealth;
+    public float CurrentArmorInPercentage => Armor / MaximumArmor;
+
+    public Action OnDamaged { get; set; } // TODO: Action<float> OnDamaged для анимации текста урона
+    public Action OnArmoryDestoyed { get; set; }
+    public Action OnDeath { get; set;  }
+    public Action OnHealthChanged { get; set; }
+    public Action OnArmorChanged { get; set; }
+
+    // IReadableValue
+    public float Value => CurrentHealthInPercentage;
+    public event Action<float> OnValueChanged;
+
+    public void Awake()
+    {
+        currentHealth = MaximumHealth;
+        currentArmor = MaximumArmor;
+        Debug.Log($"Helath inited! hp{currentHealth} arm{currentArmor}");
+    }
+
+    public void ResetHealth()
+    {
+        CurrentHealth = MaximumHealth;
+        currentArmor = MaximumArmor;
+    }
+
+    public void TakeDamage(Damage damage)
+    {
+        // Что-бы не регистрировать урон когда игра уже закончилась
+        //if (GlobalFlags.GetFlag(Flags.GameOver)) return;
+
+        Debug.Log($"Registering hit armordaamge {damage.damageArmor} healthdamage {damage.damageHealth} currentArmor {currentArmor} current health {currentHealth} is armored {isArmored}");
+        if (isArmored)
+        {
+            Debug.Log($"Armor just hit {damage.damageArmor}");
+            // Дополнительный урок
+            float excessDamage = damage.damageMultiplier * damage.damageArmor - currentArmor;
+            currentArmor -= damage.damageMultiplier * damage.damageArmor;
+            OnArmorChanged?.Invoke();
+
+            if (currentArmor <= 0f)
+            {
+                OnArmoryDestoyed?.Invoke();
+                isArmored = false;
+
+                if (excessDamage > 0f)
+                {
+                    CurrentHealth -= damage.damageMultiplier * excessDamage;
+                    OnHealthChanged?.Invoke();
+                }
+            }
+        }
+        else
+        {
+            CurrentHealth -= damage.damageMultiplier * damage.damageHealth;
+            OnHealthChanged?.Invoke();
+        }
+        Debug.Log($"Damage dealed hpd {damage.damageHealth} armd {damage.damageArmor} dmp {damage.damageMultiplier}. I`m hp = {currentHealth} & arm = {currentArmor}");
+        OnDamaged?.Invoke();
+
+        if (IsDied) OnDeath?.Invoke();
+    }
+}
