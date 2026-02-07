@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
 
     public bool IsAbleToUpdate = true;
     [SerializeField] private Vector3 _defaultTrackingPosition = Vector3.zero;
+    [SerializeField] private Vector3 _offset = new Vector3(0, 0, -10);
 
     [SerializeField] private CameraShake _cameraShake;
 
@@ -39,9 +40,9 @@ public class CameraController : MonoBehaviour
         if (!IsAbleToUpdate) return;
 
         if (_target != null)
-            transform.position = _tracker.GetCurrentPosition(_target.position);
+            transform.position = _tracker.GetCurrentPosition(_target.position) + _offset;
         else
-            transform.position = _tracker.GetCurrentPosition(_defaultTrackingPosition);
+            transform.position = _tracker.GetCurrentPosition(_defaultTrackingPosition) + _offset;
 
         if (_cameraShake != null)
         {
