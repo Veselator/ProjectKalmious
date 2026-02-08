@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryCell : MonoBehaviour
+public class InventoryCellUI : MonoBehaviour
 {
     [SerializeField] private int _id;
     [SerializeField] private Image _iconImage;

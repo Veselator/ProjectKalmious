@@ -8,6 +8,7 @@ public class ProjectileWeapon : BaseWeapon
     [SerializeField] private float _projectileSpeed = 10f;
     [SerializeField] private int _projectilesPerShot = 1;
     [SerializeField] private float _spreadAngle = 0f;
+    [SerializeField] private LayerMask _targetLayers;
 
     public event Action<GameObject> OnProjectileSpawned;
     public event Action OnShoot;
@@ -47,7 +48,7 @@ public class ProjectileWeapon : BaseWeapon
         Projectile projectileComponent = projectile.GetComponent<Projectile>();
         if (projectileComponent != null)
         {
-            projectileComponent.Initialize(_damage, _projectileSpeed, spawnRotation * Vector3.right);
+            projectileComponent.Initialize(_damage, _projectileSpeed, spawnRotation * Vector3.right, _targetLayers);
         }
 
         OnProjectileSpawned?.Invoke(projectile);
