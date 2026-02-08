@@ -48,7 +48,7 @@ public class ProjectileWeapon : BaseWeapon
         Projectile projectileComponent = projectile.GetComponent<Projectile>();
         if (projectileComponent != null)
         {
-            projectileComponent.Initialize(_damage, _projectileSpeed, spawnRotation * Vector3.right, _targetLayers);
+            projectileComponent.Initialize(_damage, _projectileSpeed, spawnRotation * transform.right, _targetLayers);
         }
 
         OnProjectileSpawned?.Invoke(projectile);
