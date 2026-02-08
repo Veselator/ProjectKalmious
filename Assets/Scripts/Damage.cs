@@ -9,7 +9,9 @@ public struct Damage
     public float damageArmor; // —колько пройдЄт урона с бронЄй
     [Min(0f)]
     public float damageMultiplier;
+    [Min(0f)]
+    public float overallDamageMultiplier;
 
-    public float MultipliedHealthDamage => damageHealth * damageMultiplier;
-    public float MultipliedArmorDamage => damageHealth * damageMultiplier;
+    public float MultipliedHealthDamage => damageHealth * damageMultiplier * overallDamageMultiplier;
+    public float MultipliedArmorDamage => damageHealth * damageMultiplier * overallDamageMultiplier;
 }

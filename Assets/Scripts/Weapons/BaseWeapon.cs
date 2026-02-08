@@ -35,4 +35,9 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
         OnActCompleted?.Invoke();
         OnCooldownStarted?.Invoke();
     }
+
+    public void SetOverallDamageModifier(float modifier)
+    {
+        _damage.overallDamageMultiplier = modifier;
+    }
 }

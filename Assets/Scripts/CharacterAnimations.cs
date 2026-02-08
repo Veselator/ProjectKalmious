@@ -7,22 +7,19 @@ public class CharacterAnimations : MonoBehaviour
     [SerializeField] private Health _health;
     [SerializeField] private Animator _animator;
 
-    [SerializeField] private string _idleAnimationName = "Idle";
-    [SerializeField] private string _moveAnimationName = "Move";
-    [SerializeField] private string _damageAnimationName = "Damage";
-    [SerializeField] private string _deathAnimationName = "Death";
+    [SerializeField] private string _walkingParameterName = "IsWalking";
+    [SerializeField] private string _damageTriggerName = "Damage";
+    [SerializeField] private string _deathTriggerName = "Death";
 
-    private int _idleHash;
-    private int _moveHash;
+    private int _walkingHash;
     private int _damageHash;
     private int _deathHash;
 
     private void Awake()
     {
-        _idleHash = Animator.StringToHash(_idleAnimationName);
-        _moveHash = Animator.StringToHash(_moveAnimationName);
-        _damageHash = Animator.StringToHash(_damageAnimationName);
-        _deathHash = Animator.StringToHash(_deathAnimationName);
+        _walkingHash = Animator.StringToHash(_walkingParameterName);
+        _damageHash = Animator.StringToHash(_damageTriggerName);
+        _deathHash = Animator.StringToHash(_deathTriggerName);
 
         if (_animator == null)
         {
@@ -62,21 +59,21 @@ public class CharacterAnimations : MonoBehaviour
 
     private void HandleMoveStarted()
     {
-        _animator.Play(_moveHash);
+        _animator.SetBool(_walkingHash, true);
     }
 
     private void HandleMoveStopped()
     {
-        _animator.Play(_idleHash);
+        _animator.SetBool(_walkingHash, false);
     }
 
     private void HandleDamaged(float damage)
     {
-        _animator.Play(_damageHash);
+        _animator.SetTrigger(_damageHash);
     }
 
     private void HandleDeath()
     {
-        _animator.Play(_deathHash);
+        _animator.SetTrigger(_deathHash);
     }
 }

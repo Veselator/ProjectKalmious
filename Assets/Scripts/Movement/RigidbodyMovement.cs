@@ -28,7 +28,7 @@ public class RigidbodyMovement : MonoBehaviour, IMovement
         }
 
         bool wasMoving = _isMoving;
-        _isMoving = direction.sqrMagnitude > 0.01f;
+        _isMoving = direction.sqrMagnitude > 0.1f;
 
         if (_isMoving && !wasMoving)
         {

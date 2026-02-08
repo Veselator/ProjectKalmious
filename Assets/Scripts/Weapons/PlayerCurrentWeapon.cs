@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class PlayerCurrentWeapon : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerCurrentWeapon : MonoBehaviour
     private GameObject _currentWeaponObject;
 
     public IWeapon CurrentWeapon => _currentWeapon;
+
+    public event Action<IWeapon> OnWeaponChanged;
 
     private void Awake()
     {
@@ -68,6 +71,8 @@ public class PlayerCurrentWeapon : MonoBehaviour
             _currentWeaponObject = weaponObject;
             _currentWeaponObject.SetActive(true);
             _currentWeapon = _currentWeaponObject.GetComponent<IWeapon>();
+
+            OnWeaponChanged?.Invoke(_currentWeapon);
         }
         else
         {
