@@ -18,6 +18,7 @@ public class PlayerLevelHandler : MonoBehaviour
     public int CurrentLevel => _currentLevel;
     public float CurrentXP => _currentXP;
     public float CurrentXPGoal => _currentXPGoal;
+    public float XPProgress => _currentXP / _currentXPGoal;
 
     private void Awake()
     {
