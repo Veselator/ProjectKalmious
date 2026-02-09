@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class RigidbodyMovement : MonoBehaviour, IMovement
 {
-    [SerializeField] private float _moveSpeed = 5f;
+    public float MoveSpeed = 5f;
 
     private Rigidbody2D _rigidbody;
     private Vector2 _currentDirection;
@@ -49,7 +49,7 @@ public class RigidbodyMovement : MonoBehaviour, IMovement
     {
         if (_isMoving)
         {
-            Vector2 newPosition = _rigidbody.position + _currentDirection * _moveSpeed * Time.fixedDeltaTime;
+            Vector2 newPosition = _rigidbody.position + _currentDirection * MoveSpeed * Time.fixedDeltaTime;
             _rigidbody.MovePosition(newPosition);
         }
     }

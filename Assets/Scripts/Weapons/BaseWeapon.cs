@@ -40,4 +40,9 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     {
         _damage.overallDamageMultiplier = modifier;
     }
+
+    public void SetCriticalChance(float chance)
+    {
+        _damage.criticalChance = chance;
+    }
 }

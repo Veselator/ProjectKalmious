@@ -64,6 +64,7 @@ public class Health : MonoBehaviour, IHealth
     public float CurrentArmorInPercentage => CurrentArmor / MaximumArmor;
 
     public Action<float> OnDamaged { get; set; }
+    public Action<float> OnCriticalHit { get; set; }
     public Action OnArmorDestoyed { get; set; }
     public Action OnDeath { get; set;  }
     public Action OnHealthChanged { get; set; }
@@ -84,7 +85,12 @@ public class Health : MonoBehaviour, IHealth
     public void TakeDamage(Damage damage)
     {
         float currentDamage = isArmored ? damage.MultipliedArmorDamage : damage.MultipliedHealthDamage;
-        
+        if (UnityEngine.Random.Range(0f, 100f) < damage.criticalChance)
+        {
+            currentDamage *= 2f;
+            OnCriticalHit?.Invoke(currentDamage);
+        }
+
         if (isArmored)
         {
             // Дополнительный урок

@@ -7,4 +7,5 @@ public interface IWeapon
     void Act();
     bool CanAct();
     void SetOverallDamageModifier(float modifier);
+    void SetCriticalChance(float chance);
 }

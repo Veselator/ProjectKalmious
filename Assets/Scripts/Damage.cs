@@ -11,6 +11,8 @@ public struct Damage
     public float damageMultiplier;
     [Min(0f)]
     public float overallDamageMultiplier;
+    [Min(0f)]
+    public float criticalChance;
 
     public float MultipliedHealthDamage => damageHealth * damageMultiplier * overallDamageMultiplier;
     public float MultipliedArmorDamage => damageHealth * damageMultiplier * overallDamageMultiplier;

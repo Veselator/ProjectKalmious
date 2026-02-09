@@ -12,6 +12,7 @@ public class PlayerCurrentWeapon : MonoBehaviour
     private GameObject _currentWeaponObject;
 
     public IWeapon CurrentWeapon => _currentWeapon;
+    public List<IWeapon> AllWeapons => GetAllInstantiatedWeapons();
 
     public event Action<IWeapon> OnWeaponChanged;
 
@@ -50,6 +51,18 @@ public class PlayerCurrentWeapon : MonoBehaviour
     private void SubscribeToInventory()
     {
         _inventory.OnCurrentSlotChanged += UpdateCurrentWeapon;
+    }
+
+    public List<IWeapon> GetAllInstantiatedWeapons()
+    {
+        List<IWeapon> weapons = new List<IWeapon>();
+
+        foreach (var kvp in _instantiatedWeapons)
+        {
+            weapons.Add(kvp.Value.GetComponent<IWeapon>());
+        }
+
+        return weapons;
     }
 
     private void UnsubscribeFromInventory()

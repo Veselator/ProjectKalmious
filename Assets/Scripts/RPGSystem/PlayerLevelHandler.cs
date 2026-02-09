@@ -1,0 +1,64 @@
+using UnityEngine;
+using System;
+
+public class PlayerLevelHandler : MonoBehaviour
+{
+    public static PlayerLevelHandler Instance { get; private set; }
+
+    public event Action<int> OnLevelChanged;
+    public event Action<float, float> OnXPChanged;
+
+    [SerializeField] private float _levelFactor = 2f;
+    [SerializeField] private float _levelAdditionalValue = 10f;
+
+    private int _currentLevel = 1;
+    private float _currentXP = 0f;
+    private float _currentXPGoal;
+
+    public int CurrentLevel => _currentLevel;
+    public float CurrentXP => _currentXP;
+    public float CurrentXPGoal => _currentXPGoal;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        _currentXPGoal = CalculateXPGoal(_currentLevel);
+    }
+
+    private void OnEnable()
+    {
+        GlobalFlags.Instance.OnXpAdded += AddXP;
+    }
+
+    private void OnDisable()
+    {
+        GlobalFlags.Instance.OnXpAdded -= AddXP;
+    }
+
+    private float CalculateXPGoal(int level)
+    {
+        if (level <= 1) return _levelAdditionalValue;
+
+        return _levelFactor * level * Mathf.Log(level, 2f) + _levelAdditionalValue;
+    }
+
+    public void AddXP(float amount)
+    {
+        _currentXP += amount;
+
+        while (_currentXP >= _currentXPGoal)
+        {
+            _currentXP -= _currentXPGoal;
+            _currentLevel++;
+            _currentXPGoal = CalculateXPGoal(_currentLevel);
+            OnLevelChanged?.Invoke(_currentLevel);
+        }
+
+        OnXPChanged?.Invoke(_currentXP, _currentXPGoal);
+    }
+}
