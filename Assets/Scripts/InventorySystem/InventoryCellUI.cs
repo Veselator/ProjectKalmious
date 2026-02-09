@@ -6,7 +6,6 @@ public class InventoryCellUI : MonoBehaviour
     [SerializeField] private int _id;
     [SerializeField] private Image _iconImage;
     [SerializeField] private GameObject _selectedIndicator;
-    [SerializeField] private GameObject _emptyIndicator;
 
     private WeaponInventoryItemSO _currentItem;
 
@@ -21,10 +20,7 @@ public class InventoryCellUI : MonoBehaviour
 
     public void SetSelected(bool isSelected)
     {
-        if (_selectedIndicator != null)
-        {
-            _selectedIndicator.SetActive(isSelected);
-        }
+        _selectedIndicator.SetActive(isSelected);
     }
 
     public void Clear()
@@ -37,18 +33,10 @@ public class InventoryCellUI : MonoBehaviour
     {
         bool hasItem = _currentItem != null;
 
-        if (_iconImage != null)
+        _iconImage.enabled = hasItem;
+        if (hasItem)
         {
-            _iconImage.enabled = hasItem;
-            if (hasItem)
-            {
-                _iconImage.sprite = _currentItem.Icon;
-            }
-        }
-
-        if (_emptyIndicator != null)
-        {
-            _emptyIndicator.SetActive(!hasItem);
+            _iconImage.sprite = _currentItem.Icon;
         }
     }
 

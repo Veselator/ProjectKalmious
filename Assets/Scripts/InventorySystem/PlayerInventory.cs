@@ -111,6 +111,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void SelectSlot(int index)
     {
+        Debug.Log($"Slot {index} selected!");
         if (index >= 0 && index < _items.Count)
         {
             CurrentPointer = index;

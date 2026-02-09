@@ -6,7 +6,7 @@ public class InventoryUIGenerator : MonoBehaviour
     [SerializeField] private PlayerInventory _inventory;
     [SerializeField] private GameObject _cellPrefab;
     [SerializeField] private Transform _centerPoint;
-    [SerializeField] private float _cellSpacing = 80f;
+
     [SerializeField] private float _animationDelay = 0.1f;
     [SerializeField] private bool _playStartAnimation = true;
 
@@ -28,18 +28,10 @@ public class InventoryUIGenerator : MonoBehaviour
     private void GenerateCells()
     {
         int maxSlots = _inventory.MaxSlots;
-        float totalWidth = (maxSlots - 1) * _cellSpacing;
-        float startX = -totalWidth / 2f;
 
         for (int i = 0; i < maxSlots; i++)
         {
             GameObject cellObject = Instantiate(_cellPrefab, _centerPoint);
-            RectTransform rectTransform = cellObject.GetComponent<RectTransform>();
-
-            if (rectTransform != null)
-            {
-                rectTransform.anchoredPosition = new Vector2(startX + i * _cellSpacing, 0f);
-            }
 
             InventoryCellUI cellUI = cellObject.GetComponent<InventoryCellUI>();
             if (cellUI != null)
@@ -56,11 +48,7 @@ public class InventoryUIGenerator : MonoBehaviour
 
             if (_playStartAnimation)
             {
-                InventoryCellStartAnimation animation = cellObject.GetComponent<InventoryCellStartAnimation>();
-                if (animation != null)
-                {
-                    animation.Play(i * _animationDelay);
-                }
+                cellObject.GetComponent<InventoryCellStartAnimation>().Play(i * _animationDelay);
             }
         }
     }
@@ -97,6 +85,7 @@ public class InventoryUIGenerator : MonoBehaviour
 
     private void UpdateSelection(int selectedIndex)
     {
+        Debug.Log("Updating selection...");
         for (int i = 0; i < _cells.Count; i++)
         {
             _cells[i].SetSelected(i == selectedIndex);

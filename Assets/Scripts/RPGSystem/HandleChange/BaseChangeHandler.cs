@@ -7,7 +7,7 @@ public abstract class BaseChangeHandler : MonoBehaviour
     // и как они меняют конкретное значение
 
     [SerializeField] protected CharacteristicsHandler _characteristics;
-    protected virtual CharacteristicType _targetCharacteristic { get; }
+    [SerializeField] private CharacteristicType[] _targetCharacteristic;
 
     protected virtual void Start()
     {
@@ -19,9 +19,19 @@ public abstract class BaseChangeHandler : MonoBehaviour
         _characteristics.OnCharacteristicsChanged -= HandleChange;
     }
 
+    private bool IsMatch(CharacteristicType type)
+    {
+        foreach (var c in _targetCharacteristic)
+        {
+            if(c == type) return true;
+        }
+
+        return false;
+    }
+
     private void HandleChange(CharacteristicType type)
     {
-        if (_targetCharacteristic == type) DoChange();
+        if (IsMatch(type)) DoChange();
     }
 
     protected abstract void DoChange();

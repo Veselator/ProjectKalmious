@@ -7,14 +7,6 @@ public class PlayerInventoryController : MonoBehaviour
 
     private float _scrollAccumulator;
 
-    private void Awake()
-    {
-        if (_inventory == null)
-        {
-            _inventory = GetComponent<PlayerInventory>();
-        }
-    }
-
     private void Update()
     {
         HandleScrollInput();

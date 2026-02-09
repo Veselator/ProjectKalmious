@@ -1,9 +1,14 @@
+using System;
+
 public class SpeedCalculator : ICharacteristicCalculator
 {
+    private const float baseSpeed = 1f;
+    private const float speedFactor = 2.02f;
+    private const float luckFactor = 0.013f;
+
     public static float GetCharacteristic(CharacteristicsHandler characteristics)
     {
-        float baseSpeed = 5f;
-        float bonus = characteristics.Speed * 0.1f + characteristics.Luck * 0.02f;
+        float bonus = (float)Math.Sqrt(characteristics.Speed) * speedFactor + characteristics.Luck * luckFactor;
         return baseSpeed + bonus;
     }
 }

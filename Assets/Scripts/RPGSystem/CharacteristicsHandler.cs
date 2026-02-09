@@ -17,7 +17,7 @@ public class CharacteristicsHandler : MonoBehaviour
     private float _intelligence = 5; // Влияет на количество набираемых очков
     private float _luck = 5; // Влияет на шанс критического урона
 
-    private int _pointsToAdd = 2;
+    [SerializeField] private int _pointsToAdd = 2;
 
     public float Speed
     {
@@ -74,6 +74,8 @@ public class CharacteristicsHandler : MonoBehaviour
         }
     }
 
+    public bool ArePointsAvailable => PointsToAdd > 0;
+
     public event Action<CharacteristicType> OnCharacteristicsChanged;
     public event Action<int> OnPointsChanged;
 
@@ -97,6 +99,19 @@ public class CharacteristicsHandler : MonoBehaviour
     {
         PointsToAdd += (int)(_pointsPerLevel + 2f * CalculatedIntelligence);
         OnPointsChanged?.Invoke(_pointsToAdd);
+    }
+
+    public float GetCharacteristicUncalculated(CharacteristicType type)
+    {
+        return type switch
+        {
+            CharacteristicType.Speed => Speed,
+            CharacteristicType.Strength => Strength,
+            CharacteristicType.Stamina => Stamina,
+            CharacteristicType.Intelligence => Intelligence,
+            CharacteristicType.Luck => Luck,
+            _ => 0f
+        };
     }
 
     public void AddPoint(CharacteristicType type)

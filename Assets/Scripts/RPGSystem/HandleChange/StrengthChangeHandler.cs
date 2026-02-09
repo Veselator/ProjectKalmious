@@ -6,8 +6,6 @@ public class StrengthChangeHandler : BaseChangeHandler
     [SerializeField] private PlayerCurrentWeapon _playerCurWeapon;
     private List<IWeapon> _curWeapons;
 
-    protected override CharacteristicType _targetCharacteristic => CharacteristicType.Strength;
-
     protected override void Start()
     {
         base.Start();

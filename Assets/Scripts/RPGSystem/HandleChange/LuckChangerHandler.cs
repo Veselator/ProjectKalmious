@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +5,6 @@ public class LuckChangerHandler : BaseChangeHandler
 {
     [SerializeField] private PlayerCurrentWeapon _playerCurWeapon;
     private List<IWeapon> _curWeapons;
-
-    protected override CharacteristicType _targetCharacteristic => CharacteristicType.Luck;
 
     protected override void Start()
     {
