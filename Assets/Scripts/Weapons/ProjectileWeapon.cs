@@ -39,22 +39,15 @@ public class ProjectileWeapon : BaseWeapon
 
     private void SpawnProjectile(int index)
     {
-        Vector3 spawnPosition = _shootPoint != null ? _shootPoint.position : transform.position;
-        Quaternion spawnRotation = _shootPoint != null ? _shootPoint.rotation : transform.rotation;
+        Quaternion spawnRotation = _shootPoint.rotation;
 
-        if (_projectilesPerShot > 1)
-        {
-            float angleOffset = CalculateSpreadOffset(index);
-            spawnRotation *= Quaternion.Euler(0f, 0f, angleOffset);
-        }
+        float angleOffset = CalculateSpreadOffset(index);
+        spawnRotation *= Quaternion.Euler(0f, 0f, angleOffset);
 
-        GameObject projectile = Instantiate(_projectilePrefab, spawnPosition, spawnRotation);
+        GameObject projectile = Instantiate(_projectilePrefab, _shootPoint.position, spawnRotation);
 
         Projectile projectileComponent = projectile.GetComponent<Projectile>();
-        if (projectileComponent != null)
-        {
-            projectileComponent.Initialize(_damage, _projectileSpeed, spawnRotation * transform.right, _targetLayers);
-        }
+        projectileComponent.Initialize(_damage, _projectileSpeed, spawnRotation * transform.right, _targetLayers);
 
         OnProjectileSpawned?.Invoke(projectile);
     }
