@@ -20,6 +20,7 @@ public class InventoryCellUI : MonoBehaviour
 
     public void SetSelected(bool isSelected)
     {
+        if(isSelected) Debug.Log($"{_id} is now selected");
         _selectedIndicator.SetActive(isSelected);
     }
 

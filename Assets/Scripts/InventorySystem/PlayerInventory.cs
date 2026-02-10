@@ -14,13 +14,10 @@ public class PlayerInventory : MonoBehaviour
         get => _currentPointer;
         private set
         {
-            int previousPointer = _currentPointer;
-            _currentPointer = Mathf.Clamp(value, 0, _items.Count - 1);
+            int prevPointer = _currentPointer;
+            _currentPointer = Mathf.Clamp(value, 0, _maxSlots - 1);
 
-            if (previousPointer != _currentPointer && _items.Count > 0)
-            {
-                OnCurrentSlotChanged?.Invoke(_currentPointer);
-            }
+            if(prevPointer != _currentPointer) OnCurrentSlotChanged?.Invoke(_currentPointer);
         }
     }
 
@@ -99,20 +96,17 @@ public class PlayerInventory : MonoBehaviour
 
     public void SelectNext()
     {
-        if (_items.Count == 0) return;
-        CurrentPointer = (_currentPointer + 1) % _items.Count;
+        CurrentPointer = (_currentPointer + 1) % _maxSlots;
     }
 
     public void SelectPrevious()
     {
-        if (_items.Count == 0) return;
-        CurrentPointer = (_currentPointer - 1 + _items.Count) % _items.Count;
+        CurrentPointer = (_currentPointer - 1 + _maxSlots) % _maxSlots;
     }
 
     public void SelectSlot(int index)
     {
-        Debug.Log($"Slot {index} selected!");
-        if (index >= 0 && index < _items.Count)
+        if (index >= 0 && index < _maxSlots)
         {
             CurrentPointer = index;
         }
