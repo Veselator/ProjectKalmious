@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   _name: sword
-  _icon: {fileID: 0}
-  _prefab: {fileID: 0}
+  _icon: {fileID: 640901365, guid: 38139460532ea78489ec2d0f92133835, type: 3}
+  _prefab: {fileID: 4173445107939155072, guid: f245cba4d9c4b17498184667ad6ba795, type: 3}

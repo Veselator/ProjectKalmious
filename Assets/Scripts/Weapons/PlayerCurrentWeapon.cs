@@ -4,6 +4,9 @@ using System;
 
 public class PlayerCurrentWeapon : MonoBehaviour
 {
+    // Инициализирует все оружия
+    // А также контроллирует текущее
+
     [SerializeField] private PlayerInventory _inventory;
     [SerializeField] private Transform _weaponSpawnPoint;
 

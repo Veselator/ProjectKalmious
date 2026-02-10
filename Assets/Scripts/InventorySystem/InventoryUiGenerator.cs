@@ -44,16 +44,13 @@ public class InventoryUIGenerator : MonoBehaviour
             GameObject cellObject = Instantiate(_cellPrefab, _centerPoint);
 
             InventoryCellUI cellUI = cellObject.GetComponent<InventoryCellUI>();
-            if (cellUI != null)
-            {
-                cellUI.Initialize(i);
-                _cells.Add(cellUI);
+            cellUI.Initialize(i);
+            _cells.Add(cellUI);
 
-                WeaponInventoryItemSO item = _inventory.GetItem(i);
-                if (item != null)
-                {
-                    cellUI.SetItem(item);
-                }
+            WeaponInventoryItemSO item = _inventory.GetItem(i);
+            if (item != null)
+            {
+                cellUI.SetItem(item);
             }
 
             if (_playStartAnimation)

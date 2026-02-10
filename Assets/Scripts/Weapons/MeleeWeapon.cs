@@ -12,6 +12,8 @@ public class MeleeWeapon : BaseWeapon
     public event Action OnSwing;
     public event Action<Health> OnTargetHit;
 
+    public float AttackAngle => _attackAngle;
+
     public override void Act()
     {
         if (!CanAct()) return;
@@ -23,6 +25,7 @@ public class MeleeWeapon : BaseWeapon
 
     private void PerformMeleeAttack()
     {
+        Debug.Log("Performing melee attack");
         OnSwing?.Invoke();
 
         Vector3 attackPosition = _attackPoint != null ? _attackPoint.position : transform.position;
@@ -53,19 +56,5 @@ public class MeleeWeapon : BaseWeapon
 
         float angle = Vector3.Angle(attackDirection, directionToTarget);
         return angle <= _attackAngle / 2f;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (_attackPoint == null) return;
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
-
-        Vector3 rightBoundary = Quaternion.Euler(0, 0, -_attackAngle / 2f) * _attackPoint.right * _attackRange;
-        Vector3 leftBoundary = Quaternion.Euler(0, 0, _attackAngle / 2f) * _attackPoint.right * _attackRange;
-
-        Gizmos.DrawLine(_attackPoint.position, _attackPoint.position + rightBoundary);
-        Gizmos.DrawLine(_attackPoint.position, _attackPoint.position + leftBoundary);
     }
 }

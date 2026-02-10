@@ -46,11 +46,6 @@ public class PlayerInventory : MonoBehaviour
         int index = _items.Count - 1;
         OnItemAdded?.Invoke(item, index);
 
-        if (_items.Count == 1)
-        {
-            OnCurrentSlotChanged?.Invoke(_currentPointer);
-        }
-
         return true;
     }
 
@@ -64,12 +59,6 @@ public class PlayerInventory : MonoBehaviour
         WeaponInventoryItemSO removedItem = _items[index];
         _items.RemoveAt(index);
         OnItemRemoved?.Invoke(removedItem, index);
-
-        if (_currentPointer >= _items.Count && _items.Count > 0)
-        {
-            CurrentPointer = _items.Count - 1;
-        }
-
         return true;
     }
 
