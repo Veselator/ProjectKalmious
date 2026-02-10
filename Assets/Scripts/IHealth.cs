@@ -1,11 +1,9 @@
 using System;
-using UnityEngine;
 
 public interface IHealth
 {
     float MaximumHealth { get; set; }
     float CurrentHealth { get; set; }
-    GameObject Instance { get; }
 
     // Если есть броня, то урон сниженый
     float MaximumArmor { get; set; } // Сколько максимум может быть брони

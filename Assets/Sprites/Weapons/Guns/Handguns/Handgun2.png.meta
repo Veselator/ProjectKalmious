@@ -144,7 +144,7 @@ TextureImporter:
         width: 120
         height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,7 +165,7 @@ TextureImporter:
         width: 120
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,6 +173,27 @@ TextureImporter:
       bones: []
       spriteID: 749b063a4731cb84fbcc8c6849e208e1
       internalID: -1253261448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Handgun2_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 120
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c87e0a2e3a11ad04d9d5647d9e1abd80
+      internalID: -1289187265
       vertices: []
       indices: 
       edges: []
@@ -190,6 +211,7 @@ TextureImporter:
     nameFileIdTable:
       Handgun2_0: -1275185500
       Handgun2_1: -1253261448
+      Handgun2_2: -1289187265
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

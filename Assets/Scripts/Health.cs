@@ -32,34 +32,32 @@ public class Health : MonoBehaviour, IHealth
             maximumArmor = value;
         }
     }
-    private float currentArmor;
-
-    public GameObject Instance => this.gameObject;
+    private float _currentArmor;
 
     public float CurrentArmor
     {
-        get => Mathf.Clamp(currentArmor, 0f, maximumArmor);
+        get => Mathf.Clamp(_currentArmor, 0f, maximumArmor);
         set
         {
-            currentArmor = Math.Max(value, 0f);
+            _currentArmor = Math.Max(value, 0f);
             OnArmorChanged?.Invoke();
         }
     }
 
     [SerializeField] private bool isArmored;
     public bool DoesHaveArmor => isArmored;
-    private float currentHealth;
+    private float _currentHealth;
     public float CurrentHealth
     {
-        get => Mathf.Clamp(currentHealth, 0f, maxHealth);
+        get => Mathf.Clamp(_currentHealth, 0f, maxHealth);
         set
         {
-            currentHealth = Math.Max(value, 0f);
+            _currentHealth = Math.Max(value, 0f);
             OnHealthChanged?.Invoke();
         }
     }
 
-    public bool IsDied => CurrentHealth == 0f;
+    public bool IsDied => CurrentHealth <= 0f;
     public float CurrentHealthInPercentage => CurrentHealth / MaximumHealth;
     public float CurrentArmorInPercentage => CurrentArmor / MaximumArmor;
 
@@ -72,8 +70,8 @@ public class Health : MonoBehaviour, IHealth
 
     public void Awake()
     {
-        currentHealth = MaximumHealth;
-        currentArmor = MaximumArmor;
+        _currentHealth = MaximumHealth;
+        _currentArmor = MaximumArmor;
     }
 
     public void ResetHealth()
@@ -84,6 +82,9 @@ public class Health : MonoBehaviour, IHealth
 
     public void TakeDamage(Damage damage)
     {
+        // И так намучался - зачем после смерти добивать?
+        if (IsDied) return; 
+
         float currentDamage = isArmored ? damage.MultipliedArmorDamage : damage.MultipliedHealthDamage;
         if (UnityEngine.Random.Range(0f, 100f) < damage.criticalChance)
         {
@@ -94,9 +95,9 @@ public class Health : MonoBehaviour, IHealth
         if (isArmored)
         {
             // Дополнительный урок
-            currentArmor -= currentDamage;
+            _currentArmor -= currentDamage;
 
-            if (currentArmor <= 0f)
+            if (_currentArmor <= 0f)
             {
                 OnArmorDestoyed?.Invoke();
                 isArmored = false;

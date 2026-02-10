@@ -9,11 +9,6 @@ public class WeaponPlayerInputHandler : MonoBehaviour
     private void Awake()
     {
         _inputStrategy = new MouseClickWeaponStrategy();
-
-        if (_weaponManager == null)
-        {
-            _weaponManager = GetComponent<PlayerCurrentWeapon>();
-        }
     }
 
     private void Update()

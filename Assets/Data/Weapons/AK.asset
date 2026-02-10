@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: ak
   _icon: {fileID: 0}
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 6672560942618184922, guid: df864389489b76148a29d504427fa623, type: 3}

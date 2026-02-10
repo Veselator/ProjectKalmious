@@ -209,7 +209,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6147783502967583295}
   - component: {fileID: 1980904931465545955}
-  - component: {fileID: 7699039627507523217}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -248,32 +247,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage:
-    damageHealth: 0
+    damageHealth: 50
     damageArmor: 0
-    damageMultiplier: 0
-    overallDamageMultiplier: 0
+    damageMultiplier: 1
+    overallDamageMultiplier: 1
     criticalChance: 0
-  _cooldown: 0.5
-  _projectilePrefab: {fileID: 0}
-  _shootPoint: {fileID: 0}
+  _cooldown: 0.3
+  _projectilePrefab: {fileID: 1949775956924483380, guid: e33b725d517f8a14097d110473712819, type: 3}
+  _shootPoint: {fileID: 6726984945582291841}
   _projectileSpeed: 10
   _projectilesPerShot: 1
   _spreadAngle: 0
   _targetLayers:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &7699039627507523217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6672560942618184922}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5c49c498ea872c40821d7cb66bbac0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animationDuration: 0.3
-  _linkedAnimator: {fileID: 0}
-  _animationString: 

@@ -41,13 +41,16 @@ public class ProjectileWeapon : BaseWeapon
     {
         Quaternion spawnRotation = _shootPoint.rotation;
 
-        float angleOffset = CalculateSpreadOffset(index);
-        spawnRotation *= Quaternion.Euler(0f, 0f, angleOffset);
+        if(_spreadAngle != 0f)
+        {
+            float angleOffset = CalculateSpreadOffset(index);
+            spawnRotation *= Quaternion.Euler(0f, 0f, angleOffset);
+        }
 
         GameObject projectile = Instantiate(_projectilePrefab, _shootPoint.position, spawnRotation);
 
         Projectile projectileComponent = projectile.GetComponent<Projectile>();
-        projectileComponent.Initialize(_damage, _projectileSpeed, spawnRotation * transform.right, _targetLayers);
+        projectileComponent.Initialize(_damage, _projectileSpeed, transform.right, _targetLayers);
 
         OnProjectileSpawned?.Invoke(projectile);
     }

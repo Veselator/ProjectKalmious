@@ -38,6 +38,8 @@ public class PlayerInventory : MonoBehaviour
 
     public bool AddItem(WeaponInventoryItemSO item)
     {
+        if (item == null) return false;
+
         if (_items.Count >= _maxSlots)
         {
             return false;

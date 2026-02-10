@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private LayerMask _targetLayers;
+    private LayerMask _targetLayers;
+    [SerializeField] private float _secondsToLive = 5f;
 
     private Damage _damage;
     private float _speed;
     private Vector3 _direction;
+    private float _currentTime = 0f;
 
     public event Action<Collider2D> OnProjectileHit;
 
@@ -21,7 +23,22 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+        HandlePositionChange();
+        HandleTime();
+    }
+
+    private void HandlePositionChange()
+    {
         transform.position += _direction * _speed * Time.deltaTime;
+    }
+
+    private void HandleTime()
+    {
+        _currentTime += Time.deltaTime;
+        if (_currentTime > _secondsToLive)
+        {
+            DestroyProjectile();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,12 +54,17 @@ public class Projectile : MonoBehaviour
             targetHealth.TakeDamage(_damage);
         }
 
-        OnProjectileHit?.Invoke(collision);
-        Destroy(gameObject);
+        DestroyProjectile(collision);
     }
 
     private bool IsInTargetLayer(int layer)
     {
         return (_targetLayers.value & (1 << layer)) != 0;
+    }
+
+    private void DestroyProjectile(Collider2D colli = null)
+    {
+        OnProjectileHit?.Invoke(colli);
+        Destroy(gameObject);
     }
 }

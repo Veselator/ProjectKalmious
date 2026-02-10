@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   _name: pistol
-  _icon: {fileID: 0}
-  _prefab: {fileID: 0}
+  _icon: {fileID: -1289187265, guid: 2995f42a67fb5ae44ae599c6cab6dd2a, type: 3}
+  _prefab: {fileID: 6672560942618184922, guid: df864389489b76148a29d504427fa623, type: 3}
