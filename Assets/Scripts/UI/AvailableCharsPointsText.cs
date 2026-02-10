@@ -21,6 +21,6 @@ public class AvailableCharsPointsText : MonoBehaviour
 
     private void HandlePointsChanged(int points)
     {
-        _linkedText.text = $"Available points: {points}";
+        _linkedText.text = $"Доступно балів: {points}";
     }
 }

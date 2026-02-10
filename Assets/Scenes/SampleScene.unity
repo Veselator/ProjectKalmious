@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7933541639423150676, guid: 46d4ba0503043bc458d74eeb6dbd15df, type: 3}
       propertyPath: _title
-      value: Strength
+      value: "\u0421\u0438\u043B\u0430"
       objectReference: {fileID: 0}
     - target: {fileID: 7933541639423150676, guid: 46d4ba0503043bc458d74eeb6dbd15df, type: 3}
       propertyPath: _targetType
@@ -793,7 +793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7933541639423150676, guid: 46d4ba0503043bc458d74eeb6dbd15df, type: 3}
       propertyPath: _title
-      value: Stamina
+      value: "\u0412\u0438\u0442\u0440\u0438\u0432\u0430\u043B\u0456\u0441\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 7933541639423150676, guid: 46d4ba0503043bc458d74eeb6dbd15df, type: 3}
       propertyPath: _targetType
@@ -2360,7 +2360,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chars
+  m_text: "\u0425\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2387,13 +2387,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18.4
+  m_fontSizeBase: 18.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2613,7 +2613,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1384602385}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09c90203e3842c7438e3c35c595282dc, type: 3}
   m_Name: 
@@ -2981,9 +2981,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Abilities
-
-'
+  m_text: "\u0417\u0434\u0456\u0431\u043D\u043E\u0441\u0442\u0456"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3010,13 +3008,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18.55
+  m_fontSizeBase: 18.55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3150,7 +3148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7933541639423150676, guid: 46d4ba0503043bc458d74eeb6dbd15df, type: 3}
       propertyPath: _title
-      value: Intelligence
+      value: "\u0406\u043D\u0442\u0435\u043B\u0435\u043A\u0442"
       objectReference: {fileID: 0}
     - target: {fileID: 7933541639423150676, guid: 46d4ba0503043bc458d74eeb6dbd15df, type: 3}
       propertyPath: _targetType
@@ -9606,7 +9604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7933541639423150676, guid: 46d4ba0503043bc458d74eeb6dbd15df, type: 3}
       propertyPath: _title
-      value: Luck
+      value: "\u0412\u0434\u0430\u0447\u0430"
       objectReference: {fileID: 0}
     - target: {fileID: 7933541639423150676, guid: 46d4ba0503043bc458d74eeb6dbd15df, type: 3}
       propertyPath: _targetType
@@ -9819,11 +9817,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3452588287833587891, guid: 7e777f6542071904d9e7b6acaafa78e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.84
+      value: 5.82
       objectReference: {fileID: 0}
     - target: {fileID: 3452588287833587891, guid: 7e777f6542071904d9e7b6acaafa78e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.42
+      value: 2.05
       objectReference: {fileID: 0}
     - target: {fileID: 3452588287833587891, guid: 7e777f6542071904d9e7b6acaafa78e0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9860,6 +9858,10 @@ PrefabInstance:
     - target: {fileID: 8693577908133504931, guid: 7e777f6542071904d9e7b6acaafa78e0, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693577908133504931, guid: 7e777f6542071904d9e7b6acaafa78e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9956,7 +9958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7933541639423150676, guid: 46d4ba0503043bc458d74eeb6dbd15df, type: 3}
       propertyPath: _title
-      value: Speed
+      value: "\u0428\u0432\u0438\u0434\u043A\u0456\u0441\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 7933541639423150676, guid: 46d4ba0503043bc458d74eeb6dbd15df, type: 3}
       propertyPath: _characteristics
