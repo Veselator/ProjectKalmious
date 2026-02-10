@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1521929408598702616}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.702, y: 0.672, z: 0}
+  m_LocalPosition: {x: 0.722, y: 0.713, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -85,8 +85,8 @@ TrailRenderer:
       - serializedVersion: 3
         time: 0
         value: 0.46315575
-        inSlope: 0.07622303
-        outSlope: 0.07622303
+        inSlope: 0
+        outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
@@ -94,8 +94,8 @@ TrailRenderer:
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -0.94736826
-        outSlope: -0.94736826
+        inSlope: 0
+        outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.116666675
@@ -172,14 +172,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4173445107939155072}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.39696008, w: 0.91783583}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.1883562, y: 1.2595699, z: 0.62877}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2739491586989838435}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -46.777}
 --- !u!212 &11962924013463214
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
     damageMultiplier: 1
     overallDamageMultiplier: 1
     criticalChance: 0
-  _cooldown: 0.5
+  _cooldown: 0.25
   _targetLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9833c01afa7c1448a0ae1d542a053d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationDuration: 0.3
+  _animationDuration: 0.25
   _curve:
     serializedVersion: 2
     m_Curve:

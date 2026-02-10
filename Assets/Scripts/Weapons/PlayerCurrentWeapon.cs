@@ -53,7 +53,14 @@ public class PlayerCurrentWeapon : MonoBehaviour
 
     private void SubscribeToInventory()
     {
+        _inventory.OnSlotUpdateForced += UpdateCurrentWeapon;
         _inventory.OnCurrentSlotChanged += UpdateCurrentWeapon;
+    }
+
+    private void UnsubscribeFromInventory()
+    {
+        _inventory.OnSlotUpdateForced -= UpdateCurrentWeapon;
+        _inventory.OnCurrentSlotChanged -= UpdateCurrentWeapon;
     }
 
     public List<IWeapon> GetAllInstantiatedWeapons()
@@ -66,11 +73,6 @@ public class PlayerCurrentWeapon : MonoBehaviour
         }
 
         return weapons;
-    }
-
-    private void UnsubscribeFromInventory()
-    {
-        _inventory.OnCurrentSlotChanged -= UpdateCurrentWeapon;
     }
 
     private void UpdateCurrentWeapon(int slotIndex)

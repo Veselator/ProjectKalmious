@@ -28,6 +28,7 @@ public class PlayerInventory : MonoBehaviour
     public event Action<WeaponInventoryItemSO, int> OnItemAdded;
     public event Action<WeaponInventoryItemSO, int> OnItemRemoved;
     public event Action<int> OnCurrentSlotChanged;
+    public event Action<int> OnSlotUpdateForced;
 
     private void Awake()
     {
@@ -45,6 +46,11 @@ public class PlayerInventory : MonoBehaviour
         _items.Add(item);
         int index = _items.Count - 1;
         OnItemAdded?.Invoke(item, index);
+
+        if (_items.Count - 1 == _currentPointer)
+        {
+            OnSlotUpdateForced?.Invoke(_currentPointer);
+        }
 
         return true;
     }

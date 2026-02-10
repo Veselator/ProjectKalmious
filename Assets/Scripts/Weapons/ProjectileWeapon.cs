@@ -3,6 +3,11 @@ using System;
 
 public class ProjectileWeapon : BaseWeapon
 {
+    // Оружие, которое стреляет пульками
+    // Или стрелами
+    // Или мочой
+    // Ну короче, на что хватит фантазии и нервов арт-дизайнера
+
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private float _projectileSpeed = 10f;

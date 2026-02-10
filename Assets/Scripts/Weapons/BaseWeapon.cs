@@ -5,6 +5,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 {
     // Базовый класс оружия
     // Инкапсулирует важные свойства и методы
+    // Реализует полиморфизм и наследование
 
     [SerializeField] protected Damage _damage;
     [SerializeField] protected float _cooldown = 0.5f;
