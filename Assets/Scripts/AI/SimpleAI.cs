@@ -2,20 +2,6 @@ using UnityEngine;
 
 public class SimpleAI : BaseAI
 {
-    private Transform _player;
-    private float _stoppingDistance = 0.5f;
-
-    public void Initialize(Transform player)
-    {
-        _player = player;
-    }
-
-    public void Initialize(Transform player, float stoppingDistance)
-    {
-        _player = player;
-        _stoppingDistance = stoppingDistance;
-    }
-
     protected override void UpdateAI()
     {
         if (_player == null || _movement == null) return;
