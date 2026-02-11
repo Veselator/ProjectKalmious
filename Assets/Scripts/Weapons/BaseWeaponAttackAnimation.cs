@@ -16,7 +16,7 @@ public abstract class BaseWeaponAttackAnimation : MonoBehaviour
 
     protected abstract void Init();
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         if(_linkedWeapon != null) _linkedWeapon.OnActStarted -= StartAnimation;
     }

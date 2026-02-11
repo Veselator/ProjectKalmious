@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class CommonAttackAnimation : BaseWeaponAttackAnimation
 {
-    [SerializeField] private Animator _linkedAnimator;
-    [SerializeField] private string _animationString;
+    [SerializeField] protected Animator _linkedAnimator;
+    [SerializeField] protected string _animationString = "Shoot";
     private int _animationHash;
 
     protected override IEnumerator AttackAnimation()
