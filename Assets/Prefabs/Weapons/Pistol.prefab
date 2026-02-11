@@ -306,7 +306,7 @@ MonoBehaviour:
     damageArmor: 0
     overallDamageMultiplier: 1
     criticalChance: 0
-  _cooldown: 0.4
+  _cooldown: 0.3
   _projectilePrefab: {fileID: 1949775956924483380, guid: e33b725d517f8a14097d110473712819, type: 3}
   _shootPoint: {fileID: 6726984945582291841}
   _projectileSpeed: 10

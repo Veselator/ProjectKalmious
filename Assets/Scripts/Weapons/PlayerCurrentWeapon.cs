@@ -10,6 +10,8 @@ public class PlayerCurrentWeapon : MonoBehaviour
     [SerializeField] private PlayerInventory _inventory;
     [SerializeField] private Transform _weaponSpawnPoint;
 
+    public static PlayerCurrentWeapon Instance { get; private set; }
+
     private Dictionary<string, GameObject> _instantiatedWeapons;
     private IWeapon _currentWeapon;
     private GameObject _currentWeaponObject;
@@ -21,10 +23,16 @@ public class PlayerCurrentWeapon : MonoBehaviour
 
     private void Awake()
     {
+        if(Instance != null)
+        {
+            Destroy(this);
+        }
+
         _instantiatedWeapons = new Dictionary<string, GameObject>();
+        Instance = this;
     }
 
-    private void Start()
+    public void Init()
     {
         InitializeAllWeapons();
         SubscribeToInventory();
@@ -53,13 +61,13 @@ public class PlayerCurrentWeapon : MonoBehaviour
 
     private void SubscribeToInventory()
     {
-        _inventory.OnSlotUpdateForced += UpdateCurrentWeapon;
+        _inventory.OnItemAdded += UpdateCurrentWeapon;
         _inventory.OnCurrentSlotChanged += UpdateCurrentWeapon;
     }
 
     private void UnsubscribeFromInventory()
     {
-        _inventory.OnSlotUpdateForced -= UpdateCurrentWeapon;
+        _inventory.OnItemAdded -= UpdateCurrentWeapon;
         _inventory.OnCurrentSlotChanged -= UpdateCurrentWeapon;
     }
 
@@ -73,6 +81,21 @@ public class PlayerCurrentWeapon : MonoBehaviour
         }
 
         return weapons;
+    }
+    public GameObject GetWeaponObjectByTag(WeaponInventoryItemSO item)
+    {
+        return GetWeaponObjectByTag(item.Name);
+    }
+
+    public GameObject GetWeaponObjectByTag(string tag)
+    {
+        if (!_instantiatedWeapons.ContainsKey(tag)) return null;
+        return _instantiatedWeapons[tag];
+    }
+
+    private void UpdateCurrentWeapon(WeaponInventoryItemSO _, int id)
+    {
+        UpdateCurrentWeapon(id);
     }
 
     private void UpdateCurrentWeapon(int slotIndex)

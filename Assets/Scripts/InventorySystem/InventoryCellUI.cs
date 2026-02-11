@@ -1,41 +1,41 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryCellUI : MonoBehaviour
 {
-    [SerializeField] private int _id;
     [SerializeField] private Image _iconImage;
     [SerializeField] private GameObject _selectedIndicator;
 
-    private WeaponInventoryItemSO _currentItem;
-    private bool HasItem => _currentItem != null;
+    private PlayerInventory _inventory;
+    private WeaponInventoryItemSO _currentWeapon;
+    public WeaponInventoryItemSO CurrentWeapon => _currentWeapon;
+    private bool HasItem => _currentWeapon != null;
 
+    private int _id;
     public int Id => _id;
-    public WeaponInventoryItemSO CurrentItem => _currentItem;
 
-    public void SetItem(WeaponInventoryItemSO item)
+    public event Action<int, PlayerInventory> OnItemInited;
+
+    public void HandleSlotChange(int id) // CHANGE!
     {
-        _currentItem = item;
-        UpdateVisuals();
+        _selectedIndicator.SetActive(id == _id);
     }
 
-    public void SetSelected(bool isSelected)
+    private void HandleItemChange(WeaponInventoryItemSO weapon, int id)
     {
-        _selectedIndicator.SetActive(isSelected);
+        if (id != _id) return;
+
+        _currentWeapon = weapon;
+        UpdateWeaponIcon();
     }
 
-    public void Clear()
-    {
-        _currentItem = null;
-        UpdateVisuals();
-    }
-
-    private void UpdateVisuals()
+    private void UpdateWeaponIcon()
     {
         if (HasItem)
         {
             _iconImage.gameObject.SetActive(true);
-            _iconImage.sprite = _currentItem.Icon;
+            _iconImage.sprite = _currentWeapon.Icon;
         }
         else
         {
@@ -43,10 +43,19 @@ public class InventoryCellUI : MonoBehaviour
         }
     }
 
-    public void Initialize(int id)
+    public void Initialize(int id, PlayerInventory inventory, WeaponInventoryItemSO item = null)
     {
         _id = id;
-        _selectedIndicator.SetActive(false);
-        Clear();
+        _inventory = inventory;
+
+        _selectedIndicator.SetActive(_inventory.CurrentPointer == _id);
+
+        _inventory.OnCurrentSlotChanged += HandleSlotChange;
+        _inventory.OnItemAdded += HandleItemChange;
+
+        _currentWeapon = item;
+        UpdateWeaponIcon();
+
+        OnItemInited?.Invoke(id, inventory);
     }
 }

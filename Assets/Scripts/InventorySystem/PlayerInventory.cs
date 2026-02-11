@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+    // Класс инвентаря, который поддерживает добавление оружия, но не поддерживает удаление
+
     [SerializeField] private int _maxSlots = 5;
 
     private List<WeaponInventoryItemSO> _items;
-    private int _currentPointer;
+    private int _currentPointer = 0;
 
     public int CurrentPointer
     {
@@ -26,14 +28,11 @@ public class PlayerInventory : MonoBehaviour
     public int MaxSlots => _maxSlots;
 
     public event Action<WeaponInventoryItemSO, int> OnItemAdded;
-    public event Action<WeaponInventoryItemSO, int> OnItemRemoved;
     public event Action<int> OnCurrentSlotChanged;
-    public event Action<int> OnSlotUpdateForced;
 
-    private void Awake()
+    public void Init()
     {
         _items = new List<WeaponInventoryItemSO>();
-        _currentPointer = 0;
     }
 
     public bool AddItem(WeaponInventoryItemSO item)
@@ -49,36 +48,7 @@ public class PlayerInventory : MonoBehaviour
         int index = _items.Count - 1;
         OnItemAdded?.Invoke(item, index);
 
-        if (_items.Count - 1 == _currentPointer)
-        {
-            OnSlotUpdateForced?.Invoke(_currentPointer);
-        }
-
         return true;
-    }
-
-    public bool RemoveItem(int index)
-    {
-        if (index < 0 || index >= _items.Count)
-        {
-            return false;
-        }
-
-        WeaponInventoryItemSO removedItem = _items[index];
-        _items.RemoveAt(index);
-        OnItemRemoved?.Invoke(removedItem, index);
-        return true;
-    }
-
-    public bool RemoveItem(WeaponInventoryItemSO item)
-    {
-        int index = _items.IndexOf(item);
-        if (index == -1)
-        {
-            return false;
-        }
-
-        return RemoveItem(index);
     }
 
     public WeaponInventoryItemSO GetItem(int index)

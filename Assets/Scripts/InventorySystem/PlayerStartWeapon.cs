@@ -7,7 +7,7 @@ public class PlayerStartWeapon : MonoBehaviour
     [SerializeField] private string[] _weapons;
     [SerializeField] private PlayerInventory _inventory;
 
-    private void Start()
+    public void Init()
     {
         if (_weapons.Length == 0) return;
 

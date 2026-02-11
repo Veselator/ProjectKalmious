@@ -9,22 +9,16 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     [SerializeField] protected Damage _damage;
     [SerializeField] protected float _cooldown = 0.5f;
-    public Timer CooldownTimer { get; private set; }
+    public Timer CooldownTimer { get; private set; } = new Timer();
 
     public Damage DealedDamage => _damage;
 
     public event Action OnActStarted;
     public event Action OnActCompleted;
-    public event Action OnCooldownStarted;
-
-    private void Awake()
-    {
-        CooldownTimer = new Timer(Time.deltaTime);
-    }
 
     private void Update()
     {
-        if (CooldownTimer.IsRunning) CooldownTimer.Tick();
+        if (CooldownTimer.IsRunning) CooldownTimer.Tick(Time.deltaTime);
     }
 
     public abstract void Act();
@@ -43,7 +37,6 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     protected void CompleteAct()
     {
         OnActCompleted?.Invoke();
-        OnCooldownStarted?.Invoke();
     }
 
     public void SetOverallDamageModifier(float modifier)

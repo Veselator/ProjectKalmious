@@ -25,7 +25,6 @@ public class MeleeWeapon : BaseWeapon
 
     private void PerformMeleeAttack()
     {
-        Debug.Log("Performing melee attack");
         OnSwing?.Invoke();
 
         Vector3 attackPosition = _attackPoint != null ? _attackPoint.position : transform.position;

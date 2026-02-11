@@ -4,13 +4,6 @@ using System.Collections.Generic;
 public class InventoryUIGenerator : MonoBehaviour
 {
     // Генерирует UI инвентарь
-    // А ещё связывает инвентарь и отдельные ячейки
-    // Нарушение SRP
-    // Но...
-    // 
-
-    // Также проблема - нельзя добавить предметы кроме оружия
-    // А что если и не надо?
 
     [SerializeField] private PlayerInventory _inventory;
     [SerializeField] private GameObject _cellPrefab;
@@ -20,19 +13,11 @@ public class InventoryUIGenerator : MonoBehaviour
     [SerializeField] private bool _playStartAnimation = true;
 
     private List<InventoryCellUI> _cells;
-    private int _prevSelect = 0;
 
-    private void Start()
+    public void Init()
     {
         _cells = new List<InventoryCellUI>();
         GenerateCells();
-        SubscribeToInventory();
-        UpdateSelection(_inventory.CurrentPointer);
-    }
-
-    private void OnDestroy()
-    {
-        UnsubscribeFromInventory();
     }
 
     private void GenerateCells()
@@ -44,14 +29,10 @@ public class InventoryUIGenerator : MonoBehaviour
             GameObject cellObject = Instantiate(_cellPrefab, _centerPoint);
 
             InventoryCellUI cellUI = cellObject.GetComponent<InventoryCellUI>();
-            cellUI.Initialize(i);
-            _cells.Add(cellUI);
-
             WeaponInventoryItemSO item = _inventory.GetItem(i);
-            if (item != null)
-            {
-                cellUI.SetItem(item);
-            }
+
+            cellUI.Initialize(i, _inventory, item);
+            _cells.Add(cellUI);
 
             if (_playStartAnimation)
             {
@@ -60,40 +41,40 @@ public class InventoryUIGenerator : MonoBehaviour
         }
     }
 
-    private void SubscribeToInventory()
-    {
-        _inventory.OnItemAdded += HandleItemAdded;
-        _inventory.OnItemRemoved += HandleItemRemoved;
-        _inventory.OnCurrentSlotChanged += UpdateSelection;
-    }
+    //private void SubscribeToInventory()
+    //{
+    //    _inventory.OnItemAdded += HandleItemAdded;
+    //    _inventory.OnItemRemoved += HandleItemRemoved;
+    //    _inventory.OnCurrentSlotChanged += UpdateSelection;
+    //}
 
-    private void UnsubscribeFromInventory()
-    {
-        _inventory.OnItemAdded -= HandleItemAdded;
-        _inventory.OnItemRemoved -= HandleItemRemoved;
-        _inventory.OnCurrentSlotChanged -= UpdateSelection;
-    }
+    //private void UnsubscribeFromInventory()
+    //{
+    //    _inventory.OnItemAdded -= HandleItemAdded;
+    //    _inventory.OnItemRemoved -= HandleItemRemoved;
+    //    _inventory.OnCurrentSlotChanged -= UpdateSelection;
+    //}
 
-    private void HandleItemAdded(WeaponInventoryItemSO item, int index)
-    {
-        if (index < 0 || index >= _cells.Count) return;
+    //private void HandleItemAdded(WeaponInventoryItemSO item, int index)
+    //{
+    //    if (index < 0 || index >= _cells.Count) return;
 
-        _cells[index].SetItem(item);
-    }
+    //    _cells[index].SetItem(item);
+    //}
 
-    private void HandleItemRemoved(WeaponInventoryItemSO item, int index)
-    {
-        if (index < 0 || index >= _cells.Count) return;
+    //private void HandleItemRemoved(WeaponInventoryItemSO item, int index)
+    //{
+    //    if (index < 0 || index >= _cells.Count) return;
 
-        _cells[index].Clear();
-    }
+    //    _cells[index].Clear();
+    //}
 
-    private void UpdateSelection(int selectedIndex)
-    {
-        if (selectedIndex < 0 || selectedIndex >= _cells.Count) return;
+    //private void UpdateSelection(int selectedIndex)
+    //{
+    //    if (selectedIndex < 0 || selectedIndex >= _cells.Count) return;
 
-        _cells[_prevSelect].SetSelected(false);
-        _prevSelect = selectedIndex;
-        _cells[selectedIndex].SetSelected(true);
-    }
+    //    _cells[_prevSelect].SetSelected(false);
+    //    _prevSelect = selectedIndex;
+    //    _cells[selectedIndex].SetSelected(true);
+    //}
 }
