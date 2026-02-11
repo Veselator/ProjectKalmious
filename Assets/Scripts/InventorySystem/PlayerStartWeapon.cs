@@ -4,11 +4,16 @@ public class PlayerStartWeapon : MonoBehaviour
 {
     // Выдаёт игроку стартовое оружие
 
-    [SerializeField] private string _weaponId;
+    [SerializeField] private string[] _weapons;
     [SerializeField] private PlayerInventory _inventory;
 
     private void Start()
     {
-        _inventory.AddItem(GlobalWeapons.Instance.GetWeaponItemByTag(_weaponId));
+        if (_weapons.Length == 0) return;
+
+        foreach (var weaponId in _weapons)
+        {
+            if(!string.IsNullOrEmpty(weaponId))_inventory.AddItem(GlobalWeapons.Instance.GetWeaponItemByTag(weaponId));
+        }
     }
 }
