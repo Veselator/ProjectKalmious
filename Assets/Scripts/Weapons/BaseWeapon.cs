@@ -9,8 +9,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     [SerializeField] protected Damage _damage;
     [SerializeField] protected float _cooldown = 0.5f;
-
-    protected float _lastActTime;
+    public Timer CooldownTimer { get; private set; }
 
     public Damage DealedDamage => _damage;
 
@@ -18,16 +17,26 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     public event Action OnActCompleted;
     public event Action OnCooldownStarted;
 
+    private void Awake()
+    {
+        CooldownTimer = new Timer(Time.deltaTime);
+    }
+
+    private void Update()
+    {
+        if (CooldownTimer.IsRunning) CooldownTimer.Tick();
+    }
+
     public abstract void Act();
 
     public virtual bool CanAct()
     {
-        return Time.time >= _lastActTime + _cooldown;
+        return !CooldownTimer.IsRunning;
     }
 
     protected void StartAct()
     {
-        _lastActTime = Time.time;
+        CooldownTimer.Start(_cooldown);
         OnActStarted?.Invoke();
     }
 
