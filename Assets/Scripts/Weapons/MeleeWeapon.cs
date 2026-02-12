@@ -51,7 +51,7 @@ public class MeleeWeapon : BaseWeapon
     private bool IsInAttackAngle(Vector3 targetPosition, Vector3 attackPosition)
     {
         Vector3 directionToTarget = (targetPosition - attackPosition).normalized;
-        Vector3 attackDirection = _attackPoint != null ? _attackPoint.right : transform.right;
+        Vector3 attackDirection = transform.right;
 
         float angle = Vector3.Angle(attackDirection, directionToTarget);
         return angle <= _attackAngle / 2f;

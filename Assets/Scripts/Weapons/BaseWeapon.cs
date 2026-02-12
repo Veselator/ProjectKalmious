@@ -22,9 +22,9 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
         _collider = GetComponent<Collider2D>();
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        if (CooldownTimer.IsRunning) CooldownTimer.Tick(Time.deltaTime);
+        CooldownTimer.Disable();
     }
 
     public abstract void Act();

@@ -17,6 +17,16 @@ public class Timer
     public event Action OnStart;
     public event Action OnEnd;
 
+    public Timer()
+    {
+        GlobalTimerUpdaterManager.AddTimer(this);
+    }
+
+    public void Disable()
+    {
+        GlobalTimerUpdaterManager.RemoveTimer(this);
+    }
+
     public void Start(float target)
     {
         _time = 0f;
