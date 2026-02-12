@@ -19,7 +19,10 @@ public class EnemyRotateWeaponAtPlayer : MonoBehaviour
     private void Update()
     {
         if (!_isInited) return;
-        transform.LookAt(_player);
+        Vector2 direction = _player.position - transform.position;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     private void HandleInited(BaseAI _, Transform player)

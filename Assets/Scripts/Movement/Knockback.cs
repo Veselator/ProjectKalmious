@@ -17,6 +17,11 @@ public class Knockback : MonoBehaviour
         _health.OnDamaged += HandleKnockback;
     }
 
+    private void OnDestroy()
+    {
+        _health.OnDamaged -= HandleKnockback;
+    }
+
     private void HandleKnockback(float damage, Collider2D source)
     {
         if (_resistance >= 1f) return;

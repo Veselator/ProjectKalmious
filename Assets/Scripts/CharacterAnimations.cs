@@ -37,8 +37,8 @@ public class CharacterAnimations : MonoBehaviour
 
         if (_health != null)
         {
-            _health.OnDamaged += HandleDamaged;
-            _health.OnDeath += HandleDeath;
+            if(!string.IsNullOrEmpty(_damageTriggerName)) _health.OnDamaged += HandleDamaged;
+            if (!string.IsNullOrEmpty(_deathTriggerName)) _health.OnDeath += HandleDeath;
         }
     }
 
@@ -52,8 +52,8 @@ public class CharacterAnimations : MonoBehaviour
 
         if (_health != null)
         {
-            _health.OnDamaged -= HandleDamaged;
-            _health.OnDeath -= HandleDeath;
+            if (!string.IsNullOrEmpty(_damageTriggerName)) _health.OnDamaged -= HandleDamaged;
+            if (!string.IsNullOrEmpty(_deathTriggerName)) _health.OnDeath -= HandleDeath;
         }
     }
 

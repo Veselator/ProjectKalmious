@@ -349,7 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movement: {fileID: 278760648724318380}
   _health: {fileID: 762226205228979004}
-  _resistance: 0.4
+  _resistance: 0.2
 --- !u!114 &3647945662198814794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,6 +490,7 @@ GameObject:
   - component: {fileID: 7384861285618946373}
   - component: {fileID: 6869575668675279510}
   - component: {fileID: 1519834569929126563}
+  - component: {fileID: 310316395044319827}
   m_Layer: 0
   m_Name: PlayerVisual
   m_TagString: Untagged
@@ -532,7 +533,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b71d2797e68fc0f4591cb7efc599d77d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -601,5 +602,46 @@ MonoBehaviour:
   _health: {fileID: 762226205228979004}
   _animator: {fileID: 6869575668675279510}
   _walkingParameterName: isWalking
-  _damageTriggerName: Damage
-  _deathTriggerName: Death
+  _damageTriggerName: 
+  _deathTriggerName: IsDead
+--- !u!114 &310316395044319827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8006582567304357329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92eb4ebfbedc88b4a942fd5424202f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageObjects:
+  - {fileID: 8006582567304357329}
+  _linkedHealth: {fileID: 762226205228979004}
+  _animationDuration: 0.5
+  _maxflickerSpeed: 0.2
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

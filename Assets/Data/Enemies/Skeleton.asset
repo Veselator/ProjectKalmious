@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a2fbde2998a73e40a062c655d302815, type: 3}
-  m_Name: NewEnemiesConfig
+  m_Script: {fileID: 11500000, guid: 5b8f7b46fe81fe24ba2a5368e67bbcc4, type: 3}
+  m_Name: Skeleton
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 11400000, guid: 2a7f8b3181a00514ba27bfba2af00ff9, type: 2}
-  - {fileID: 11400000, guid: f7f87c1c695244040971770c178ce7a3, type: 2}
+  _id: skeleton
+  _prefab: {fileID: 8693577908133504931, guid: e732c1ccadda2ed4cac30822bfc5a70f, type: 3}
