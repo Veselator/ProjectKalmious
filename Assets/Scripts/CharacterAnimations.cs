@@ -67,7 +67,7 @@ public class CharacterAnimations : MonoBehaviour
         _animator.SetBool(_walkingHash, false);
     }
 
-    private void HandleDamaged(float damage)
+    private void HandleDamaged(float damage, Collider2D _)
     {
         _animator.SetTrigger(_damageHash);
     }

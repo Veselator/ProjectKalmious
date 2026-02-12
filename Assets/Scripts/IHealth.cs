@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public interface IHealth
 {
@@ -15,12 +16,12 @@ public interface IHealth
     bool IsDied { get; }
     float CurrentHealthInPercentage { get; }
     float CurrentArmorInPercentage { get; }
-    Action<float> OnDamaged { get; set; }
+    Action<float, Collider2D> OnDamaged { get; set; }
     Action OnHealthChanged { get; set; }
     Action OnArmorDestoyed { get; set; }
     Action OnArmorChanged { get; set; }
     Action OnDeath { get; set;  }
     abstract void ResetHealth();
-    abstract void TakeDamage(Damage damage); // заменить damage на struct damage, для большей модификации урона
+    abstract void TakeDamage(Damage damage, Collider2D source); // заменить damage на struct damage, для большей модификации урона
     // Ps OnCollisionEnter2D обрабатывает пуля
 }

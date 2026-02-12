@@ -61,7 +61,7 @@ public class Health : MonoBehaviour, IHealth
     public float CurrentHealthInPercentage => CurrentHealth / MaximumHealth;
     public float CurrentArmorInPercentage => CurrentArmor / MaximumArmor;
 
-    public Action<float> OnDamaged { get; set; }
+    public Action<float, Collider2D> OnDamaged { get; set; }
     public Action<float> OnCriticalHit { get; set; }
     public Action OnArmorDestoyed { get; set; }
     public Action OnDeath { get; set;  }
@@ -80,7 +80,7 @@ public class Health : MonoBehaviour, IHealth
         CurrentArmor = MaximumArmor;
     }
 
-    public void TakeDamage(Damage damage)
+    public void TakeDamage(Damage damage, Collider2D source)
     {
         // » так намучалс€ - зачем после смерти добивать?
         if (IsDied) return; 
@@ -102,7 +102,7 @@ public class Health : MonoBehaviour, IHealth
                 OnArmorDestoyed?.Invoke();
                 isArmored = false;
 
-                TakeDamage(damage);
+                TakeDamage(damage, source);
             }
         }
         else
@@ -110,7 +110,7 @@ public class Health : MonoBehaviour, IHealth
             CurrentHealth -= currentDamage;
         }
 
-        OnDamaged?.Invoke(currentDamage);
+        OnDamaged?.Invoke(currentDamage, source);
 
         if (IsDied) OnDeath?.Invoke();
     }

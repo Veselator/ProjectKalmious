@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelFactor: 2
-  _levelAdditionalValue: 10
+  _levelAdditionalValue: 30
 --- !u!1 &4733173926325585219
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 4047045751359637551}
   - component: {fileID: 5815112833695259931}
   - component: {fileID: 762226205228979004}
+  - component: {fileID: 406428064741727861}
   - component: {fileID: 3647945662198814794}
   - component: {fileID: 2164735956925955116}
   - component: {fileID: 278760648724318380}
@@ -281,7 +282,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -369,6 +370,21 @@ MonoBehaviour:
   maxHealth: 23
   maximumArmor: 0
   isArmored: 0
+--- !u!114 &406428064741727861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135995234236046342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749dbea7e8adb4d438158c367f337f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 1975685682925942129}
+  _health: {fileID: 762226205228979004}
+  _resistance: 0.4
 --- !u!114 &3647945662198814794
 MonoBehaviour:
   m_ObjectHideFlags: 0

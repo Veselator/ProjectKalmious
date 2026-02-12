@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class BaseAI : MonoBehaviour
 {
-    [SerializeField] protected IMovement _movement;
+    [SerializeField] protected RigidbodyMovement _movement;
     [SerializeField] protected float _updateInterval = 0.1f;
     protected Transform _player;
     protected float _stoppingDistance = 0.5f;
@@ -20,7 +20,7 @@ public abstract class BaseAI : MonoBehaviour
     {
         if (_movement == null)
         {
-            _movement = GetComponent<IMovement>();
+            _movement = GetComponent<RigidbodyMovement>();
         }
     }
 

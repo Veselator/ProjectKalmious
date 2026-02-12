@@ -96,8 +96,11 @@ GameObject:
   - component: {fileID: 384385330306606429}
   - component: {fileID: 2461327297969836941}
   - component: {fileID: -6072607272921689169}
+  - component: {fileID: -7378667138956473936}
   - component: {fileID: 3344382096583579729}
+  - component: {fileID: 7863900473656527645}
   - component: {fileID: -6082272536332592742}
+  - component: {fileID: -83887338786428918}
   m_Layer: 7
   m_Name: TestEnemy
   m_TagString: Untagged
@@ -183,7 +186,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 645eac0fa0c6d524f9bdef01bbba4706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movement: {fileID: -7378667138956473936}
   _updateInterval: 0.1
+--- !u!114 &-7378667138956473936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693577908133504931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d86a6ccc7c8e742a7691de8af352cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 3.74
 --- !u!114 &3344382096583579729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +214,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _linkedHealth: {fileID: 2461327297969836941}
+--- !u!114 &7863900473656527645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693577908133504931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 862488c96326cbc4299b274e54add9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _addXp: 2
+  _health: {fileID: 2461327297969836941}
 --- !u!50 &-6082272536332592742
 Rigidbody2D:
   serializedVersion: 4
@@ -223,4 +254,19 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &-83887338786428918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693577908133504931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749dbea7e8adb4d438158c367f337f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movement: {fileID: -7378667138956473936}
+  _health: {fileID: 2461327297969836941}
+  _resistance: 0.4

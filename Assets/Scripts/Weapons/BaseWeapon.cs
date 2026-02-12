@@ -12,9 +12,15 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     public Timer CooldownTimer { get; private set; } = new Timer();
 
     public Damage DealedDamage => _damage;
+    protected Collider2D _collider;
 
     public event Action OnActStarted;
     public event Action OnActCompleted;
+
+    private void Awake()
+    {
+        _collider = GetComponent<Collider2D>();
+    }
 
     private void Update()
     {

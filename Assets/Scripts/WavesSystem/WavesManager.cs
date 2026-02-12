@@ -42,7 +42,7 @@ public class WavesManager : MonoBehaviour
 
     private IEnumerator SpawnWaveCoroutine()
     {
-        int enemyCount = Mathf.RoundToInt((_baseEnemiesPerWave + _waveId) * _enemiesScaleFactor);
+        int enemyCount = Mathf.RoundToInt(_baseEnemiesPerWave * _waveId * _enemiesScaleFactor);
 
         if (_allEnemies == null || _allEnemies.Length == 0)
             yield break;

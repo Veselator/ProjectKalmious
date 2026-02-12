@@ -11,6 +11,8 @@ public class Projectile : MonoBehaviour
     private Vector3 _direction;
     private float _currentTime = 0f;
 
+    private Collider2D _collider;
+
     public event Action<Collider2D> OnProjectileHit;
 
     public void Initialize(Damage damage, float speed, Vector3 direction, LayerMask targetLayers)
@@ -19,6 +21,8 @@ public class Projectile : MonoBehaviour
         _speed = speed;
         _direction = direction.normalized;
         _targetLayers = targetLayers;
+
+        _collider = GetComponent<Collider2D>();
     }
 
     private void Update()
@@ -51,7 +55,7 @@ public class Projectile : MonoBehaviour
         Health targetHealth = collision.GetComponent<Health>();
         if (targetHealth != null)
         {
-            targetHealth.TakeDamage(_damage);
+            targetHealth.TakeDamage(_damage, _collider);
         }
 
         DestroyProjectile(collision);

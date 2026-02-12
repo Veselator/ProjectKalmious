@@ -6,6 +6,7 @@ public class RigidbodyMovement : MonoBehaviour, IMovement
 {
     public float MoveSpeed = 5f;
 
+    private Vector2 _externalVelocity;
     private Rigidbody2D _rigidbody;
     private Vector2 _currentDirection;
     private bool _isMoving;
@@ -40,6 +41,11 @@ public class RigidbodyMovement : MonoBehaviour, IMovement
         }
     }
 
+    public void AddExternalVelocity(Vector2 velocity)
+    {
+        _externalVelocity += velocity;
+    }
+
     public void Stop()
     {
         Move(Vector2.zero);
@@ -47,10 +53,19 @@ public class RigidbodyMovement : MonoBehaviour, IMovement
 
     private void FixedUpdate()
     {
+        _rigidbody.velocity = Vector2.zero;
+
+        Vector2 displacement = _externalVelocity * Time.fixedDeltaTime;
+
         if (_isMoving)
-        {
-            Vector2 newPosition = _rigidbody.position + _currentDirection * MoveSpeed * Time.fixedDeltaTime;
-            _rigidbody.MovePosition(newPosition);
-        }
+            displacement += _currentDirection * MoveSpeed * Time.fixedDeltaTime;
+
+        _rigidbody.MovePosition(_rigidbody.position + displacement);
+
+        if (_externalVelocity == Vector2.zero) return;
+
+        _externalVelocity = Vector2.Lerp(_externalVelocity, Vector2.zero, 10f * Time.fixedDeltaTime);
+        if (_externalVelocity.sqrMagnitude < 0.01f)
+            _externalVelocity = Vector2.zero;
     }
 }

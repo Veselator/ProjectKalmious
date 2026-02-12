@@ -40,7 +40,7 @@ public class MeleeWeapon : BaseWeapon
                 Health targetHealth = collider.GetComponent<Health>();
                 if (targetHealth != null)
                 {
-                    targetHealth.TakeDamage(_damage);
+                    targetHealth.TakeDamage(_damage, _collider);
                     OnTargetHit?.Invoke(targetHealth);
                     targetsHit++;
                 }

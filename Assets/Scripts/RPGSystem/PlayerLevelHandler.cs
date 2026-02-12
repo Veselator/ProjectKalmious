@@ -44,7 +44,7 @@ public class PlayerLevelHandler : MonoBehaviour
     private float CalculateXPGoal(int level)
     {
         if (level <= 1) return _levelAdditionalValue;
-
+            
         return _levelFactor * level * Mathf.Log(level, 2f) + _levelAdditionalValue;
     }
 

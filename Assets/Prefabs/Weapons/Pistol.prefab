@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage:
-    damageHealth: 50
+    damageHealth: 14
     damageArmor: 0
     overallDamageMultiplier: 1
     criticalChance: 0
@@ -312,6 +312,7 @@ MonoBehaviour:
   _projectileSpeed: 10
   _projectilesPerShot: 1
   _spreadAngle: 0
+  _spreadStep: 5
   _targetLayers:
     serializedVersion: 2
     m_Bits: 128
