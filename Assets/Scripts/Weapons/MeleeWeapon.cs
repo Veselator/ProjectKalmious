@@ -27,15 +27,14 @@ public class MeleeWeapon : BaseWeapon
     {
         OnSwing?.Invoke();
 
-        Vector3 attackPosition = _attackPoint != null ? _attackPoint.position : transform.position;
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPosition, _attackRange, _targetLayer);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, _attackRange, _targetLayer);
 
         int targetsHit = 0;
         foreach (Collider2D collider in hitColliders)
         {
             if (targetsHit >= _maxTargets) break;
 
-            if (IsInAttackAngle(collider.transform.position, attackPosition))
+            if (IsInAttackAngle(collider.transform.position, transform.position))
             {
                 Health targetHealth = collider.GetComponent<Health>();
                 if (targetHealth != null)

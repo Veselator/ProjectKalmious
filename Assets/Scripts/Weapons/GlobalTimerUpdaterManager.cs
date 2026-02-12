@@ -10,13 +10,11 @@ public class GlobalTimerUpdaterManager : MonoBehaviour
     public static void AddTimer(Timer timer)
     {
         _timers.Add(timer);
-        Debug.Log($"Timer added. The length is {_timers.Count}");
     }
 
     public static void RemoveTimer(Timer timer)
     {
         _timers.Remove(timer);
-        Debug.Log($"Timer removed. The length is {_timers.Count}");
     }
 
     private void Update()

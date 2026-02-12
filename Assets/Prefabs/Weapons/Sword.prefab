@@ -288,8 +288,8 @@ MonoBehaviour:
     m_Bits: 128
   _attackPoint: {fileID: 4004550145429088244}
   _attackRange: 1.75
-  _attackAngle: 135
-  _maxTargets: 5
+  _attackAngle: 175
+  _maxTargets: 24
 --- !u!114 &6475167475389616516
 MonoBehaviour:
   m_ObjectHideFlags: 0

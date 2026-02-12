@@ -23,6 +23,7 @@ public class Projectile : MonoBehaviour
         _targetLayers = targetLayers;
 
         _collider = GetComponent<Collider2D>();
+        // TODO: коллайдер пуль долежн увеличиваться если стреляет игрок
     }
 
     private void Update()
