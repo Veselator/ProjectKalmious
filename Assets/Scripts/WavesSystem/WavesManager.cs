@@ -20,6 +20,9 @@ public class WavesManager : MonoBehaviour
     private List<GameObject> _aliveEnemies = new List<GameObject>();
     private EnemySettingsSO[] _allEnemies;
 
+    private WaitForSeconds _spawnDelayCashed;
+    private WaitForSeconds _waveDelayCashed;
+
     public WaveState CurrentWaveState => _currentWaveState;
     public int WaveId => _waveId;
 
@@ -29,6 +32,10 @@ public class WavesManager : MonoBehaviour
     private void Start()
     {
         _enemiesCMS = GlobalEnemies.Instance;
+
+        _spawnDelayCashed = new WaitForSeconds(_spawnInterval);
+        _waveDelayCashed = new WaitForSeconds(_timeBetweenWaves);
+
         StartNextWave();
     }
 
@@ -88,7 +95,7 @@ public class WavesManager : MonoBehaviour
             health.OnDeath += () => OnEnemyDied(enemy);
 
             _aliveEnemies.Add(enemy);
-            yield return new WaitForSeconds(_spawnInterval);
+            yield return _spawnDelayCashed;
         }
     }
 
@@ -105,7 +112,7 @@ public class WavesManager : MonoBehaviour
 
     private IEnumerator WaitAndStartNextWave()
     {
-        yield return new WaitForSeconds(_timeBetweenWaves);
+        yield return _waveDelayCashed;
         StartNextWave();
     }
 }
