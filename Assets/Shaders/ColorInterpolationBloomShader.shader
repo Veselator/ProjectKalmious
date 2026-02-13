@@ -36,12 +36,14 @@ Shader "Custom/ColorInterpolationBloomShader"
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
+                float4 color : COLOR;
             };
             
             struct v2f
             {
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
+                float4 color : COLOR;
             };
             
             sampler2D _MainTex;
@@ -58,27 +60,21 @@ Shader "Custom/ColorInterpolationBloomShader"
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.color = v.color;
                 return o;
             }
+
             
             fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 texColor = tex2D(_MainTex, i.uv);
-    
-                // ШАГ 1: Bloom эффект
-                // Вычисляем расстояние между цветом пикселя и целевым цветом
+                fixed4 texColor = tex2D(_MainTex, i.uv) * i.color;
+
                 float colorDistance = distance(texColor.rgb, _BloomColor.rgb);
-    
-                // Если расстояние МЕНЬШЕ порога - цвет близкий, bloom ЕСТЬ
-                // Если расстояние БОЛЬШЕ порога - цвет далёкий, bloom НЕТ
                 float bloomMask = colorDistance < _ColorTolerance ? 1.0 : 0.0;
-    
-                // Усиливаем яркость для близких цветов
                 fixed3 bloomColor = texColor.rgb * (1.0 + bloomMask * _BloomIntensity);
-    
-                // ШАГ 2: Color interpolation поверх
+
                 fixed3 finalRGB = lerp(bloomColor, _MixColor.rgb, _ColorInterpolationValue);
-    
+
                 return fixed4(finalRGB, texColor.a);
             }
             ENDCG

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b8f7b46fe81fe24ba2a5368e67bbcc4, type: 3}
-  m_Name: SkeletonWithAK
+  m_Name: Ghost
   m_EditorClassIdentifier: 
-  _id: skeletonAk
-  _prefab: {fileID: 8693577908133504931, guid: bba64bcd81042244580f794b16b5ffff, type: 3}
-  _difficulty: 4
+  _id: ghost
+  _prefab: {fileID: 8693577908133504931, guid: 58395eb9a2f1ddf458831f782defb531, type: 3}
+  _difficulty: 6

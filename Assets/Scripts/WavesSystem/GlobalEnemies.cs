@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class GlobalEnemies : MonoBehaviour
 {
+    // Глобальный класс врагов, инкапсулирует все сущности врагов
+
     public static GlobalEnemies Instance { get; private set; }
 
     [SerializeField] private EnemiesConfigSO _config;
