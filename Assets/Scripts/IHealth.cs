@@ -17,9 +17,9 @@ public interface IHealth
     float CurrentHealthInPercentage { get; }
     float CurrentArmorInPercentage { get; }
     Action<float, Collider2D> OnDamaged { get; set; }
-    Action OnHealthChanged { get; set; }
+    Action<float> OnHealthChanged { get; set; }
     Action OnArmorDestoyed { get; set; }
-    Action OnArmorChanged { get; set; }
+    Action<float> OnArmorChanged { get; set; }
     Action OnDeath { get; set;  }
     abstract void ResetHealth();
     abstract void TakeDamage(Damage damage, Collider2D source); // заменить damage на struct damage, для большей модификации урона

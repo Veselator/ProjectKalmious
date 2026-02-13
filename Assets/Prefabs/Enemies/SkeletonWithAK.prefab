@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 9160385519271131427}
   - component: {fileID: 6698795183671826446}
   - component: {fileID: 7329033941156572903}
+  - component: {fileID: 2159644798079263659}
   m_Layer: 7
   m_Name: SkeletonWithAK
   m_TagString: Untagged
@@ -272,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d86a6ccc7c8e742a7691de8af352cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3.74
+  MoveSpeed: 3.8
 --- !u!114 &3344382096583579729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +375,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.39}
+  m_Offset: {x: 0, y: -0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -442,6 +443,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _linkedSprite: {fileID: 4463392787282255588}
   _linkedMovement: {fileID: -7378667138956473936}
+--- !u!70 &2159644798079263659
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693577908133504931}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.12}
+  m_Size: {x: 0.5, y: 0.75}
+  m_Direction: 0
 --- !u!1001 &6856508811890789874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -450,6 +486,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4420730061091538468}
     m_Modifications:
+    - target: {fileID: 87804486779493260, guid: fcdc88665d4f06e4abc5c64e72fd6db0, type: 3}
+      propertyPath: _prefab
+      value: 
+      objectReference: {fileID: 1949775956924483380, guid: 8c6d9fbf1c683d04f8a5282ecf4219a1, type: 3}
     - target: {fileID: 2959136454104610233, guid: fcdc88665d4f06e4abc5c64e72fd6db0, type: 3}
       propertyPath: m_Name
       value: AK
@@ -500,15 +540,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7880838507217060209, guid: fcdc88665d4f06e4abc5c64e72fd6db0, type: 3}
       propertyPath: _spreadStep
-      value: 13
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7880838507217060209, guid: fcdc88665d4f06e4abc5c64e72fd6db0, type: 3}
       propertyPath: _projectileSpeed
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7880838507217060209, guid: fcdc88665d4f06e4abc5c64e72fd6db0, type: 3}
+      propertyPath: _projectilePrefab
+      value: 
+      objectReference: {fileID: 1949775956924483380, guid: 8c6d9fbf1c683d04f8a5282ecf4219a1, type: 3}
+    - target: {fileID: 7880838507217060209, guid: fcdc88665d4f06e4abc5c64e72fd6db0, type: 3}
       propertyPath: _damage.damageHealth
-      value: 2
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7880838507217060209, guid: fcdc88665d4f06e4abc5c64e72fd6db0, type: 3}
       propertyPath: _targetLayers.m_Bits

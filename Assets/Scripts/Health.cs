@@ -40,7 +40,7 @@ public class Health : MonoBehaviour, IHealth
         set
         {
             _currentArmor = Math.Max(value, 0f);
-            OnArmorChanged?.Invoke();
+            OnArmorChanged?.Invoke(_currentArmor);
         }
     }
 
@@ -53,7 +53,7 @@ public class Health : MonoBehaviour, IHealth
         set
         {
             _currentHealth = Math.Max(value, 0f);
-            OnHealthChanged?.Invoke();
+            OnHealthChanged?.Invoke(_currentHealth);
         }
     }
 
@@ -65,8 +65,8 @@ public class Health : MonoBehaviour, IHealth
     public Action<float> OnCriticalHit { get; set; }
     public Action OnArmorDestoyed { get; set; }
     public Action OnDeath { get; set;  }
-    public Action OnHealthChanged { get; set; }
-    public Action OnArmorChanged { get; set; }
+    public Action<float> OnHealthChanged { get; set; }
+    public Action<float> OnArmorChanged { get; set; }
 
     public void Awake()
     {
@@ -94,7 +94,7 @@ public class Health : MonoBehaviour, IHealth
 
         if (isArmored)
         {
-            // Дополнительный урок
+            // Дополнительный урон
             _currentArmor -= currentDamage;
 
             if (_currentArmor <= 0f)
