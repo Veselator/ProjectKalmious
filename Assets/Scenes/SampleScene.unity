@@ -4079,7 +4079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wavesManager: {fileID: 200247114}
   _playerInventory: {fileID: 1814148253}
-  _pickupPrefab: {fileID: 0}
+  _pickupPrefab: {fileID: 8547669929685152941, guid: 28c61be6c79fff64284c5f7502b06c6a, type: 3}
   _spawnPoints: []
   _pickupableWeapons: []
 --- !u!1 &1645687617

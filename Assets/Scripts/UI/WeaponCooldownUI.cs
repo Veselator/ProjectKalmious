@@ -36,9 +36,9 @@ public class WeaponCooldownUI : MonoBehaviour
         _id = id;
         _inventory = inventory;
         _inventory.OnItemAdded += HandleItemAdded;
+        _curWeapon = PlayerCurrentWeapon.Instance;
 
         if (_linkedCell.CurrentWeapon == null) return;
-        _curWeapon = PlayerCurrentWeapon.Instance;
 
         // Жопа, по-нормальному надо переписывать
         _weapon = _curWeapon.GetWeaponObjectByTag(_linkedCell.CurrentWeapon).GetComponent<BaseWeapon>();

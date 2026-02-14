@@ -8,6 +8,7 @@ public class PickupableWeapon : MonoBehaviour, IPickupableWeapon
     private PlayerInventory _inventory;
 
     [SerializeField] private SpriteRenderer _topIcon;
+    private bool _isItemAdded = false;
 
     public void Initialize(WeaponInventoryItemSO weaponData, PlayerInventory inventory)
     {
@@ -19,8 +20,9 @@ public class PickupableWeapon : MonoBehaviour, IPickupableWeapon
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.TryGetComponent<PlayerInputHandler>(out _)) return;
+        if (_isItemAdded || !collision.TryGetComponent<PlayerInputHandler>(out _)) return;
 
+        _isItemAdded = true;
         _inventory.AddItem(_data);
         Destroy(gameObject);
     }
