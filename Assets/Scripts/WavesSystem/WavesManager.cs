@@ -1,8 +1,7 @@
-using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using UnityEngine;
 
 public class WavesManager : MonoBehaviour
 {
@@ -20,11 +19,14 @@ public class WavesManager : MonoBehaviour
     private List<GameObject> _aliveEnemies = new List<GameObject>();
     private EnemySettingsSO[] _allEnemies;
 
-    private WaitForSeconds _spawnDelayCashed;
-    private WaitForSeconds _waveDelayCashed;
+    private WaitForSeconds _spawnDelayCached;
+    private WaitForSeconds _waveDelayCached;
 
     public WaveState CurrentWaveState => _currentWaveState;
     public int WaveId => _waveId;
+
+    private List<EnemySettingsSO> _availableEnemiesCached = new List<EnemySettingsSO>();
+    private float _totalWaveCached;
 
     public event Action<int> OnWaveStarted;
     public event Action<int> OnWaveEnded;
@@ -33,8 +35,8 @@ public class WavesManager : MonoBehaviour
     {
         _enemiesCMS = GlobalEnemies.Instance;
 
-        _spawnDelayCashed = new WaitForSeconds(_spawnInterval);
-        _waveDelayCashed = new WaitForSeconds(_timeBetweenWaves);
+        _spawnDelayCached = new WaitForSeconds(_spawnInterval);
+        _waveDelayCached = new WaitForSeconds(_timeBetweenWaves);
 
         StartNextWave();
     }
@@ -50,29 +52,39 @@ public class WavesManager : MonoBehaviour
 
     private EnemySettingsSO GetWeightedRandomEnemy()
     {
-        var available = _allEnemies.Where(e => e != null && e.Difficulty <= _waveId).ToList();
-        if (available.Count == 0)
-            return null;
-
-        float totalWeight = 0f;
-        foreach (var enemy in available)
-            totalWeight += 1 / (enemy.Difficulty * _maxEnemyDifficultyFactor);
-
-        float random = UnityEngine.Random.Range(0f, totalWeight);
+        float random = UnityEngine.Random.Range(0f, _totalWaveCached);
         float cumulative = 0f;
 
-        foreach (var enemy in available)
+        foreach (var enemy in _availableEnemiesCached)
         {
             cumulative += 1 / (enemy.Difficulty * _maxEnemyDifficultyFactor);
             if (random <= cumulative)
                 return enemy;
         }
 
-        return available[available.Count - 1];
+        return _availableEnemiesCached[_availableEnemiesCached.Count - 1];
+    }
+
+    private void RecalculateCachedVariables()
+    {
+        _availableEnemiesCached.Clear();
+        foreach (var e in _allEnemies)
+        {
+            if (e != null && e.Difficulty <= _waveId)
+                _availableEnemiesCached.Add(e);
+        }
+        _totalWaveCached = 0f;
+
+        foreach (var enemy in _availableEnemiesCached)
+        {
+            _totalWaveCached += 1f / (enemy.Difficulty * _maxEnemyDifficultyFactor);
+        }
     }
 
     private IEnumerator SpawnWaveCoroutine()
     {
+        RecalculateCachedVariables();
+
         int enemyCount = Mathf.RoundToInt(_baseEnemiesPerWave * _waveId * _enemiesScaleFactor);
         if (_allEnemies == null || _allEnemies.Length == 0)
             yield break;
@@ -95,7 +107,7 @@ public class WavesManager : MonoBehaviour
             health.OnDeath += () => OnEnemyDied(enemy);
 
             _aliveEnemies.Add(enemy);
-            yield return _spawnDelayCashed;
+            yield return _spawnDelayCached;
         }
     }
 
@@ -112,7 +124,7 @@ public class WavesManager : MonoBehaviour
 
     private IEnumerator WaitAndStartNextWave()
     {
-        yield return _waveDelayCashed;
+        yield return _waveDelayCached;
         StartNextWave();
     }
 }

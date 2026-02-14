@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: skeletonAk
   _prefab: {fileID: 8693577908133504931, guid: bba64bcd81042244580f794b16b5ffff, type: 3}
-  _difficulty: 4
+  _difficulty: 7

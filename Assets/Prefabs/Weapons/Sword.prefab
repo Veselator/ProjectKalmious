@@ -287,7 +287,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _attackPoint: {fileID: 4004550145429088244}
-  _attackRange: 1.75
+  _attackRange: 2.31
   _attackAngle: 175
   _maxTargets: 24
 --- !u!114 &6475167475389616516

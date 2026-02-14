@@ -182,7 +182,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3318639997653564706}
-  - component: {fileID: 2235768775029376821}
   - component: {fileID: 1975685682925942129}
   - component: {fileID: 1287661864240016453}
   - component: {fileID: 7755916221003736845}
@@ -220,20 +219,6 @@ Transform:
   - {fileID: 1190152022303494828}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2235768775029376821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7135995234236046342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4598818c8f2c6c04abb4b8fa23f8a77f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _linkedSprite: {fileID: 7384861285618946373}
-  _linkedMovement: {fileID: 278760648724318380}
 --- !u!50 &1975685682925942129
 Rigidbody2D:
   serializedVersion: 4
@@ -527,6 +512,7 @@ GameObject:
   - component: {fileID: 6869575668675279510}
   - component: {fileID: 1519834569929126563}
   - component: {fileID: 310316395044319827}
+  - component: {fileID: 7121980444230067409}
   m_Layer: 0
   m_Name: PlayerVisual
   m_TagString: Untagged
@@ -681,3 +667,17 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7121980444230067409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8006582567304357329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4598818c8f2c6c04abb4b8fa23f8a77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _linkedSprite: {fileID: 7384861285618946373}
+  _linkedMovement: {fileID: 278760648724318380}

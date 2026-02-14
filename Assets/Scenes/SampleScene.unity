@@ -1675,6 +1675,7 @@ Transform:
   - {fileID: 321183714}
   - {fileID: 330795452}
   - {fileID: 169573773}
+  - {fileID: 1601950038}
   m_Father: {fileID: 1582764942}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &626093490
@@ -4032,6 +4033,55 @@ Transform:
   - {fileID: 200247113}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1601950037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1601950038}
+  - component: {fileID: 1601950039}
+  m_Layer: 0
+  m_Name: PickupableGlobalSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1601950038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601950037}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 586310556}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1601950039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601950037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b30a7c82020e6e04fab54ed69c0a6d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wavesManager: {fileID: 200247114}
+  _playerInventory: {fileID: 1814148253}
+  _pickupPrefab: {fileID: 0}
+  _spawnPoints: []
+  _pickupableWeapons: []
 --- !u!1 &1645687617
 GameObject:
   m_ObjectHideFlags: 0
@@ -28634,6 +28684,10 @@ PrefabInstance:
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 1814148253}
+    - target: {fileID: 5936433483320922262, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
+      propertyPath: _weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6613947213132426967, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
       propertyPath: m_Layer
       value: 6
