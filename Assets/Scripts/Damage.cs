@@ -12,6 +12,14 @@ public struct Damage
     [Min(0f)]
     public float criticalChance;
 
+    public Damage(float damageHealth, float damageArmor, float overallDamageMultiplier, float criticalChance)
+    {
+        this.damageHealth = damageHealth;
+        this.damageArmor = damageArmor;
+        this.overallDamageMultiplier = overallDamageMultiplier;
+        this.criticalChance = criticalChance;
+    }
+
     public float MultipliedHealthDamage => damageHealth * overallDamageMultiplier;
     public float MultipliedArmorDamage => damageHealth * overallDamageMultiplier;
 }

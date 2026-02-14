@@ -10,7 +10,7 @@ public class PlayerInventoryController : MonoBehaviour
     private void Update()
     {
         HandleScrollInput();
-        HandleNumberKeyInput();
+        //HandleNumberKeyInput();
     }
 
     private void HandleScrollInput()
@@ -34,14 +34,14 @@ public class PlayerInventoryController : MonoBehaviour
         }
     }
 
-    private void HandleNumberKeyInput()
-    {
-        for (int i = 0; i < _inventory.MaxSlots && i < 9; i++)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
-            {
-                _inventory.SelectSlot(i);
-            }
-        }
-    }
+    //private void HandleNumberKeyInput()
+    //{
+    //    for (int i = 0; i < _inventory.MaxSlots && i < 9; i++)
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+    //        {
+    //            _inventory.SelectSlot(i);
+    //        }
+    //    }
+    //}
 }

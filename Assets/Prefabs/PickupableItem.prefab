@@ -317,8 +317,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 513129437501950454}
-  - component: {fileID: 4282642606506509726}
   - component: {fileID: 7179306868140832308}
+  - component: {fileID: 7732603415938551078}
   m_Layer: 0
   m_Name: PickupableItem
   m_TagString: Untagged
@@ -342,8 +342,21 @@ Transform:
   - {fileID: 8171286672445260087}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &4282642606506509726
-CircleCollider2D:
+--- !u!114 &7179306868140832308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8547669929685152941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaafba8f1da9b1248a07a2480d0d4e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _topIcon: {fileID: 1956437243758804896}
+--- !u!61 &7732603415938551078
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -375,18 +388,15 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 3.19
---- !u!114 &7179306868140832308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8547669929685152941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaafba8f1da9b1248a07a2480d0d4e36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _topIcon: {fileID: 1956437243758804896}
+  m_Size: {x: 3.15, y: 1.87}
+  m_EdgeRadius: 0

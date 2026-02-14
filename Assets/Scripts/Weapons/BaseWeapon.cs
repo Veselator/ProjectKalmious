@@ -48,10 +48,12 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     public void SetOverallDamageModifier(float modifier)
     {
         _damage.overallDamageMultiplier = modifier;
+        //_damage = new Damage(_damage.damageHealth, _damage.damageArmor, modifier, _damage.criticalChance);
     }
 
     public void SetCriticalChance(float chance)
     {
         _damage.criticalChance = chance;
+        //_damage = new Damage(_damage.damageHealth, _damage.damageArmor, _damage.overallDamageMultiplier, chance);
     }
 }

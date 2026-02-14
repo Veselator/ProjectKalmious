@@ -14,7 +14,7 @@ public abstract class BaseChangeHandler : MonoBehaviour
         _characteristics.OnCharacteristicsChanged += HandleChange;
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         _characteristics.OnCharacteristicsChanged -= HandleChange;
     }

@@ -21,6 +21,9 @@ public class PlayerCurrentWeapon : MonoBehaviour
 
     public event Action<IWeapon> OnWeaponChanged;
 
+    public event Action OnInited;
+    public bool IsInited { get; private set; } = false;
+
     private void Awake()
     {
         if(Instance != null)
@@ -57,6 +60,9 @@ public class PlayerCurrentWeapon : MonoBehaviour
                 _instantiatedWeapons[weaponItem.Name] = weaponObject;
             }
         }
+
+        IsInited = true;
+        OnInited?.Invoke();
     }
 
     private void SubscribeToInventory()
