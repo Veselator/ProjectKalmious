@@ -19,7 +19,8 @@ public class PlayerActiveAbilitiesPanelUI : MonoBehaviour
     {
         AbilitySO abilitySO = ability.AbilityData;
         GameObject cell = Instantiate(_abilityCellPrefab, transform);
+
         ActiveAbilityUI cellUI = cell.GetComponent<ActiveAbilityUI>();
-        cellUI.Initialize(ability, abilitySO.Icon);
+        cellUI.Initialize(ability, abilitySO.Icon, _abilitiesManager, slotIndex);
     }
 }

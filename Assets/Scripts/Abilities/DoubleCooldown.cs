@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DoubleCooldown : BaseAbility
 {
-    private const float _cooldownMultiplier = 2f;
+    private const float _cooldownMultiplier = 0.5f;
     [SerializeField] private float _abilityActionTime = 2f;
     private PlayerCurrentWeapon _curWeapon;
 
