@@ -20,6 +20,8 @@ public abstract class BaseAI : MonoBehaviour
         set => _isActive = value;
     }
 
+    private GlobalFlags _globalFlags; // Проблема - связанность с конкретной реализацией глобальных флагов
+
     public float DistanceToPlayer => _player != null ? Vector2.Distance(transform.position, _player.position) : float.MaxValue;
 
     public event Action<BaseAI, Transform> OnInited;
@@ -34,8 +36,16 @@ public abstract class BaseAI : MonoBehaviour
 
     public void Initialize(Transform player)
     {
+        _globalFlags = GlobalFlags.Instance;
+        _globalFlags.OnGameOver += Stop;
+
         _player = player;
         OnInited?.Invoke(this, player);
+    }
+
+    protected void OnDestroy()
+    {
+        if(_globalFlags != null) _globalFlags.OnGameOver -= Stop;
     }
 
     protected virtual void Update()
