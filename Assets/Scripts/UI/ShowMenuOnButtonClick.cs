@@ -17,4 +17,13 @@ public class ShowMenuOnButtonClick : MonoBehaviour
 
         if (_menuShowAnimation != null) _menuShowAnimation.Play(_isMenuShown);
     }
+
+    public void HideIfShowed()
+    {
+        if (_isMenuShown)
+        {
+            _isMenuShown = false;
+            _menuShowAnimation.Play(_isMenuShown);
+        }
+    }
 }
