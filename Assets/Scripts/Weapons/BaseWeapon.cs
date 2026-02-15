@@ -9,6 +9,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     [SerializeField] protected Damage _damage;
     [SerializeField] protected float _cooldown = 0.5f;
+    private float _cooldownMultiplier = 1f;
+
     public Timer CooldownTimer { get; private set; } = new Timer();
 
     public Damage DealedDamage => _damage;
@@ -36,7 +38,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     protected void StartAct()
     {
-        CooldownTimer.Start(_cooldown);
+        CooldownTimer.Start(_cooldown * _cooldownMultiplier);
         OnActStarted?.Invoke();
     }
 
@@ -55,5 +57,10 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     {
         _damage.criticalChance = chance;
         //_damage = new Damage(_damage.damageHealth, _damage.damageArmor, _damage.overallDamageMultiplier, chance);
+    }
+
+    public void SetCooldownMultiplier(float value)
+    {
+        _cooldownMultiplier = value;
     }
 }

@@ -4,6 +4,9 @@ using TMPro;
 
 public class AbilityShopItemUI : MonoBehaviour
 {
+    // Класс визуального отображения предмета в магазине
+    // Нарушение SRP
+
     [SerializeField] private AvailableAbilitiesManager _availableAbilitiesManager;
     [SerializeField] private int _linkedAbilityId;
     [SerializeField] private string _title;

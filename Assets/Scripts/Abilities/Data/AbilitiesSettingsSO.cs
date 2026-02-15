@@ -1,4 +1,3 @@
-// AbilitiesSettingsSO.cs
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewAbilitiesSettings", menuName = "Abilities/AbilitiesSettings")]

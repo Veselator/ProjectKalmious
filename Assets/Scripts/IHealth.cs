@@ -4,7 +4,7 @@ using UnityEngine;
 public interface IHealth
 {
     float MaximumHealth { get; set; }
-    float CurrentHealth { get; set; }
+    float CurrentHealth { get; set; } // Может, сокрыть для сеттера?
 
     // Если есть броня, то урон сниженый
     float MaximumArmor { get; set; } // Сколько максимум может быть брони
@@ -14,6 +14,7 @@ public interface IHealth
 
     bool DoesHaveArmor { get; }
     bool IsDied { get; }
+    bool IsDamaged { get; }
     float CurrentHealthInPercentage { get; }
     float CurrentArmorInPercentage { get; }
     Action<float, Collider2D> OnDamaged { get; set; }

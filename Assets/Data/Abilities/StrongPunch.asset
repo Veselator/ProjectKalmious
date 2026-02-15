@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a1bef72cba10db43b06cfd4e5ab04c5, type: 3}
   m_Name: StrongPunch
   m_EditorClassIdentifier: 
-  _id: 
-  _prefab: {fileID: 0}
-  _icon: {fileID: 0}
-  _pointsToUnlock: 0
+  _id: strongPunch
+  _prefab: {fileID: 3652197411184321701, guid: 66b428424b5ddbf4eb9375600f3d02b0, type: 3}
+  _icon: {fileID: 506494676, guid: 349d859a135d7a44f87327e96cb06de2, type: 3}
+  _pointsToUnlock: 1

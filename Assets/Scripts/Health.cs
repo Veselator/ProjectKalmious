@@ -13,30 +13,30 @@ public class Health : MonoBehaviour, IHealth
     // Здоровья всем родным программиста, который это написал
     // И в обще он крутой
 
-    [SerializeField] private float maxHealth;
+    [SerializeField] private float _maxHealth;
     public float MaximumHealth
     {
-        get => maxHealth;
+        get => _maxHealth;
         set
         {
-            maxHealth = value;
+            _maxHealth = value;
         }
     }
 
-    [SerializeField] private float maximumArmor;
+    [SerializeField] private float _maximumArmor;
     public float MaximumArmor
     {
-        get => maximumArmor;
+        get => _maximumArmor;
         set
         {
-            maximumArmor = value;
+            _maximumArmor = value;
         }
     }
     private float _currentArmor;
 
     public float CurrentArmor
     {
-        get => Mathf.Clamp(_currentArmor, 0f, maximumArmor);
+        get => Mathf.Clamp(_currentArmor, 0f, _maximumArmor);
         set
         {
             _currentArmor = Math.Max(value, 0f);
@@ -49,7 +49,7 @@ public class Health : MonoBehaviour, IHealth
     private float _currentHealth;
     public float CurrentHealth
     {
-        get => Mathf.Clamp(_currentHealth, 0f, maxHealth);
+        get => Mathf.Clamp(_currentHealth, 0f, _maxHealth);
         set
         {
             _currentHealth = Math.Max(value, 0f);
@@ -58,6 +58,7 @@ public class Health : MonoBehaviour, IHealth
     }
 
     public bool IsDied => CurrentHealth <= 0f;
+    public bool IsDamaged => _currentHealth < _maxHealth;
     public float CurrentHealthInPercentage => CurrentHealth / MaximumHealth;
     public float CurrentArmorInPercentage => CurrentArmor / MaximumArmor;
 

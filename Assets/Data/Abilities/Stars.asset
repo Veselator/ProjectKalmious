@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a1bef72cba10db43b06cfd4e5ab04c5, type: 3}
   m_Name: Stars
   m_EditorClassIdentifier: 
-  _id: 
-  _prefab: {fileID: 0}
-  _icon: {fileID: 0}
-  _pointsToUnlock: 0
+  _id: stars
+  _prefab: {fileID: 4835026526442341202, guid: 916fe892f2026a140b24702245ffbab2, type: 3}
+  _icon: {fileID: 18472968, guid: 349d859a135d7a44f87327e96cb06de2, type: 3}
+  _pointsToUnlock: 5

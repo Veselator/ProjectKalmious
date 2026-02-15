@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a1bef72cba10db43b06cfd4e5ab04c5, type: 3}
   m_Name: DoubleCooldown
   m_EditorClassIdentifier: 
-  _id: 
-  _prefab: {fileID: 0}
-  _icon: {fileID: 0}
-  _pointsToUnlock: 0
+  _id: doubleCool
+  _prefab: {fileID: 1874892115728281707, guid: 75d298afde906c04889b165bf4c3ac3b, type: 3}
+  _icon: {fileID: 92977234, guid: 349d859a135d7a44f87327e96cb06de2, type: 3}
+  _pointsToUnlock: 2

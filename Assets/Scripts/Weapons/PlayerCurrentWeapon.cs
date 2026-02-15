@@ -17,7 +17,7 @@ public class PlayerCurrentWeapon : MonoBehaviour
     private GameObject _currentWeaponObject;
 
     public IWeapon CurrentWeapon => _currentWeapon;
-    public List<IWeapon> AllWeapons => GetAllInstantiatedWeapons();
+    public List<IWeapon> AllWeapons { get; private set; }
 
     public event Action<IWeapon> OnWeaponChanged;
 
@@ -39,6 +39,8 @@ public class PlayerCurrentWeapon : MonoBehaviour
     {
         InitializeAllWeapons();
         SubscribeToInventory();
+        SetAllInitedWeapons();
+
         UpdateCurrentWeapon(_inventory.CurrentPointer);
     }
 
@@ -77,17 +79,16 @@ public class PlayerCurrentWeapon : MonoBehaviour
         _inventory.OnCurrentSlotChanged -= UpdateCurrentWeapon;
     }
 
-    public List<IWeapon> GetAllInstantiatedWeapons()
+    public void SetAllInitedWeapons()
     {
-        List<IWeapon> weapons = new List<IWeapon>();
+        AllWeapons = new List<IWeapon>();
 
         foreach (var kvp in _instantiatedWeapons)
         {
-            weapons.Add(kvp.Value.GetComponent<IWeapon>());
+            AllWeapons.Add(kvp.Value.GetComponent<IWeapon>());
         }
-
-        return weapons;
     }
+
     public GameObject GetWeaponObjectByTag(WeaponInventoryItemSO item)
     {
         return GetWeaponObjectByTag(item.Name);
@@ -99,9 +100,9 @@ public class PlayerCurrentWeapon : MonoBehaviour
         return _instantiatedWeapons[tag];
     }
 
-    private void UpdateCurrentWeapon(WeaponInventoryItemSO _, int id)
+    private void UpdateCurrentWeapon(WeaponInventoryItemSO _, int id, bool isTarget)
     {
-        UpdateCurrentWeapon(id);
+        if(isTarget) UpdateCurrentWeapon(id);
     }
 
     private void UpdateCurrentWeapon(int slotIndex)
@@ -133,6 +134,14 @@ public class PlayerCurrentWeapon : MonoBehaviour
         if (_currentWeapon != null && _currentWeapon.CanAct())
         {
             _currentWeapon.Act();
+        }
+    }
+
+    public void SetOverallCooldownMultiplier(float value)
+    {
+        foreach (var weapon in AllWeapons)
+        {
+            weapon.SetCooldownMultiplier(value);
         }
     }
 }

@@ -1,23 +1,20 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D))]
 public class Projectile : MonoBehaviour
 {
-    private LayerMask _targetLayers;
-    [SerializeField] private float _secondsToLive = 5f;
-    private ProjectilePool _pool;
-
-    private Damage _damage;
-    private float _speed;
-    private Vector3 _direction;
-    private float _currentTime = 0f;
-
-    private Collider2D _collider;
+    protected LayerMask _targetLayers;
+    [SerializeField] protected float _secondsToLive = 5f;
+    protected ProjectilePool _pool;
+    protected Damage _damage;
+    protected float _speed;
+    protected Vector3 _direction;
+    protected float _currentTime = 0f;
+    protected Collider2D _collider;
 
     public event Action<Collider2D> OnProjectileHit;
 
-    public void Initialize(Damage damage, float speed, Vector3 direction, LayerMask targetLayers, ProjectilePool pool)
+    public virtual void Initialize(Damage damage, float speed, Vector3 direction, LayerMask targetLayers, ProjectilePool pool)
     {
         _damage = damage;
         _speed = speed;
@@ -48,28 +45,24 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!IsInTargetLayer(collision.gameObject.layer))
-        {
             return;
-        }
 
         Health targetHealth = collision.GetComponent<Health>();
         if (targetHealth != null)
-        {
             targetHealth.TakeDamage(_damage, _collider);
-        }
 
         DestroyProjectile(collision);
     }
 
-    private bool IsInTargetLayer(int layer)
+    protected bool IsInTargetLayer(int layer)
     {
         return (_targetLayers.value & (1 << layer)) != 0;
     }
 
-    private void DestroyProjectile(Collider2D colli = null)
+    protected void DestroyProjectile(Collider2D colli = null)
     {
         OnProjectileHit?.Invoke(colli);
         if (_pool != null) _pool.Return(gameObject);

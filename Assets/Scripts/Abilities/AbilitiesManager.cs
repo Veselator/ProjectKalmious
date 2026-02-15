@@ -13,8 +13,15 @@ public class AbilitiesManager : MonoBehaviour
     public IReadOnlyList<IAbility> Abilities => _abilities;
     public int MaxSlots => _maxSlots;
 
-    public event Action<IAbility, int> OnAbilityAdded;
     public event Action<int> OnAbilityUsed;
+
+    // Зависимости для разных способностей
+    [SerializeField] private Health _linkedHealth;
+    public IHealth LinkedHealth => _linkedHealth;
+    [SerializeField] private PlayerCurrentWeapon _playerCurrentWeapon;
+    public PlayerCurrentWeapon PlayerCurWeapon => _playerCurrentWeapon;
+
+    public event Action<IAbility, GameObject, int> OnAbilityAdded;
 
     public bool AddAbility(AbilitySO abilitySO)
     {
@@ -22,10 +29,10 @@ public class AbilitiesManager : MonoBehaviour
 
         GameObject abilityObject = Instantiate(abilitySO.Prefab, _ownerTransform);
         IAbility ability = abilityObject.GetComponent<IAbility>();
-        ability.Initialize(_ownerTransform, this, _ownerCollider);
+        ability.Initialize(_ownerTransform, this, _ownerCollider, abilitySO);
 
         _abilities.Add(ability);
-        OnAbilityAdded?.Invoke(ability, _abilities.Count - 1);
+        OnAbilityAdded?.Invoke(ability, abilityObject, _abilities.Count - 1);
         return true;
     }
 

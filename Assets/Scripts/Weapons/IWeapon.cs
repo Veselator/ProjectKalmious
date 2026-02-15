@@ -4,5 +4,6 @@ public interface IWeapon
     void Act();
     bool CanAct();
     void SetOverallDamageModifier(float modifier);
+    void SetCooldownMultiplier(float value);
     void SetCriticalChance(float chance);
 }

@@ -22,7 +22,7 @@ public class InventoryCellUI : MonoBehaviour
         _selectedIndicator.SetActive(id == _id);
     }
 
-    private void HandleItemChange(WeaponInventoryItemSO weapon, int id)
+    private void HandleItemChange(WeaponInventoryItemSO weapon, int id, bool _)
     {
         if (id != _id) return;
 

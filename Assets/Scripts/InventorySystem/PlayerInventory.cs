@@ -27,7 +27,8 @@ public class PlayerInventory : MonoBehaviour
     public int ItemCount => _items.Count;
     public int MaxSlots => _maxSlots;
 
-    public event Action<WeaponInventoryItemSO, int> OnItemAdded;
+    // Третий bool - является ли индекс текущим
+    public event Action<WeaponInventoryItemSO, int, bool> OnItemAdded;
     public event Action<int> OnCurrentSlotChanged;
 
     public void Init()
@@ -46,7 +47,7 @@ public class PlayerInventory : MonoBehaviour
 
         _items.Add(item);
         int index = _items.Count - 1;
-        OnItemAdded?.Invoke(item, index);
+        OnItemAdded?.Invoke(item, index, index == _currentPointer);
 
         return true;
     }

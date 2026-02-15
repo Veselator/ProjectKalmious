@@ -12,13 +12,19 @@ public abstract class BaseAbility : MonoBehaviour, IAbility
     protected bool _isReady = true;
 
     public Timer Cooldown => _cooldown;
+
+    private AbilitySO data;
+    public AbilitySO AbilityData => data;
+
     public event Action<IAbility> OnAct;
 
-    public virtual void Initialize(Transform ownerTransform, AbilitiesManager manager, Collider2D ownerCollider)
+    public virtual void Initialize(Transform ownerTransform, AbilitiesManager manager, Collider2D ownerCollider, AbilitySO abilityData)
     {
         _ownerTransform = ownerTransform;
         _manager = manager;
         _ownerCollider = ownerCollider;
+        data = abilityData;
+
         _cooldown = new Timer();
         _cooldown.OnEnd += () => _isReady = true;
     }
@@ -31,6 +37,7 @@ public abstract class BaseAbility : MonoBehaviour, IAbility
     public virtual void Do()
     {
         if (!CanDo()) return;
+
         _isReady = false;
         _cooldown.Start(_cooldownTime);
         Act();

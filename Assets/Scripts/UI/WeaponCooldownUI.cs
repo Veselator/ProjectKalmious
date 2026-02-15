@@ -45,7 +45,7 @@ public class WeaponCooldownUI : MonoBehaviour
         SubscribeToWeaponTimerEvents();
     }
 
-    private void HandleItemAdded(WeaponInventoryItemSO item, int id)
+    private void HandleItemAdded(WeaponInventoryItemSO item, int id, bool _)
     {
         if (id != _id) return;
 
