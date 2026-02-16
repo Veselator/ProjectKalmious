@@ -8,7 +8,7 @@ public class AvailableAbilitiesManager : MonoBehaviour
     [SerializeField] private AbilitiesManager _abilitiesManager;
     [SerializeField] private WavesManager _wavesManager;
 
-    private int _availablePoints = 100;
+    private int _availablePoints;
     private HashSet<string> _purchasedAbilities = new HashSet<string>();
 
     public int AvailablePoints => _availablePoints;

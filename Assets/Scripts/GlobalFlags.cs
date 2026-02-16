@@ -6,6 +6,7 @@ public class GlobalFlags : MonoBehaviour
     public static GlobalFlags Instance { get; private set; }
 
     public event Action<float> OnXpAdded;
+    public event Action<float, Transform> OnDamage;
     public event Action OnGameOver;
 
     private void Awake()
@@ -24,6 +25,12 @@ public class GlobalFlags : MonoBehaviour
             return;
 
         OnXpAdded?.Invoke(xp);
+    }
+
+    public void TakeDamage(float damage, Transform damagedObject)
+    {
+        if (damage <= 0f) return;
+        OnDamage?.Invoke(damage, damagedObject);
     }
 
     public void GameOver()

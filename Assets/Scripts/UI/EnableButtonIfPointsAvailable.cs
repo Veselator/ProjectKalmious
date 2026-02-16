@@ -22,7 +22,7 @@ public class EnableButtonIfPointsAvailable : MonoBehaviour
 
     private void OnDestroy()
     {
-        _chars.OnPointsChanged -= HandlePointsChanged;
+        if(_chars != null) _chars.OnPointsChanged -= HandlePointsChanged;
     }
 
     private void HandlePointsChanged(int points)
