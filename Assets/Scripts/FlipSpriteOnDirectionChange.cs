@@ -5,12 +5,12 @@ public class FlipSpriteOnDirectionChange : MonoBehaviour
     [SerializeField] private SpriteRenderer _linkedSprite;
     [SerializeField] private RigidbodyMovement _linkedMovement;
 
-    private void Start()
+    private void OnEnable()
     {
         _linkedMovement.OnDirectionChanged += HandleDirectionChanged;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         _linkedMovement.OnDirectionChanged -= HandleDirectionChanged;
     }

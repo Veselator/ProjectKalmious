@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 2159644798079263659}
   - component: {fileID: 6689956294957169661}
   - component: {fileID: 3767882141639195871}
+  - component: {fileID: 1041610128728268375}
   m_Layer: 7
   m_Name: SkeletonWithAK
   m_TagString: Untagged
@@ -461,6 +462,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ai: {fileID: -6072607272921689169}
   _health: {fileID: 2461327297969836941}
+--- !u!114 &1041610128728268375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693577908133504931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022378ede39595a43a6821af8a21f3e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ai: {fileID: -6072607272921689169}
 --- !u!1001 &6856508811890789874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -540,6 +554,10 @@ PrefabInstance:
     - target: {fileID: 7880838507217060209, guid: fcdc88665d4f06e4abc5c64e72fd6db0, type: 3}
       propertyPath: _targetLayers.m_Bits
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790825578791898443, guid: fcdc88665d4f06e4abc5c64e72fd6db0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

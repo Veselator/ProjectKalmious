@@ -1,14 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathParticlePool : MonoBehaviour
+public class SpawnParticlePool : MonoBehaviour
 {
     [SerializeField] private Transform _particlesParent;
     [SerializeField] private GameObject[] _particlePrefabs;
     [SerializeField] private int _initialPoolSize = 10;
-
-    [SerializeField] private float _minRandomScale = 0.8f;
-    [SerializeField] private float _maxRandomScale = 1.25f;
 
     private Queue<ParticleSystem> _pool = new Queue<ParticleSystem>();
 
@@ -19,15 +16,15 @@ public class DeathParticlePool : MonoBehaviour
         for (int i = 0; i < _initialPoolSize; i++)
             _pool.Enqueue(CreateInstance());
 
-        GlobalFlags.Instance.OnEnemyKilled += HandleEnemyKilled;
+        GlobalFlags.Instance.OnEnemySpawned += HandleEnemySpawned;
     }
 
     private void OnDestroy()
     {
-        GlobalFlags.Instance.OnEnemyKilled -= HandleEnemyKilled;
+        GlobalFlags.Instance.OnEnemySpawned -= HandleEnemySpawned;
     }
 
-    private void HandleEnemyKilled(BaseAI enemy, Vector3 position)
+    private void HandleEnemySpawned(BaseAI enemy, Vector3 position)
     {
         ParticleSystem ps = Get();
         ps.transform.position = position;
@@ -80,8 +77,6 @@ public class DeathParticlePool : MonoBehaviour
     private ParticleSystem CreateInstance()
     {
         GameObject obj = Instantiate(RandomParticleObject, _particlesParent);
-        obj.transform.localScale *= Random.Range(_minRandomScale, _maxRandomScale);
-
         ParticleSystem ps = obj.GetComponent<ParticleSystem>();
 
         var main = ps.main;

@@ -13,6 +13,7 @@ public abstract class BaseAI : MonoBehaviour
 
     protected float _lastUpdateTime;
     protected bool _isActive = true;
+    private float _distanceToPlayer;
 
     public bool IsActive
     {
@@ -22,7 +23,7 @@ public abstract class BaseAI : MonoBehaviour
 
     private GlobalFlags _globalFlags; // Проблема - связанность с конкретной реализацией глобальных флагов
 
-    public float DistanceToPlayer => _player != null ? Vector2.Distance(transform.position, _player.position) : float.MaxValue;
+    public float DistanceToPlayer => _distanceToPlayer;
 
     public event Action<BaseAI, Transform> OnInited;
 
@@ -51,12 +52,20 @@ public abstract class BaseAI : MonoBehaviour
     protected virtual void Update()
     {
         if (!_isActive) return;
+        UpdateDistanceToPlayer();
 
         if (Time.time >= _lastUpdateTime + _updateInterval)
         {
             _lastUpdateTime = Time.time;
             UpdateAI();
         }
+    }
+
+    private void UpdateDistanceToPlayer()
+    {
+        _distanceToPlayer = _player != null
+            ? Vector2.Distance(transform.position, _player.position)
+            : float.MaxValue;
     }
 
     protected Vector2 GetDirectionToPlayer()

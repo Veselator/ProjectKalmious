@@ -18,6 +18,7 @@ public class WavesManager : MonoBehaviour
     private int _waveId = 0;
     private List<GameObject> _aliveEnemies = new List<GameObject>();
     private EnemySettingsSO[] _allEnemies;
+    private GlobalFlags _globalFlags;
 
     private WaitForSeconds _spawnDelayCached;
     private WaitForSeconds _waveDelayCached;
@@ -38,7 +39,15 @@ public class WavesManager : MonoBehaviour
         _spawnDelayCached = new WaitForSeconds(_spawnInterval);
         _waveDelayCached = new WaitForSeconds(_timeBetweenWaves);
 
+        _globalFlags = GlobalFlags.Instance;
+        _globalFlags.OnGameOver += HandleGameOver;
+
         StartNextWave();
+    }
+
+    private void OnDestroy()
+    {
+        _globalFlags.OnGameOver -= HandleGameOver;
     }
 
     public void StartNextWave()
@@ -48,6 +57,11 @@ public class WavesManager : MonoBehaviour
         OnWaveStarted?.Invoke(_waveId);
         _allEnemies = _enemiesCMS.GetAllEnemies();
         StartCoroutine(SpawnWaveCoroutine());
+    }
+
+    private void HandleGameOver()
+    {
+        StopAllCoroutines();
     }
 
     private EnemySettingsSO GetWeightedRandomEnemy()

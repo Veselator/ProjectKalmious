@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CallGameOverOnDeath : MonoBehaviour
 {
+    private bool _isGameOver = false;
     [SerializeField] private Health _health;
 
     private void Start()
@@ -18,6 +17,8 @@ public class CallGameOverOnDeath : MonoBehaviour
 
     private void HandleDeath()
     {
+        if (_isGameOver) return;
+        _isGameOver = true;
         GlobalFlags.Instance.TriggerGameOver();
     }
 }

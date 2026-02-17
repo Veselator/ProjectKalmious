@@ -53,7 +53,6 @@ MonoBehaviour:
     overallDamageMultiplier: 1
     criticalChance: 0
   _cooldown: 0.15
-  _projectilePrefab: {fileID: 1949775956924483380, guid: c16ed0ef884184a45859fa601967fef3, type: 3}
   _shootPoint: {fileID: 8139823463736612944}
   _projectileSpeed: 10
   _projectilesPerShot: 1
@@ -219,7 +218,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 101
   m_Sprite: {fileID: 21300000, guid: 7537dc3f1c3794f4f8fc102490f6e77d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage:
-    damageHealth: 25
+    damageHealth: 15
     damageArmor: 0
     overallDamageMultiplier: 1
     criticalChance: 0
