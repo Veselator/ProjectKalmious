@@ -18,6 +18,6 @@ public class CallGameOverOnDeath : MonoBehaviour
 
     private void HandleDeath()
     {
-        GlobalFlags.Instance.GameOver();
+        GlobalFlags.Instance.TriggerGameOver();
     }
 }

@@ -7,6 +7,7 @@ public class GlobalFlags : MonoBehaviour
 
     public event Action<float> OnXpAdded;
     public event Action<float, Transform> OnDamage;
+    public event Action<BaseAI, Vector3> OnEnemyKilled;
     public event Action OnGameOver;
 
     private void Awake()
@@ -19,7 +20,7 @@ public class GlobalFlags : MonoBehaviour
         Instance = this;
     }
 
-    public void AddXp(float xp)
+    public void TriggerAddXp(float xp)
     {
         if (xp <= 0f)
             return;
@@ -27,13 +28,19 @@ public class GlobalFlags : MonoBehaviour
         OnXpAdded?.Invoke(xp);
     }
 
-    public void TakeDamage(float damage, Transform damagedObject)
+    public void TriggerTakeDamage(float damage, Transform damagedObject)
     {
         if (damage <= 0f) return;
         OnDamage?.Invoke(damage, damagedObject);
     }
 
-    public void GameOver()
+    public void TriggerEnemyKilled(BaseAI enemy, Vector3 enemyPosition)
+    {
+        if (enemy == null || enemyPosition == null) return;
+        OnEnemyKilled?.Invoke(enemy, enemyPosition);
+    }
+
+    public void TriggerGameOver()
     {
         OnGameOver?.Invoke();
     }

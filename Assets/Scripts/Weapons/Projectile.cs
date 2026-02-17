@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
     protected Vector3 _direction;
     protected float _currentTime = 0f;
     protected Collider2D _collider;
+    private bool _isHitted;
 
     public event Action<Collider2D> OnProjectileHit;
 
@@ -23,6 +24,7 @@ public class Projectile : MonoBehaviour
         _pool = pool;
         _currentTime = 0f;
         _collider = GetComponent<Collider2D>();
+        _isHitted = false;
     }
 
     private void Update()
@@ -47,12 +49,13 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!IsInTargetLayer(collision.gameObject.layer))
-            return;
+        if (_isHitted) return;
+        if (!IsInTargetLayer(collision.gameObject.layer)) return;
+
+        _isHitted = true;
 
         Health targetHealth = collision.GetComponent<Health>();
-        if (targetHealth != null)
-            targetHealth.TakeDamage(_damage, _collider);
+        if (targetHealth != null) targetHealth.TakeDamage(_damage, _collider);
 
         DestroyProjectile(collision);
     }

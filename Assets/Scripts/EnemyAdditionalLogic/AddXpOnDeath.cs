@@ -17,6 +17,6 @@ public class AddXpOnDeath : MonoBehaviour
 
     private void HandleDeath()
     {
-        GlobalFlags.Instance.AddXp(_addXp);
+        GlobalFlags.Instance.TriggerAddXp(_addXp);
     }
 }

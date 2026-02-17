@@ -42,6 +42,9 @@ public class PlayerCurrentWeapon : MonoBehaviour
         SetAllInitedWeapons();
 
         UpdateCurrentWeapon(_inventory.CurrentPointer);
+
+        IsInited = true;
+        OnInited?.Invoke();
     }
 
     private void OnDestroy()
@@ -62,9 +65,6 @@ public class PlayerCurrentWeapon : MonoBehaviour
                 _instantiatedWeapons[weaponItem.Name] = weaponObject;
             }
         }
-
-        IsInited = true;
-        OnInited?.Invoke();
     }
 
     private void SubscribeToInventory()
