@@ -457,8 +457,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862488c96326cbc4299b274e54add9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _addXp: 2
+  _addXp: 20
   _health: {fileID: 2461327297969836941}
+  _xpPointPrefab: {fileID: 4250902717814530755, guid: 742d25df776fc7b439b61230dcad8f2d, type: 3}
+  _spawnRadius: 0.5
 --- !u!50 &-6082272536332592742
 Rigidbody2D:
   serializedVersion: 4

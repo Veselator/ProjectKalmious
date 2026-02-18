@@ -289,6 +289,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _addXp: 2
   _health: {fileID: 2461327297969836941}
+  _xpPointPrefab: {fileID: 4250902717814530755, guid: 742d25df776fc7b439b61230dcad8f2d, type: 3}
+  _spawnRadius: 0.5
 --- !u!50 &-6082272536332592742
 Rigidbody2D:
   serializedVersion: 4

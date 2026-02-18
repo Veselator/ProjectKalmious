@@ -757,4 +757,33 @@ public class UniversalAnimator : MonoBehaviour
         else
             return n1 * (t -= 2.625f / d1) * t + 0.984375f;
     }
+
+    public void AnimateAnchoredPosition(Vector2 targetPosition, float duration, Action onComplete = null)
+    {
+        StartCoroutine(AnimateAnchoredPositionCoroutine(targetPosition, duration, onComplete));
+    }
+
+    public void AnimateAnchoredPosition(Vector2 startPosition, Vector2 targetPosition, float duration, Action onComplete = null)
+    {
+        _rect.anchoredPosition = startPosition;
+        StartCoroutine(AnimateAnchoredPositionCoroutine(targetPosition, duration, onComplete));
+    }
+
+    private IEnumerator AnimateAnchoredPositionCoroutine(Vector2 targetPosition, float duration, Action onComplete)
+    {
+        Vector2 startPosition = _rect.anchoredPosition;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+            float easedT = EaseOutQuad(t);
+            _rect.anchoredPosition = Vector2.Lerp(startPosition, targetPosition, easedT);
+            yield return null;
+        }
+
+        _rect.anchoredPosition = targetPosition;
+        onComplete?.Invoke();
+    }
 }

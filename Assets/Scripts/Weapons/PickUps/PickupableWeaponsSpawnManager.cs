@@ -7,6 +7,7 @@ public class PickupableWeaponsSpawnManager : MonoBehaviour
     // Отвечает за спавн подбираемых оружий
     [SerializeField] private WavesManager _wavesManager;
     [SerializeField] private PlayerInventory _playerInventory;
+    [SerializeField] private PointersManager _pointsManager;
 
     [SerializeField] private GameObject _pickupPrefab;
     [SerializeField] private Transform[] _spawnPoints;
@@ -44,12 +45,11 @@ public class PickupableWeaponsSpawnManager : MonoBehaviour
         }
     }
 
-    // Да, нарушение SRP
     private void SpawnWeapon(WeaponInventoryItemSO weapon)
     {
         Vector3 randomPosition = _spawnPoints[Random.Range(0, _spawnPoints.Length)].position;
 
         GameObject pickupObject = Instantiate(_pickupPrefab, randomPosition, Quaternion.identity);
-        pickupObject.GetComponent<IPickupableWeapon>().Initialize(weapon, _playerInventory);
+        pickupObject.GetComponent<IPickupableWeapon>().Initialize(weapon, _playerInventory, _pointsManager);
     }
 }

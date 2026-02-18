@@ -4,7 +4,9 @@ using UnityEngine;
 public class PointersManager : MonoBehaviour
 {
     [SerializeField] private GameObject _pointerPrefab;
+    [SerializeField] private Transform _pointersParent;
     [SerializeField] private Transform _playerTransform;
+
     [SerializeField] private int _initialPoolSize = 20;
     [SerializeField] private float _orbitRadius = 200f;
     [SerializeField] private float _hideDistance = 8f;
@@ -14,17 +16,13 @@ public class PointersManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < _initialPoolSize; i++)
-            _pool.Enqueue(CreateInstance());
-    }
+        for (int i = 0; i < _initialPoolSize; i++) _pool.Enqueue(CreateInstance());
 
-    private void OnEnable()
-    {
         GlobalFlags.Instance.OnEnemySpawned += HandleEnemySpawned;
         GlobalFlags.Instance.OnEnemyKilled += HandleEnemyKilled;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         GlobalFlags.Instance.OnEnemySpawned -= HandleEnemySpawned;
         GlobalFlags.Instance.OnEnemyKilled -= HandleEnemyKilled;
@@ -86,8 +84,7 @@ public class PointersManager : MonoBehaviour
     {
         if (_pool.Count > 0)
         {
-            PointerUI pointer = _pool.Dequeue();
-            return pointer;
+            return _pool.Dequeue();
         }
         return CreateInstance();
     }
@@ -100,7 +97,7 @@ public class PointersManager : MonoBehaviour
 
     private PointerUI CreateInstance()
     {
-        GameObject obj = Instantiate(_pointerPrefab, transform);
+        GameObject obj = Instantiate(_pointerPrefab, _pointersParent);
         PointerUI pointer = obj.GetComponent<PointerUI>();
         obj.SetActive(false);
         return pointer;
