@@ -16,6 +16,6 @@ public class CharacteristicIncreaser : MonoBehaviour
     {
         if (!_chars.ArePointsAvailable) return;
 
-        _chars.AddPoint(_charType);
+        _chars.AddPoints(_charType);
     }
 }

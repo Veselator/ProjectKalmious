@@ -5,21 +5,10 @@ public class HealthTrackingUI : MonoBehaviour
 {
     [SerializeField] private Health _health;
     [SerializeField] private Image _progress;
+    [SerializeField] private float _changeSpeed = 3f;
 
-    private void Start()
+    private void Update()
     {
-        _health.OnHealthChanged += HandleChange;
-
-        HandleChange(0f);
-    }
-
-    private void OnDestroy()
-    {
-        _health.OnHealthChanged -= HandleChange;
-    }
-
-    private void HandleChange(float _)
-    {
-        _progress.fillAmount = _health.CurrentHealthInPercentage;
+        _progress.fillAmount = Mathf.Lerp(_progress.fillAmount, _health.CurrentHealthInPercentage, _changeSpeed * Time.deltaTime);
     }
 }

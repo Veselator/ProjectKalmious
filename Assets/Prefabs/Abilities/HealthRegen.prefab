@@ -9774,7 +9774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76e380b003336e641b0416a6b00302fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldownTime: 35
+  _cooldownTime: 15
   _regenAmount: 10
   _regenTime: 5
 --- !u!114 &1664404045035213899

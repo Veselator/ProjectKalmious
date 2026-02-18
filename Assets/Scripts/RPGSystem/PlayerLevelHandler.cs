@@ -4,6 +4,7 @@ using System;
 public class PlayerLevelHandler : MonoBehaviour
 {
     public static PlayerLevelHandler Instance { get; private set; }
+    private GlobalFlags _globalFlags;
 
     public event Action<int> OnLevelChanged;
     public event Action<float, float> OnXPChanged;
@@ -31,14 +32,15 @@ public class PlayerLevelHandler : MonoBehaviour
         _currentXPGoal = CalculateXPGoal(_currentLevel);
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        GlobalFlags.Instance.OnXpAdded += AddXP;
+        _globalFlags = GlobalFlags.Instance;
+        _globalFlags.OnXpAdded += AddXP;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        GlobalFlags.Instance.OnXpAdded -= AddXP;
+        _globalFlags.OnXpAdded -= AddXP;
     }
 
     private float CalculateXPGoal(int level)
@@ -57,7 +59,9 @@ public class PlayerLevelHandler : MonoBehaviour
             _currentXP -= _currentXPGoal;
             _currentLevel++;
             _currentXPGoal = CalculateXPGoal(_currentLevel);
+
             OnLevelChanged?.Invoke(_currentLevel);
+            _globalFlags.TriggerLevelUp();
         }
 
         OnXPChanged?.Invoke(_currentXP, _currentXPGoal);

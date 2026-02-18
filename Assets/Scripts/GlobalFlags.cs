@@ -9,6 +9,7 @@ public class GlobalFlags : MonoBehaviour
     public event Action<BaseAI, Vector3> OnEnemySpawned;
     public event Action<float, Transform> OnDamage;
     public event Action<BaseAI, Vector3> OnEnemyKilled;
+    public event Action OnLevelUp;
     public event Action OnGameOver;
 
     private void Awake()
@@ -45,6 +46,11 @@ public class GlobalFlags : MonoBehaviour
     {
         if (enemy == null || spawnPosition == null) return;
         OnEnemySpawned?.Invoke(enemy, spawnPosition);
+    }
+
+    public void TriggerLevelUp()
+    {
+        OnLevelUp?.Invoke();
     }
 
     public void TriggerGameOver()

@@ -5004,7 +5004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a279663d380368549b0d18431c77b2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldownTime: 25
+  _cooldownTime: 15
   _abilityActionTime: 5
 --- !u!114 &4191411721029990463
 MonoBehaviour:

@@ -5,7 +5,8 @@ public class CharacteristicsHandler : MonoBehaviour
 {
     // Отвечает за учёт текущих характеристик игрока
 
-    private const int MaxCharacteristicValue = 100;
+    private const int _maxCharacteristicValue = 100;
+    public int MaxChars => _maxCharacteristicValue;
 
     [SerializeField] private PlayerLevelHandler _levelHandler;
 
@@ -24,7 +25,7 @@ public class CharacteristicsHandler : MonoBehaviour
         get => _speed;
         private set
         {
-            _speed = Mathf.Clamp(value, 0f, MaxCharacteristicValue);
+            _speed = Mathf.Clamp(value, 0f, _maxCharacteristicValue);
         }
     }
 
@@ -33,7 +34,7 @@ public class CharacteristicsHandler : MonoBehaviour
         get => _strength;
         private set
         {
-            _strength = Mathf.Clamp(value, 0f, MaxCharacteristicValue);
+            _strength = Mathf.Clamp(value, 0f, _maxCharacteristicValue);
         }
     }
 
@@ -42,7 +43,7 @@ public class CharacteristicsHandler : MonoBehaviour
         get => _stamina;
         private set
         {
-            _stamina = Mathf.Clamp(value, 0, MaxCharacteristicValue);
+            _stamina = Mathf.Clamp(value, 0, _maxCharacteristicValue);
         }
     }
 
@@ -51,7 +52,7 @@ public class CharacteristicsHandler : MonoBehaviour
         get => _intelligence;
         private set
         {
-            _intelligence = Mathf.Clamp(value, 0, MaxCharacteristicValue);
+            _intelligence = Mathf.Clamp(value, 0, _maxCharacteristicValue);
         }
     }
 
@@ -60,7 +61,7 @@ public class CharacteristicsHandler : MonoBehaviour
         get => _luck;
         private set
         {
-            _luck = Mathf.Clamp(value, 0, MaxCharacteristicValue);
+            _luck = Mathf.Clamp(value, 0, _maxCharacteristicValue);
         }
     }
 
@@ -114,37 +115,37 @@ public class CharacteristicsHandler : MonoBehaviour
         };
     }
 
-    public void AddPoint(CharacteristicType type)
+    public void AddPoints(CharacteristicType type, int num = 1)
     {
-        if (_pointsToAdd <= 0) return;
+        if (_pointsToAdd - num < 0) return;
 
         switch (type)
         {
             case CharacteristicType.Speed:
-                if (_speed >= MaxCharacteristicValue) return;
-                Speed += 1;
+                if (_speed >= _maxCharacteristicValue) return;
+                Speed += num;
                 break;
             case CharacteristicType.Strength:
-                if (_strength >= MaxCharacteristicValue) return;
-                Strength += 1;
+                if (_strength >= _maxCharacteristicValue) return;
+                Strength += num;
                 break;
             case CharacteristicType.Stamina:
-                if (_stamina >= MaxCharacteristicValue) return;
-                Stamina += 1;
+                if (_stamina >= _maxCharacteristicValue) return;
+                Stamina += num;
                 break;
             case CharacteristicType.Intelligence:
-                if (_intelligence >= MaxCharacteristicValue) return;
-                Intelligence += 1;
+                if (_intelligence >= _maxCharacteristicValue) return;
+                Intelligence += num;
                 break;
             case CharacteristicType.Luck:
-                if (_luck >= MaxCharacteristicValue) return;
-                Luck += 1;
+                if (_luck >= _maxCharacteristicValue) return;
+                Luck += num;
                 break;
             default:
                 return;
         }
 
-        PointsToAdd -= 1;
+        PointsToAdd -= num;
         OnCharacteristicsChanged?.Invoke(type);
     }
 }

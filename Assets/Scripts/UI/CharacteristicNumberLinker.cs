@@ -28,6 +28,6 @@ public class CharacteristicNumberLinker : MonoBehaviour
     {
         if (type != _targetType) return;
 
-        _pointsText.text = _characteristics.GetCharacteristicUncalculated(_targetType).ToString();
+        _pointsText.text = $"{_characteristics.GetCharacteristicUncalculated(_targetType).ToString()} / {_characteristics.MaxChars}";
     }
 }

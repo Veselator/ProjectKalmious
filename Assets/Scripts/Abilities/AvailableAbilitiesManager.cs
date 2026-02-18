@@ -38,6 +38,16 @@ public class AvailableAbilitiesManager : MonoBehaviour
         return _settings.Abilities[id];
     }
 
+    public bool IsAnythingAffordable()
+    {
+        foreach (var ability in _settings.Abilities)
+        {
+            if (!_purchasedAbilities.Contains(ability.ID) && _availablePoints >= ability.PointsToUnlock) return true;
+        }
+
+        return false;
+    }
+
     public bool IsAffordable(string id)
     {
         AbilitySO ability = FindAbilityById(id);

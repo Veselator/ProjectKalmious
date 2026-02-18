@@ -26,7 +26,7 @@ public class UniversalAnimator : MonoBehaviour
 
     [SerializeField] private ParticleSystem[] _particles;
 
-    private void Start()
+    private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _image = GetComponent<Image>();
@@ -522,7 +522,7 @@ public class UniversalAnimator : MonoBehaviour
 
     // ================= COLOR HELPERS =================
 
-    private Color GetCurrentColor()
+    public Color GetCurrentColor()
     {
         if (_spriteRenderer != null) return _spriteRenderer.color;
         if (_image != null) return _image.color;
@@ -530,7 +530,7 @@ public class UniversalAnimator : MonoBehaviour
         return Color.white;
     }
 
-    private void SetColor(Color color)
+    public void SetColor(Color color)
     {
         if (_spriteRenderer != null) _spriteRenderer.color = color;
         if (_image != null) _image.color = color;

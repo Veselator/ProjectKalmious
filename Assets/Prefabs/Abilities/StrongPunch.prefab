@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2809d8f46dc1f41aaf37920021e3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldownTime: 30
+  _cooldownTime: 15
   _radius: 6.36
   _damage:
     damageHealth: 60
