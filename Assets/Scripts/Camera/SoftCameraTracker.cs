@@ -11,7 +11,7 @@ public class SoftCameraTracker : MonoBehaviour, ICameraTracker
     }
 
     [Header("“о, насколько плавно будет движение камеры")]
-    [SerializeField] protected float blendFactor = 0.05f;
+    [SerializeField] protected float _speed = 5f;
 
     protected Vector3 TargetPosition => GetMousePosition();
 
@@ -27,6 +27,6 @@ public class SoftCameraTracker : MonoBehaviour, ICameraTracker
 
     public virtual Vector3 GetCurrentPosition(Vector3 targetPosition)
     {
-        return Vector3.Lerp(transform.position, targetPosition, blendFactor);
+        return Vector3.Lerp(transform.position, targetPosition, _speed * Time.deltaTime);
     }
 }

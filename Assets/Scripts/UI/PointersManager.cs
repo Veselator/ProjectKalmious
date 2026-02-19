@@ -98,8 +98,8 @@ public class PointersManager : MonoBehaviour
     private PointerUI CreateInstance()
     {
         GameObject obj = Instantiate(_pointerPrefab, _pointersParent);
-        PointerUI pointer = obj.GetComponent<PointerUI>();
         obj.SetActive(false);
+        PointerUI pointer = obj.GetComponent<PointerUI>();
         return pointer;
     }
 }
