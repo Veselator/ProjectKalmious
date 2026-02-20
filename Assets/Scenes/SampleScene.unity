@@ -132,9 +132,12 @@ GameObject:
   m_Component:
   - component: {fileID: 13313233}
   - component: {fileID: 13313234}
+<<<<<<< HEAD
   - component: {fileID: 13313235}
   - component: {fileID: 13313237}
   - component: {fileID: 13313236}
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
   m_Layer: 5
   m_Name: LevelProgressBar
   m_TagString: Untagged
@@ -182,6 +185,7 @@ MonoBehaviour:
   _levelText: {fileID: 1423984515}
   _xpText: {fileID: 401562103}
   _level: {fileID: 634462611}
+<<<<<<< HEAD
 --- !u!114 &13313235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +277,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
 --- !u!1001 &25711464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -549,8 +555,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 500930780}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &63484376
@@ -649,6 +654,7 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
+<<<<<<< HEAD
 --- !u!114 &63484380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,6 +879,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160315751}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
 --- !u!1 &169573772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +1862,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 232523039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &395964133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,6 +1997,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395964133}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
 --- !u!1 &401562101
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,6 +2412,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437152879}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!1 &460367956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2536,6 +2548,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _linkedButton: {fileID: 460367958}
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
 --- !u!1 &479074337
 GameObject:
   m_ObjectHideFlags: 0
@@ -2566,38 +2580,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 232523039}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &500930779
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 500930780}
-  m_Layer: 0
-  m_Name: Background
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &500930780
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500930779}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1153167782}
-  m_Father: {fileID: 63484375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &512346542
 GameObject:
@@ -2674,7 +2656,6 @@ GameObject:
   - component: {fileID: 534096908}
   - component: {fileID: 534096909}
   - component: {fileID: 534096910}
-  - component: {fileID: 534096911}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -2742,18 +2723,6 @@ MonoBehaviour:
   m_Spacing: {x: 60.7, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
---- !u!114 &534096911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534096907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44673f3d95bd2314c87fc1aadde812dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &556074648
 GameObject:
   m_ObjectHideFlags: 0
@@ -3029,6 +2998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b18b17a12ab204795701fd5c724097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!1 &675365088
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,6 +3061,8 @@ MonoBehaviour:
   _backgroundStartColor: {r: 0, g: 0, b: 0, a: 0}
   _textColor: {r: 1, g: 0, b: 0, a: 1}
   _gameOverString: Game Over
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
 --- !u!1 &684302733
 GameObject:
   m_ObjectHideFlags: 0
@@ -3102,7 +3074,6 @@ GameObject:
   - component: {fileID: 684302734}
   - component: {fileID: 684302736}
   - component: {fileID: 684302735}
-  - component: {fileID: 684302737}
   m_Layer: 5
   m_Name: AbilityHandler
   m_TagString: Untagged
@@ -3167,18 +3138,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _abilitiesManager: {fileID: 1928104846}
   _abilityCellPrefab: {fileID: 4827738953710665387, guid: c817f4b53832c704ca270b0939abb5a9, type: 3}
---- !u!114 &684302737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684302733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44673f3d95bd2314c87fc1aadde812dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &709660910
 GameObject:
   m_ObjectHideFlags: 0
@@ -4341,6 +4300,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815386141}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!1 &818261601
 GameObject:
   m_ObjectHideFlags: 0
@@ -4476,6 +4436,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _linkedButton: {fileID: 818261603}
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
 --- !u!1 &887230157
 GameObject:
   m_ObjectHideFlags: 0
@@ -4754,7 +4716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13578582, g: 1, b: 0, a: 0.98039216}
+  m_Color: {r: 0.13578582, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5607,9 +5569,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1149033330}
   - component: {fileID: 1149033331}
+<<<<<<< HEAD
   - component: {fileID: 1149033332}
   - component: {fileID: 1149033334}
   - component: {fileID: 1149033333}
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
   m_Layer: 5
   m_Name: HealthTracking
   m_TagString: Untagged
@@ -5653,6 +5618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 430080827}
   _progress: {fileID: 715495501}
+<<<<<<< HEAD
   _changeSpeed: 3
 --- !u!114 &1149033332
 MonoBehaviour:
@@ -5780,6 +5746,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
 --- !u!1 &1158558435
 GameObject:
   m_ObjectHideFlags: 0
@@ -5811,6 +5779,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 232523039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1202584759
 GameObject:
   m_ObjectHideFlags: 0
@@ -6131,6 +6100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particles: []
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
 --- !u!1 &1328015222
 GameObject:
   m_ObjectHideFlags: 0
@@ -6418,7 +6389,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8560856041901220081, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
   m_PrefabInstance: {fileID: 4142472644694289158}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058095386}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2951684dd8491ad4badb2395ed02158b, type: 3}
@@ -6429,7 +6400,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5936433483320922262, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
   m_PrefabInstance: {fileID: 4142472644694289158}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058095386}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09c90203e3842c7438e3c35c595282dc, type: 3}
@@ -6444,9 +6415,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1411276293}
+<<<<<<< HEAD
   - component: {fileID: 1411276294}
   - component: {fileID: 1411276296}
   - component: {fileID: 1411276295}
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
   m_Layer: 5
   m_Name: RightPanel
   m_TagString: Untagged
@@ -6477,6 +6451,7 @@ RectTransform:
   m_AnchoredPosition: {x: -71, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
 --- !u!114 &1411276294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6517,6 +6492,8 @@ MonoBehaviour:
   _animator: {fileID: 1411276295}
   _startPos: {x: 90, y: 0}
   _duration: 0.4
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
 --- !u!1 &1423984513
 GameObject:
   m_ObjectHideFlags: 0
@@ -7032,11 +7009,14 @@ Transform:
   - {fileID: 1814148252}
   - {fileID: 200247113}
   - {fileID: 1928104845}
+<<<<<<< HEAD
   - {fileID: 675365089}
   - {fileID: 243933689}
   - {fileID: 1229953713}
   - {fileID: 1934237994}
   - {fileID: 176998312}
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1583233658
@@ -31197,44 +31177,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814176966}
   m_CullTransparentMesh: 1
---- !u!1 &1837533382
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1837533383}
-  m_Layer: 5
-  m_Name: GameOverHandler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1837533383
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837533382}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2042294776}
-  - {fileID: 460367957}
-  - {fileID: 818261602}
-  m_Father: {fileID: 1202584763}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1856340171
 GameObject:
   m_ObjectHideFlags: 0
@@ -32046,6 +31988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 22563f11c2f08c344a1beec2187a4b37, type: 2}
+<<<<<<< HEAD
 --- !u!1 &2042294775
 GameObject:
   m_ObjectHideFlags: 0
@@ -32180,6 +32123,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042294775}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
 --- !u!1 &2057427039
 GameObject:
   m_ObjectHideFlags: 0
@@ -32211,6 +32156,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 232523039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &2058095386 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6613947213132426967, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
@@ -32329,6 +32275,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0.5307, y: -6.2735}
   m_SizeDelta: {x: 54.4759, y: 39.6575}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
 --- !u!1 &2100322180
 GameObject:
   m_ObjectHideFlags: 0
@@ -32618,10 +32566,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6613947213132426967, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2058095389}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
 --- !u!4 &4142472644694289159 stripped
 Transform:
@@ -32755,6 +32700,9 @@ SceneRoots:
   - {fileID: 1056357636}
   - {fileID: 752065811}
   - {fileID: 1975703192}
+<<<<<<< HEAD
   - {fileID: 1202584763}
   - {fileID: 2078087696}
   - {fileID: 20156859}
+=======
+>>>>>>> parent of 819ee77 (Game over + particles for abilities)
