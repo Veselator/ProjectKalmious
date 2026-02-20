@@ -12,10 +12,6 @@ public class SlotDeleteHandler : MonoBehaviour
     {
         _button = GetComponent<Button>();
         _button.onClick.AddListener(OnClick);
-    }
-
-    private void Start()
-    {
         _psm = PlayerSavesManager.Instance;
     }
 

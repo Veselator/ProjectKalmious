@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    // Основной контроллер камеры
-
     private ICameraTracker _tracker;
     [SerializeField] private Transform _target;
     private Transform _defaultTracker;
