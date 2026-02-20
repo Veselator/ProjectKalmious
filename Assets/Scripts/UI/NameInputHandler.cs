@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,8 @@ public class NameInputHandler : MonoBehaviour
     [SerializeField] private TMP_InputField _inputField;
     [SerializeField] private Button _confirmButton;
     [SerializeField] private GameObject _nameInputPanel;
+
+    [SerializeField] private FixedPointsCameraTracker _camera;
 
     private void Awake()
     {
@@ -27,9 +30,9 @@ public class NameInputHandler : MonoBehaviour
 
         PlayerSavesManager.Instance.CreateNewPlayer(playerName);
 
-        _nameInputPanel.SetActive(false);
+        _camera.SetTarget(1);
 
-        // Переход на экран 2
+        _nameInputPanel.SetActive(false);
     }
 
     private void OnDestroy()

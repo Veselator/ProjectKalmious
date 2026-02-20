@@ -12,66 +12,51 @@ public class LevelButtonHandler : MonoBehaviour
 
     [SerializeField] private string _lockedFormat = "Нужен ур. {0} на карте {1}";
 
-    private void OnEnable()
+    private PlayerSavesManager _savesManager;
+
+    private void Start()
     {
-        if (PlayerSavesManager.Instance != null)
-            PlayerSavesManager.Instance.OnDataChanged += HandleDataChanged;
-
-        Refresh();
-    }
-
-    private void OnDisable()
-    {
-        if (PlayerSavesManager.Instance != null)
-            PlayerSavesManager.Instance.OnDataChanged -= HandleDataChanged;
-    }
-
-    private void Awake()
-    {
-        if (_button != null)
-            _button.onClick.AddListener(OnClick);
-    }
-
-    public void Refresh()
-    {
-        if (_levelDataSO == null) return;
-        if (PlayerSavesManager.Instance == null || PlayerSavesManager.Instance.CurrentSlotIndex < 0) return;
-
-        PlayerData data = PlayerSavesManager.Instance.GetCurrentData();
-        bool unlocked = _levelDataSO.IsUnlocked(data);
-
-        if (_titleText != null)
-            _titleText.text = _levelDataSO.LevelName;
-
-        if (_button != null)
-            _button.interactable = unlocked;
-
-        if (_inactiveVisual != null)
-            _inactiveVisual.SetActive(!unlocked);
-
-        if (_unactiveText != null)
-        {
-            _unactiveText.gameObject.SetActive(!unlocked);
-            if (!unlocked)
-                _unactiveText.text = string.Format(_lockedFormat, _levelDataSO.RequiredMaxLevel, _levelDataSO.RequiredMapId + 1);
-        }
-    }
-
-    private void OnClick()
-    {
-        if (_levelDataSO == null || PlayerSavesManager.Instance == null) return;
-
-        PlayerSavesManager.Instance.UpdateLastSelectedLevel(_levelDataSO.LevelId);
-    }
-
-    private void HandleDataChanged(int slotIndex, PlayerData data)
-    {
-        Refresh();
+        _savesManager = PlayerSavesManager.Instance;
+        _button.onClick.AddListener(OnClick);
+        _savesManager.OnSaveSelected += HandleSaveSelected;
+        _savesManager.OnDataChanged += HandleDataChanged;
     }
 
     private void OnDestroy()
     {
-        if (_button != null)
-            _button.onClick.RemoveListener(OnClick);
+        _button.onClick.RemoveListener(OnClick);
+        _savesManager.OnSaveSelected -= HandleSaveSelected;
+        _savesManager.OnDataChanged -= HandleDataChanged;
+    }
+
+    private void HandleSaveSelected(int slotIndex, PlayerData data)
+    {
+        ApplyState(data);
+    }
+
+    private void HandleDataChanged(int slotIndex, PlayerData data)
+    {
+        ApplyState(data);
+    }
+
+    private void ApplyState(PlayerData data)
+    {
+        if (_levelDataSO == null) return;
+
+        bool unlocked = _levelDataSO.IsUnlocked(data);
+
+        _titleText.text = _levelDataSO.LevelName;
+        _button.interactable = unlocked;
+        _inactiveVisual.SetActive(!unlocked);
+
+        _unactiveText.gameObject.SetActive(!unlocked);
+        if (!unlocked)
+            _unactiveText.text = string.Format(_lockedFormat, _levelDataSO.RequiredMaxLevel, _levelDataSO.RequiredMapId + 1);
+    }
+
+    private void OnClick()
+    {
+        if (_levelDataSO == null) return;
+        _savesManager.UpdateLastSelectedLevel(_levelDataSO.LevelId);
     }
 }

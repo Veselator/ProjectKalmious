@@ -4,31 +4,25 @@ using UnityEngine;
 public class LevelSelectTitle : MonoBehaviour
 {
     [SerializeField] private TMP_Text _mainTitle;
+    private PlayerSavesManager _playerSavesManager;
 
-    private void OnEnable()
+    private void Start()
     {
-        Refresh();
+        _playerSavesManager = PlayerSavesManager.Instance;
 
-        if (PlayerSavesManager.Instance != null)
-            PlayerSavesManager.Instance.OnDataChanged += HandleDataChanged;
+        _playerSavesManager.OnSaveSelected += Refresh;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        if (PlayerSavesManager.Instance != null)
-            PlayerSavesManager.Instance.OnDataChanged -= HandleDataChanged;
+        _playerSavesManager.OnSaveSelected -= Refresh;
     }
 
-    public void Refresh()
+    public void Refresh(int id, PlayerData data)
     {
         if (_mainTitle == null) return;
-        if (PlayerSavesManager.Instance == null || PlayerSavesManager.Instance.CurrentSlotIndex < 0) return;
+        if (_playerSavesManager.CurrentSlotIndex < 0) return;
 
-        _mainTitle.text = PlayerSavesManager.Instance.GetCurrentData().Name;
-    }
-
-    private void HandleDataChanged(int slotIndex, PlayerData data)
-    {
-        Refresh();
+        _mainTitle.text = data.Name;
     }
 }

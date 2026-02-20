@@ -4,19 +4,23 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class LevelStartButton : MonoBehaviour
 {
-    private void Awake()
+    private Button _button;
+    private GameSceneManager _sceneManager;
+
+    private void Start()
     {
-        GetComponent<Button>().onClick.AddListener(OnClick);
+        _button = GetComponent<Button>();
+        _sceneManager = GameSceneManager.Instance;
+        _button.onClick.AddListener(OnClick);
     }
 
     private void OnClick()
     {
-        if (GameSceneManager.Instance != null)
-            GameSceneManager.Instance.LoadGame();
+        _sceneManager.LoadGame();
     }
 
     private void OnDestroy()
     {
-        GetComponent<Button>().onClick.RemoveListener(OnClick);
+        _button.onClick.RemoveListener(OnClick);
     }
 }

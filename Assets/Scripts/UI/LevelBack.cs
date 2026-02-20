@@ -4,9 +4,12 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class LevelBack : MonoBehaviour
 {
-    private void Awake()
+    private Button _button;
+
+    private void Start()
     {
-        GetComponent<Button>().onClick.AddListener(OnClick);
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(OnClick);
     }
 
     private void OnClick()
@@ -16,6 +19,6 @@ public class LevelBack : MonoBehaviour
 
     private void OnDestroy()
     {
-        GetComponent<Button>().onClick.RemoveListener(OnClick);
+        _button.onClick.RemoveListener(OnClick);
     }
 }

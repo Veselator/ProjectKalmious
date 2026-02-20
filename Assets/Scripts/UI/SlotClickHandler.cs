@@ -11,6 +11,8 @@ public class SlotClickHandler : MonoBehaviour
     private PlayerSavesManager _savesManager;
     private Button _button;
 
+    [SerializeField] private FixedPointsCameraTracker _camera;
+
     [SerializeField] private string _emptySlotText = "Пустой слот";
 
     private void Awake()
@@ -22,20 +24,18 @@ public class SlotClickHandler : MonoBehaviour
     private void Start()
     {
         _savesManager = PlayerSavesManager.Instance;
-    }
-
-    private void OnEnable()
-    {
         RefreshLabel();
 
         _savesManager.OnNewSlotCreated += HandleSlotChanged;
         _savesManager.OnSlotDeleted += HandleSlotDeleted;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         _savesManager.OnNewSlotCreated -= HandleSlotChanged;
         _savesManager.OnSlotDeleted -= HandleSlotDeleted;
+
+        _button.onClick.RemoveListener(OnClick);
     }
 
     private void OnClick()
@@ -50,7 +50,8 @@ public class SlotClickHandler : MonoBehaviour
         else
         {
             _savesManager.SelectSlot(_slotIndex);
-            // Переход на экран 2
+
+            _camera.SetTarget(1);
         }
     }
 
@@ -74,10 +75,5 @@ public class SlotClickHandler : MonoBehaviour
     {
         if (index == _slotIndex)
             RefreshLabel();
-    }
-
-    private void OnDestroy()
-    {
-        _button.onClick.RemoveListener(OnClick);
     }
 }

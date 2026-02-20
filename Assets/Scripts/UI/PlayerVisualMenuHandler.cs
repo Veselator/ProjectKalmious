@@ -6,34 +6,35 @@ public class PlayerVisualMenuHandler : MonoBehaviour
     [SerializeField] private Image _characterImage;
     [SerializeField] private PlayerVisualsSO _visualsSO;
 
-    private void OnEnable()
-    {
-        if (PlayerSavesManager.Instance != null)
-            PlayerSavesManager.Instance.OnDataChanged += HandleDataChanged;
+    private PlayerSavesManager _savesManager;
 
-        Refresh();
+    private void Start()
+    {
+        _savesManager = PlayerSavesManager.Instance;
+        _savesManager.OnSaveSelected += HandleSaveSelected;
+        _savesManager.OnDataChanged += HandleDataChanged;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        if (PlayerSavesManager.Instance != null)
-            PlayerSavesManager.Instance.OnDataChanged -= HandleDataChanged;
+        _savesManager.OnSaveSelected -= HandleSaveSelected;
+        _savesManager.OnDataChanged -= HandleDataChanged;
     }
 
-    public void Refresh()
+    private void HandleSaveSelected(int slotIndex, PlayerData data)
     {
-        if (_characterImage == null || _visualsSO == null) return;
-        if (PlayerSavesManager.Instance == null || PlayerSavesManager.Instance.CurrentSlotIndex < 0) return;
-
-        int visualId = PlayerSavesManager.Instance.GetCurrentData().VisualId;
-        Sprite sprite = _visualsSO.GetVisual(visualId);
-
-        if (sprite != null)
-            _characterImage.sprite = sprite;
+        ApplyVisual(data.VisualId);
     }
 
     private void HandleDataChanged(int slotIndex, PlayerData data)
     {
-        Refresh();
+        ApplyVisual(data.VisualId);
+    }
+
+    private void ApplyVisual(int visualId)
+    {
+        Sprite sprite = _visualsSO.GetVisual(visualId);
+        if (sprite != null)
+            _characterImage.sprite = sprite;
     }
 }
