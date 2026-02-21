@@ -10,6 +10,7 @@ public class LevelButtonHandler : MonoBehaviour
     [SerializeField] private TMP_Text _numberText;
     [SerializeField] private Button _button;
     [SerializeField] private Image _iconImage;
+    [SerializeField] private GameObject _selectedVisual;
 
     [SerializeField] private LevelDataSO _levelDataSO;
 
@@ -56,8 +57,9 @@ public class LevelButtonHandler : MonoBehaviour
         _numberText.text = string.Format(_numberFormat, _levelDataSO.RequiredMapId + 1);
 
         _unactiveText.gameObject.SetActive(!unlocked);
-        if (!unlocked)
-            _unactiveText.text = string.Format(_lockedFormat, _levelDataSO.RequiredMaxLevel, _levelDataSO.RequiredMapId + 1);
+
+        if (!unlocked) _unactiveText.text = string.Format(_lockedFormat, _levelDataSO.RequiredMaxLevel, _levelDataSO.RequiredMapId + 1);
+        _selectedVisual.SetActive(data.LastSelectedLevelId == _levelDataSO.LevelId);
     }
 
     private void OnClick()
