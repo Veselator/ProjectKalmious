@@ -16,3 +16,4 @@ MonoBehaviour:
   _levelId: 0
   _requiredMapId: -1
   _requiredMaxLevel: -1
+  _icon: {fileID: 506494676, guid: 349d859a135d7a44f87327e96cb06de2, type: 3}

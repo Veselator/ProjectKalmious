@@ -4,18 +4,23 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class LevelBack : MonoBehaviour
 {
-    private void Awake()
+    [SerializeField] private FixedPointsCameraTracker _camera;
+
+    private Button _button;
+
+    private void Start()
     {
-        GetComponent<Button>().onClick.AddListener(OnClick);
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(OnClick);
     }
 
     private void OnClick()
     {
-        // Переход на экран 1
+        _camera.SetTarget(0);
     }
 
     private void OnDestroy()
     {
-        GetComponent<Button>().onClick.RemoveListener(OnClick);
+        _button.onClick.RemoveListener(OnClick);
     }
 }

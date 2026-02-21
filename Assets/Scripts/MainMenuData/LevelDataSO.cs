@@ -7,11 +7,13 @@ public class LevelDataSO : ScriptableObject
     [SerializeField] private int _levelId;
     [SerializeField] private int _requiredMapId;
     [SerializeField] private int _requiredMaxLevel;
+    [SerializeField] private Sprite _icon;
 
     public string LevelName => _levelName;
     public int LevelId => _levelId;
     public int RequiredMapId => _requiredMapId;
     public int RequiredMaxLevel => _requiredMaxLevel;
+    public Sprite Icon => _icon;
 
     public bool IsUnlocked(PlayerData data)
     {

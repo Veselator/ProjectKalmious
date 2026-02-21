@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5f9ac92ea8dc640b494202a0e124b6, type: 3}
   m_Name: PlayerVisuals
   m_EditorClassIdentifier: 
-  _visuals: []
+  _visuals:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -15,4 +15,5 @@ MonoBehaviour:
   _levelName: "\u041F\u0443\u0441\u0442\u0435\u043B\u044F"
   _levelId: 1
   _requiredMapId: 0
-  _requiredMaxLevel: 0
+  _requiredMaxLevel: 10
+  _icon: {fileID: 92977234, guid: 349d859a135d7a44f87327e96cb06de2, type: 3}

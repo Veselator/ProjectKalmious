@@ -5,30 +5,21 @@ public class LevelSelectTitle : MonoBehaviour
 {
     [SerializeField] private TMP_Text _mainTitle;
 
-    private void OnEnable()
-    {
-        Refresh();
+    private PlayerSavesManager _savesManager;
 
-        if (PlayerSavesManager.Instance != null)
-            PlayerSavesManager.Instance.OnDataChanged += HandleDataChanged;
+    private void Start()
+    {
+        _savesManager = PlayerSavesManager.Instance;
+        _savesManager.OnSaveSelected += HandleSaveSelected;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        if (PlayerSavesManager.Instance != null)
-            PlayerSavesManager.Instance.OnDataChanged -= HandleDataChanged;
+        _savesManager.OnSaveSelected -= HandleSaveSelected;
     }
 
-    public void Refresh()
+    private void HandleSaveSelected(int slotIndex, PlayerData data)
     {
-        if (_mainTitle == null) return;
-        if (PlayerSavesManager.Instance == null || PlayerSavesManager.Instance.CurrentSlotIndex < 0) return;
-
-        _mainTitle.text = PlayerSavesManager.Instance.GetCurrentData().Name;
-    }
-
-    private void HandleDataChanged(int slotIndex, PlayerData data)
-    {
-        Refresh();
+        _mainTitle.text = data.Name;
     }
 }

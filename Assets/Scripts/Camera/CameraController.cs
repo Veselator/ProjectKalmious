@@ -7,10 +7,10 @@ public class CameraController : MonoBehaviour
     private Transform _defaultTracker;
     public Transform Target
     {
-        get => _target; 
-        set 
-        { 
-            _target = value; 
+        get => _target;
+        set
+        {
+            _target = value;
         }
     }
 
@@ -25,13 +25,11 @@ public class CameraController : MonoBehaviour
         _tracker = GetComponent<ICameraTracker>();
         _defaultTracker = _target;
 
-        // Ищем CameraShake в дочерних объектах
         if (_cameraShake == null) _cameraShake = GetComponentInChildren<CameraShake>();
     }
 
     public void ResetTrackingObject()
     {
-        // Для кат-сцен
         _target = _defaultTracker;
     }
 

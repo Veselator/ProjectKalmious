@@ -1059,7 +1059,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &200247113
 Transform:
@@ -32286,7 +32286,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &2078087695
 Canvas:
   m_ObjectHideFlags: 0
@@ -32747,9 +32747,9 @@ SceneRoots:
   - {fileID: 1582764942}
   - {fileID: 80467264}
   - {fileID: 1339391445}
+  - {fileID: 1856839039}
   - {fileID: 1808966974}
   - {fileID: 32178703}
-  - {fileID: 1856839039}
   - {fileID: 1645687621}
   - {fileID: 1328681668}
   - {fileID: 1056357636}

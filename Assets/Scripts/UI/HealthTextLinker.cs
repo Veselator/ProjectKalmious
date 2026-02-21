@@ -11,6 +11,8 @@ public class HealthTextLinker : MonoBehaviour
     private void Start()
     {
         _health.OnHealthChanged += UpdateHealthText;
+
+        UpdateHealthText(0f);
     }
 
     private void OnDestroy()

@@ -56,11 +56,8 @@ public class PlayerSavesManager : MonoBehaviour
         ValidateIndex(index);
         _currentSlotIndex = index;
 
-        if (GameSetup.Instance != null)
-        {
-            GameSetup.Instance.SetVisualChoice(_slots[index].VisualId);
-            GameSetup.Instance.SetLevelId(_slots[index].LastSelectedLevelId);
-        }
+        GameSetup.Instance.SetVisualChoice(_slots[index].VisualId);
+        GameSetup.Instance.SetLevelId(_slots[index].LastSelectedLevelId);
 
         OnSaveSelected?.Invoke(index, _slots[index]);
     }

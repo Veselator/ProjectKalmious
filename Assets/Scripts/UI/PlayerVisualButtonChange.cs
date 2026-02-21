@@ -7,26 +7,30 @@ public class PlayerVisualButtonChange : MonoBehaviour
     [SerializeField] private int _direction = 1;
     [SerializeField] private PlayerVisualsSO _visualsSO;
 
-    private void Awake()
+    private PlayerSavesManager _savesManager;
+    private Button _button;
+
+    private void Start()
     {
-        GetComponent<Button>().onClick.AddListener(OnClick);
+        _savesManager = PlayerSavesManager.Instance;
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(OnClick);
     }
 
     private void OnClick()
     {
-        if (PlayerSavesManager.Instance == null || _visualsSO == null) return;
-        if (PlayerSavesManager.Instance.CurrentSlotIndex < 0) return;
+        if (_savesManager.CurrentSlotIndex < 0) return;
 
-        int current = PlayerSavesManager.Instance.GetCurrentData().VisualId;
+        int current = _savesManager.GetCurrentData().VisualId;
         int count = _visualsSO.Count;
         if (count <= 0) return;
 
         int next = (current + _direction % count + count) % count;
-        PlayerSavesManager.Instance.UpdateVisualId(next);
+        _savesManager.UpdateVisualId(next);
     }
 
     private void OnDestroy()
     {
-        GetComponent<Button>().onClick.RemoveListener(OnClick);
+        _button.onClick.RemoveListener(OnClick);
     }
 }
