@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6419035646333798765}
   - component: {fileID: 7466524442962388785}
+  - component: {fileID: 7314123146556835290}
   m_Layer: 0
   m_Name: StrongPunch
   m_TagString: Untagged
@@ -29,7 +30,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8053377581407959323}
+  - {fileID: 1256553821143502191}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7466524442962388785
@@ -54,7 +57,6 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 128
-<<<<<<< HEAD
 --- !u!114 &7314123146556835290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,5 +351,3 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 888444077320411737, guid: 0c2509361b13505428ce788b7f846686, type: 3}
   m_PrefabInstance: {fileID: 7176269486219191109}
   m_PrefabAsset: {fileID: 0}
-=======
->>>>>>> parent of 819ee77 (Game over + particles for abilities)

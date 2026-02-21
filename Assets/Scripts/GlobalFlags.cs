@@ -6,14 +6,11 @@ public class GlobalFlags : MonoBehaviour
     public static GlobalFlags Instance { get; private set; }
 
     public event Action<float> OnXpAdded;
-<<<<<<< HEAD
     public event Action<BaseAI, Vector3> OnEnemySpawned;
     public event Action<float, Transform> OnDamage;
     public event Action<BaseAI, Vector3> OnEnemyKilled;
     public event Action OnLevelUp;
     public event Action OnGameOver;
-=======
->>>>>>> parent of 819ee77 (Game over + particles for abilities)
 
     private void Awake()
     {
@@ -32,7 +29,6 @@ public class GlobalFlags : MonoBehaviour
 
         OnXpAdded?.Invoke(xp);
     }
-<<<<<<< HEAD
 
     public void TriggerTakeDamage(float damage, Transform damagedObject)
     {
@@ -61,6 +57,4 @@ public class GlobalFlags : MonoBehaviour
     {
         OnGameOver?.Invoke();
     }
-=======
->>>>>>> parent of 819ee77 (Game over + particles for abilities)
 }

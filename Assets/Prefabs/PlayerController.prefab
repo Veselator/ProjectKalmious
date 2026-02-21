@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 278760648724318380}
   - component: {fileID: 5974544918421324665}
   - component: {fileID: 4063974521444145883}
+  - component: {fileID: 7203920326411204353}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -607,7 +608,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
-<<<<<<< HEAD
 --- !u!114 &7203920326411204353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,8 +667,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelUpParticleSystem: {fileID: 1995835028634886484}
-=======
->>>>>>> parent of 819ee77 (Game over + particles for abilities)
 --- !u!1 &7384874869083038851
 GameObject:
   m_ObjectHideFlags: 0
