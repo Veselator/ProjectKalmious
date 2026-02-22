@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerVisuals
   m_EditorClassIdentifier: 
   _visuals:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 667225838, guid: edbdcae21db373c44a33ee958553edf9, type: 3}
+  - {fileID: -1850655142, guid: 5042da056cb63ee4d8841c18f10769a2, type: 3}
+  - {fileID: -1519394097, guid: f51a3f7f7edae804aa79251bd74c952f, type: 3}

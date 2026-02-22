@@ -32,6 +32,8 @@ public class PointerUI : MonoBehaviour
 
         _icon.sprite = _enemySprite;
         _icon.color = _enemyColor;
+
+        UpdatePosition();
         gameObject.SetActive(true);
     }
 
@@ -47,6 +49,8 @@ public class PointerUI : MonoBehaviour
 
         _icon.sprite = _weaponSprite;
         _icon.color = _weaponColor;
+
+        UpdatePosition();
         gameObject.SetActive(true);
     }
 
@@ -58,11 +62,8 @@ public class PointerUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void Update()
+    private void UpdatePosition()
     {
-        if (!_isActive || _target == null || _playerTransform == null)
-            return;
-
         float distance = _isEnemy
             ? _linkedAI.DistanceToPlayer
             : Vector2.Distance(_target.position, _playerTransform.position);
@@ -84,5 +85,13 @@ public class PointerUI : MonoBehaviour
 
         float rotationZ = angle * Mathf.Rad2Deg;
         transform.localRotation = Quaternion.Euler(0f, 0f, rotationZ);
+    }
+
+    private void Update()
+    {
+        if (!_isActive || _target == null || _playerTransform == null)
+            return;
+
+        UpdatePosition();
     }
 }
