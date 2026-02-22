@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PistolPickupable
   m_EditorClassIdentifier: 
   _weaponTag: pistol
-  _waveIndex: 2
+  _waveIndex: 3

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AkPickupable
   m_EditorClassIdentifier: 
   _weaponTag: ak
-  _waveIndex: 4
+  _waveIndex: 5

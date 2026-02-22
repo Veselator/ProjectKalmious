@@ -61,19 +61,16 @@ public class CameraShake : MonoBehaviour
 
     public void StartHitShake()
     {
-        Debug.Log("Starting shaking");
         StartCoroutine(HitShake(ShakeHitDuration, shakeHitIntensity));
     }
 
     public void StartLightHitShake()
     {
-        Debug.Log("Starting shaking");
         StartCoroutine(HitShake(ShakeHitDuration, shakeLightHitIntensity));
     }
 
     public void StartHitShake(float shakeHitIntensityFactor)
     {
-        Debug.Log("Starting shaking");
         StartCoroutine(HitShake(ShakeHitDuration, shakeHitIntensity * shakeHitIntensityFactor));
     }
 
@@ -131,7 +128,6 @@ public class CameraShake : MonoBehaviour
     {
         //originalLocalPosition = transform.localPosition;
         //originalLocalRotation = transform.localRotation;
-        Debug.Log("Started shaking");
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)

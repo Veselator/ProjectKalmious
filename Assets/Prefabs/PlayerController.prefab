@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelHandler: {fileID: 2135494695063232756}
-  _pointsPerLevel: 3
-  _pointsToAdd: 6
+  _pointsPerLevel: 4
+  _pointsToAdd: 5
 --- !u!114 &2135494695063232756
 MonoBehaviour:
   m_ObjectHideFlags: 0

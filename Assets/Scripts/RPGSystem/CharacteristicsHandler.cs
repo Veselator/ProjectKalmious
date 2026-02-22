@@ -18,7 +18,7 @@ public class CharacteristicsHandler : MonoBehaviour
     private float _intelligence = 5; // Влияет на количество набираемых очков
     private float _luck = 5; // Влияет на шанс критического урона
 
-    [SerializeField] private int _pointsToAdd = 2;
+    private int _pointsToAdd = 0;
 
     public float Speed
     {
@@ -86,6 +86,11 @@ public class CharacteristicsHandler : MonoBehaviour
     public float CalculatedIntelligence => IntelligenceCalculator.GetCharacteristic(this);
     public float CalculatedCritChance => LuckCalculator.GetCharacteristic(this);
 
+    private void Start()
+    {
+        HandleLevelUp(0);
+    }
+
     private void OnEnable()
     {
         _levelHandler.OnLevelChanged += HandleLevelUp;
@@ -98,7 +103,7 @@ public class CharacteristicsHandler : MonoBehaviour
 
     private void HandleLevelUp(int newLevel)
     {
-        PointsToAdd += (int)(_pointsPerLevel + 2f * CalculatedIntelligence);
+        PointsToAdd += (int)(_pointsPerLevel + CalculatedIntelligence);
         OnPointsChanged?.Invoke(_pointsToAdd);
     }
 
@@ -122,23 +127,23 @@ public class CharacteristicsHandler : MonoBehaviour
         switch (type)
         {
             case CharacteristicType.Speed:
-                if (_speed >= _maxCharacteristicValue) return;
+                if (_speed + num > _maxCharacteristicValue) return;
                 Speed += num;
                 break;
             case CharacteristicType.Strength:
-                if (_strength >= _maxCharacteristicValue) return;
+                if (_strength + num >= _maxCharacteristicValue) return;
                 Strength += num;
                 break;
             case CharacteristicType.Stamina:
-                if (_stamina >= _maxCharacteristicValue) return;
+                if (_stamina + num >= _maxCharacteristicValue) return;
                 Stamina += num;
                 break;
             case CharacteristicType.Intelligence:
-                if (_intelligence >= _maxCharacteristicValue) return;
+                if (_intelligence + num >= _maxCharacteristicValue) return;
                 Intelligence += num;
                 break;
             case CharacteristicType.Luck:
-                if (_luck >= _maxCharacteristicValue) return;
+                if (_luck + num >= _maxCharacteristicValue) return;
                 Luck += num;
                 break;
             default:
