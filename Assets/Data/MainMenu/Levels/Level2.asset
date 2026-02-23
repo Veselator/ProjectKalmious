@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelName: "\u041F\u0435\u043A\u043B\u043E"
   _levelId: 2
-  _requiredMapId: 1
-  _requiredMaxLevel: 10
+  _requiredMapId: 10
+  _requiredMaxLevel: 15
   _icon: {fileID: 1343807634, guid: 3dee8b3028d898742b7d721513896ba8, type: 3}

@@ -6,7 +6,6 @@ public class PlayerSavesManager : MonoBehaviour
     public static PlayerSavesManager Instance { get; private set; }
 
     private const int SlotCount = 3;
-    private const int LevelsPerSlot = 3;
     private const string SlotKeyPrefix = "PlayerSlot_";
 
     public event Action<int, PlayerData> OnSaveSelected;

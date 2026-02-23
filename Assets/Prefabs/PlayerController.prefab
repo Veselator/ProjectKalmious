@@ -606,7 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb1174e41101dcd48ba577b60c5f28f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _visuals:
+  _objects:
   - {fileID: 8006582567304357329}
   - {fileID: 2539073137450942235}
   - {fileID: 2168557973996523872}
