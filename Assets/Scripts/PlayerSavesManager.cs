@@ -113,6 +113,7 @@ public class PlayerSavesManager : MonoBehaviour
         if (_currentSlotIndex < 0) return;
 
         PlayerData data = _slots[_currentSlotIndex];
+        if (data.MaxLevelsPerMap[mapIndex] > maxLevel) return;
         data.MaxLevelsPerMap[mapIndex] = maxLevel;
         _slots[_currentSlotIndex] = data;
         SaveSlot(_currentSlotIndex);
