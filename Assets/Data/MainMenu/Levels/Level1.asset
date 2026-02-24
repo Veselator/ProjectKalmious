@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f29621a8fc01f543897779f89e7eee4, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  _levelName: "\u041F\u0443\u0441\u0442\u0435\u043B\u044F"
+  _levelName: "\u0422\u0435\u043C\u043D\u0438\u0439 \u043B\u0456\u0441"
   _levelId: 1
-  _requiredMapId: -1
-  _requiredMaxLevel: -1
+  _requiredMapId: 0
+  _requiredMaxLevel: 15
   _icon: {fileID: -2110194527, guid: 3dee8b3028d898742b7d721513896ba8, type: 3}

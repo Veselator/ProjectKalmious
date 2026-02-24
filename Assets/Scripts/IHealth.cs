@@ -22,7 +22,7 @@ public interface IHealth
     Action OnArmorDestoyed { get; set; }
     Action<float> OnArmorChanged { get; set; }
     Action OnDeath { get; set;  }
-    abstract void ResetHealth();
+    abstract void Reset();
     abstract void TakeDamage(Damage damage, Collider2D source); // заменить damage на struct damage, для большей модификации урона
     // Ps OnCollisionEnter2D обрабатывает пуля
 }

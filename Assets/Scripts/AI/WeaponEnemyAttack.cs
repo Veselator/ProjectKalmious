@@ -13,4 +13,9 @@ public class WeaponEnemyAttack : BaseEnemyAttackAI
     {
         return _weapon.CanAct();
     }
+
+    public void SetOverallDamageModifier(float modifier)
+    {
+        _weapon.SetOverallDamageModifier(modifier);
+    }
 }

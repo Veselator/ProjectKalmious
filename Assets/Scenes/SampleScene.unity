@@ -1179,6 +1179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 200247113}
   - component: {fileID: 200247114}
+  - component: {fileID: 200247115}
   m_Layer: 0
   m_Name: WavesManager
   m_TagString: Untagged
@@ -1237,6 +1238,28 @@ MonoBehaviour:
   _baseEnemiesPerWave: 5
   _enemiesScaleFactor: 1.3
   _maxEnemyDifficultyFactor: 20
+  HealthSpawnModifier: 1
+  DamageSpawnModifier: 1
+--- !u!114 &200247115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200247112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438d025cdc68fe445a34491abadd6a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wavesManager: {fileID: 200247114}
+  _difficulties:
+  - HealthModifier: 1
+    DamageModifier: 1
+  - HealthModifier: 1.5
+    DamageModifier: 1.5
+  - HealthModifier: 2
+    DamageModifier: 2
 --- !u!1 &224873489
 GameObject:
   m_ObjectHideFlags: 0
@@ -4009,7 +4032,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2135494695063232756, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
   m_PrefabInstance: {fileID: 4142472644694289158}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4142472644694289161}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e87725e0fd64314ea30f64ed6d14779, type: 3}
@@ -4020,7 +4043,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4880651089389787663, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
   m_PrefabInstance: {fileID: 4142472644694289158}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4142472644694289161}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58b18b17a12ab204795701fd5c724097, type: 3}
@@ -81153,6 +81176,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1093471336352411894, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4142472644694289162}
     - targetCorrespondingSourceObject: {fileID: 6613947213132426967, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2058095389}
@@ -81167,6 +81193,31 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 5974544918421324665, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
   m_PrefabInstance: {fileID: 4142472644694289158}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4142472644694289161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1093471336352411894, guid: 823e9cffc20f9174ab914e983fae2e84, type: 3}
+  m_PrefabInstance: {fileID: 4142472644694289158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4142472644694289162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4142472644694289161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7526c7a7bbe4e409174c7f9231e067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerLevelHandler: {fileID: 634462611}
+  _levellingSettings:
+  - LevelFactor: 2
+    LevelAdditionalValue: 30
+  - LevelFactor: 4
+    LevelAdditionalValue: 40
+  - LevelFactor: 6
+    LevelAdditionalValue: 50
 --- !u!1001 &8203127635382785053
 PrefabInstance:
   m_ObjectHideFlags: 0

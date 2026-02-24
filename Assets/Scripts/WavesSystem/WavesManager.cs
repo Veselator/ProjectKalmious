@@ -32,6 +32,9 @@ public class WavesManager : MonoBehaviour
     public event Action<int> OnWaveStarted;
     public event Action<int> OnWaveEnded;
 
+    public float HealthSpawnModifier = 1f;
+    public float DamageSpawnModifier = 1f;
+
     private void Start()
     {
         _enemiesCMS = GlobalEnemies.Instance;
@@ -114,11 +117,16 @@ public class WavesManager : MonoBehaviour
             Transform spawnPoint = _spawnPoints[UnityEngine.Random.Range(0, _spawnPoints.Length)];
             GameObject enemy = Instantiate(settings.Prefab, spawnPoint.position, Quaternion.identity);
 
+            // Лучше бы отдать отвественность фабрике
+
             BaseAI ai = enemy.GetComponent<BaseAI>();
             ai.Initialize(_playerTransform);
 
             Health health = enemy.GetComponent<Health>();
             health.OnDeath += () => OnEnemyDied(enemy);
+            health.ResetTo(health.MaximumHealth * HealthSpawnModifier);
+
+            enemy.GetComponent<WeaponEnemyAttack>().SetOverallDamageModifier(DamageSpawnModifier);
 
             _aliveEnemies.Add(enemy);
             yield return _spawnDelayCached;

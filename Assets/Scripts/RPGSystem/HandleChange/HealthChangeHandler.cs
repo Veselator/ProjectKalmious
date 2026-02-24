@@ -9,7 +9,7 @@ public class HealthChangeHandler : BaseChangeHandler
         base.Start();
 
         _linkedHealth.MaximumHealth = _characteristics.CalculatedStamina;
-        _linkedHealth.ResetHealth();
+        _linkedHealth.Reset();
     }
 
     protected override void DoChange()

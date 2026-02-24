@@ -75,10 +75,16 @@ public class Health : MonoBehaviour, IHealth
         _currentArmor = MaximumArmor;
     }
 
-    public void ResetHealth()
+    public void Reset()
     {
         CurrentHealth = MaximumHealth;
         CurrentArmor = MaximumArmor;
+    }
+
+    public void ResetTo(float value)
+    {
+        MaximumHealth = value;
+        CurrentHealth = value;
     }
 
     public void TakeDamage(Damage damage, Collider2D source)

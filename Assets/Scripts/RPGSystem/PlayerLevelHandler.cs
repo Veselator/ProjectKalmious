@@ -50,6 +50,22 @@ public class PlayerLevelHandler : MonoBehaviour
         return _levelFactor * level * Mathf.Log(level, 2f) + _levelAdditionalValue;
     }
 
+    public void SetLevelFactor(float newLevelFactor)
+    {
+        _levelFactor = newLevelFactor;
+        _currentXPGoal = CalculateXPGoal(_currentLevel);
+
+        OnXPChanged?.Invoke(_currentXP, _currentXPGoal);
+    }
+
+    public void SetLevelAdditionalValue(float newLevelAdditionalValue)
+    {
+        _levelAdditionalValue = newLevelAdditionalValue;
+        _currentXPGoal = CalculateXPGoal(_currentLevel);
+
+        OnXPChanged?.Invoke(_currentXP, _currentXPGoal);
+    }
+
     public void AddXP(float amount)
     {
         _currentXP += amount;
