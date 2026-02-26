@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9092352838279706298}
   - component: {fileID: 4880651089389787663}
   - component: {fileID: 2135494695063232756}
+  - component: {fileID: 1589801839166472434}
   m_Layer: 0
   m_Name: Characteristics
   m_TagString: Untagged
@@ -61,6 +62,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelFactor: 2
   _levelAdditionalValue: 30
+--- !u!114 &1589801839166472434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093471336352411894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7526c7a7bbe4e409174c7f9231e067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerLevelHandler: {fileID: 2135494695063232756}
+  _levellingSettings:
+  - LevelFactor: 2
+    LevelAdditionalValue: 30
+  - LevelFactor: 4
+    LevelAdditionalValue: 40
+  - LevelFactor: 6
+    LevelAdditionalValue: 50
 --- !u!1 &2168557973996523872
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +631,7 @@ MonoBehaviour:
   - {fileID: 8006582567304357329}
   - {fileID: 2539073137450942235}
   - {fileID: 2168557973996523872}
+  _choiceType: 0
 --- !u!1 &6613947213132426967
 GameObject:
   m_ObjectHideFlags: 0

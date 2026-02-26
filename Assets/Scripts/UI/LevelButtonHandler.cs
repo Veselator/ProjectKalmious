@@ -54,7 +54,7 @@ public class LevelButtonHandler : MonoBehaviour
         _button.interactable = unlocked;
         _inactiveVisual.SetActive(!unlocked);
         _iconImage.sprite = _levelDataSO.Icon;
-        _numberText.text = string.Format(_numberFormat, _levelDataSO.RequiredMapId + 1);
+        _numberText.text = string.Format(_numberFormat, _levelDataSO.LevelId + 1);
 
         _unactiveText.gameObject.SetActive(!unlocked);
 
