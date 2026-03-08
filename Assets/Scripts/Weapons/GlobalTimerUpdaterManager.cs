@@ -4,6 +4,7 @@ using UnityEngine;
 public class GlobalTimerUpdaterManager : MonoBehaviour
 {
     // Глобальный менеджер обновления таймеров
+    // Лучше было бы GlobalTimerUpdaterRegistry ибо Manager уже и так всюду и везде, из-за чего смысл теряется
 
     private static List<Timer> _timers = new();
 

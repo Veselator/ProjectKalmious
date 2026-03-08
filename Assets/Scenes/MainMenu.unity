@@ -2297,7 +2297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: KALMIOUS
+  m_text: SOLO LEVELING
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f14bc5a1bab9df40bd2721577abd826, type: 2}
   m_sharedMaterial: {fileID: -1898165988708931932, guid: 9f14bc5a1bab9df40bd2721577abd826, type: 2}
@@ -2324,8 +2324,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 176.6
-  m_fontSizeBase: 176.6
+  m_fontSize: 157.84
+  m_fontSizeBase: 157.84
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3486,7 +3486,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: KALMIOUS
+  m_text: SOLO LEVELING
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f14bc5a1bab9df40bd2721577abd826, type: 2}
   m_sharedMaterial: {fileID: -1898165988708931932, guid: 9f14bc5a1bab9df40bd2721577abd826, type: 2}
@@ -3513,8 +3513,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 176.6
-  m_fontSizeBase: 176.6
+  m_fontSize: 157.84
+  m_fontSizeBase: 157.84
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

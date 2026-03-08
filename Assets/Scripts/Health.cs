@@ -13,6 +13,11 @@ public class Health : MonoBehaviour, IHealth
     // Здоровья всем родным программиста, который это написал
     // И в обще он крутой
 
+    // История использования:
+    // Shootemup
+    // Платформер
+    // Kalmious
+
     [SerializeField] private float _maxHealth;
     public float MaximumHealth
     {
@@ -62,6 +67,9 @@ public class Health : MonoBehaviour, IHealth
     public float CurrentHealthInPercentage => CurrentHealth / MaximumHealth;
     public float CurrentArmorInPercentage => CurrentArmor / MaximumArmor;
 
+    [SerializeField] private float _damageCooldown = 0f;
+    private Timer _cooldownTimer;
+
     public Action<float, Collider2D> OnDamaged { get; set; }
     public Action<float> OnCriticalHit { get; set; }
     public Action OnArmorDestoyed { get; set; }
@@ -73,6 +81,8 @@ public class Health : MonoBehaviour, IHealth
     {
         _currentHealth = MaximumHealth;
         _currentArmor = MaximumArmor;
+
+        _cooldownTimer = new Timer();
     }
 
     public void Reset()
@@ -87,10 +97,18 @@ public class Health : MonoBehaviour, IHealth
         CurrentHealth = value;
     }
 
+    private void Update()
+    {
+        if(_cooldownTimer.IsRunning) _cooldownTimer.Tick(Time.deltaTime);
+    }
+
     public void TakeDamage(Damage damage, Collider2D source)
     {
         // И так намучался - зачем после смерти добивать?
-        if (IsDied) return; 
+        if (IsDied) return;
+        if (_cooldownTimer.IsRunning) return;
+
+        if (_damageCooldown > 0f) _cooldownTimer.Start(_damageCooldown);
 
         float currentDamage = isArmored ? damage.MultipliedArmorDamage : damage.MultipliedHealthDamage;
         if (UnityEngine.Random.Range(0f, 100f) < damage.criticalChance)
@@ -120,5 +138,10 @@ public class Health : MonoBehaviour, IHealth
         OnDamaged?.Invoke(currentDamage, source);
 
         if (IsDied) OnDeath?.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        _cooldownTimer.Disable(); // Ну очень важно
     }
 }

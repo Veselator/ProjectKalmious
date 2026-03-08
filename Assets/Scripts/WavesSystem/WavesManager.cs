@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class WavesManager : MonoBehaviour
 {
+    // Менеджер волн
+
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private float _timeBetweenWaves = 5f;

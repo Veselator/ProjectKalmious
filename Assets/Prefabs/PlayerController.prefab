@@ -78,10 +78,10 @@ MonoBehaviour:
   _levellingSettings:
   - LevelFactor: 2
     LevelAdditionalValue: 30
-  - LevelFactor: 4
+  - LevelFactor: 2.3
+    LevelAdditionalValue: 35
+  - LevelFactor: 3
     LevelAdditionalValue: 40
-  - LevelFactor: 6
-    LevelAdditionalValue: 50
 --- !u!1 &2168557973996523872
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,6 +880,7 @@ MonoBehaviour:
   _maxHealth: 125
   _maximumArmor: 0
   isArmored: 0
+  _damageCooldown: 0.5
 --- !u!114 &406428064741727861
 MonoBehaviour:
   m_ObjectHideFlags: 0

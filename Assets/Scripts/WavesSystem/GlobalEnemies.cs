@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class GlobalEnemies : MonoBehaviour
 {
-    // Глобальный класс врагов, инкапсулирует все сущности врагов
+    // Content management system для врагов
 
     public static GlobalEnemies Instance { get; private set; }
 

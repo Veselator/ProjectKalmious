@@ -389,6 +389,7 @@ MonoBehaviour:
   _maxHealth: 200
   _maximumArmor: 0
   isArmored: 0
+  _damageCooldown: 0
 --- !u!114 &1028526982560221087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ai: {fileID: -6072607272921689169}
-  _attackDistance: 0.5
+  _attackDistance: 2.22
   _weapon: {fileID: 6363189566649558557}
 --- !u!114 &-6072607272921689169
 MonoBehaviour:
